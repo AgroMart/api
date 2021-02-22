@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "enderecos",
+  "info": {
+    "name": "endereco"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "cidade": {
+      "type": "string",
+      "required": true
+    },
+    "bairro": {
+      "type": "string",
+      "required": true
+    },
+    "numero": {
+      "type": "integer",
+      "required": true
+    },
+    "complemento": {
+      "type": "string"
+    },
+    "cep": {
+      "type": "string",
+      "required": true
+    },
+    "rua": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
