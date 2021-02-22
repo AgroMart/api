@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/extratoes",
+      "handler": "extrato.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/extratoes/count",
+      "handler": "extrato.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/extratoes/:id",
+      "handler": "extrato.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/extratoes",
+      "handler": "extrato.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/extratoes/:id",
+      "handler": "extrato.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/extratoes/:id",
+      "handler": "extrato.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "extratoes",
+  "info": {
+    "name": "extrato"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "itens": {
+      "type": "json",
+      "required": true
+    },
+    "valor": {
+      "type": "float",
+      "required": true
+    },
+    "entregue": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "tipo_de_entrega": {
+      "type": "enumeration",
+      "enum": [
+        "entrega"
+      ]
+    }
+  }
+}
