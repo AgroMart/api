@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "assinantes",
+  "collectionName": "planos",
   "info": {
-    "name": "Assinantes",
-    "description": ""
+    "name": "Plano"
   },
   "options": {
     "increments": true,
@@ -15,17 +14,20 @@
       "type": "string",
       "required": true
     },
-    "cpf": {
-      "type": "string",
+    "descricao": {
+      "type": "text",
       "required": true
     },
-    "cestas_disponiveis": {
+    "valor": {
+      "type": "float",
+      "required": true
+    },
+    "quantidade_de_Cestas": {
+      "type": "integer",
+      "required": true
+    },
+    "quantidade": {
       "type": "integer"
-    },
-    "pular_cesta": {
-      "type": "boolean",
-      "default": false,
-      "required": true
     }
   }
 }
