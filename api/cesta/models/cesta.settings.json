@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "cestas",
   "info": {
-    "name": "Cesta"
+    "name": "Cesta",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -23,8 +24,12 @@
       "required": true
     },
     "loja": {
-      "via": "cestas",
-      "model": "loja"
+      "model": "loja",
+      "via": "cestas"
+    },
+    "item_da_cesta": {
+      "collection": "item-da-cesta",
+      "via": "cesta"
     }
   }
 }

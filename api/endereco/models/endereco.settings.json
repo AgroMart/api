@@ -36,6 +36,11 @@
     "loja": {
       "via": "enderecos",
       "model": "loja"
+    },
+    "user": {
+      "via": "enderecos",
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }

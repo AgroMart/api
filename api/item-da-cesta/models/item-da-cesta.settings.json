@@ -14,6 +14,10 @@
       "type": "integer",
       "private": false,
       "required": true
+    },
+    "cesta": {
+      "via": "item_da_cesta",
+      "model": "cesta"
     }
   }
 }

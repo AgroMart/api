@@ -60,8 +60,16 @@
       "configurable": false
     },
     "loja": {
-      "via": "usuario",
-      "model": "loja"
+      "model": "loja",
+      "via": "usuario"
+    },
+    "extratos": {
+      "collection": "extrato",
+      "via": "user"
+    },
+    "enderecos": {
+      "collection": "endereco",
+      "via": "user"
     }
   }
 }

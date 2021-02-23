@@ -43,9 +43,9 @@
       "default": "cnpj"
     },
     "usuario": {
+      "via": "loja",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "loja"
+      "model": "user"
     },
     "extratos": {
       "collection": "extrato",
@@ -60,12 +60,12 @@
       "via": "loja"
     },
     "planos": {
-      "collection": "plano",
-      "via": "loja"
+      "via": "loja",
+      "collection": "plano"
     },
     "cestas": {
-      "collection": "cesta",
-      "via": "loja"
+      "via": "loja",
+      "collection": "cesta"
     }
   }
 }

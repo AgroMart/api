@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "planos",
   "info": {
-    "name": "Plano"
+    "name": "Plano",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -30,8 +31,12 @@
       "type": "integer"
     },
     "loja": {
-      "via": "planos",
-      "model": "loja"
+      "model": "loja",
+      "via": "planos"
+    },
+    "assinantes": {
+      "collection": "assinantes",
+      "via": "plano"
     }
   }
 }

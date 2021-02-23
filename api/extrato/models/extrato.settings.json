@@ -32,6 +32,11 @@
     "loja": {
       "via": "extratos",
       "model": "loja"
+    },
+    "user": {
+      "via": "extratos",
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }
