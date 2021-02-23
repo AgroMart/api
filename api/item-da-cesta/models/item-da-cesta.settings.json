@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "item_da_cestas",
+  "info": {
+    "name": "Item_da_Cesta"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "quantidade": {
+      "type": "integer",
+      "private": false,
+      "required": true
+    }
+  }
+}
