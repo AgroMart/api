@@ -32,6 +32,10 @@
     "rua": {
       "type": "string",
       "required": true
+    },
+    "loja": {
+      "via": "enderecos",
+      "model": "loja"
     }
   }
 }

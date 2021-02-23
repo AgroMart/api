@@ -37,6 +37,10 @@
     "quantidade": {
       "type": "integer",
       "required": true
+    },
+    "loja": {
+      "via": "produtos_avulsos",
+      "model": "loja"
     }
   }
 }

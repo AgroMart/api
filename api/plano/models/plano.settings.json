@@ -28,6 +28,10 @@
     },
     "quantidade": {
       "type": "integer"
+    },
+    "loja": {
+      "via": "planos",
+      "model": "loja"
     }
   }
 }

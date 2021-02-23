@@ -28,6 +28,10 @@
       "enum": [
         "entrega"
       ]
+    },
+    "loja": {
+      "via": "extratos",
+      "model": "loja"
     }
   }
 }

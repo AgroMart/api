@@ -21,6 +21,10 @@
     "descricao": {
       "type": "text",
       "required": true
+    },
+    "loja": {
+      "via": "cestas",
+      "model": "loja"
     }
   }
 }

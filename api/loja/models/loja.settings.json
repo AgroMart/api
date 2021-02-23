@@ -41,6 +41,31 @@
       "type": "string",
       "required": true,
       "default": "cnpj"
+    },
+    "usuario": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "loja"
+    },
+    "extratos": {
+      "collection": "extrato",
+      "via": "loja"
+    },
+    "enderecos": {
+      "collection": "endereco",
+      "via": "loja"
+    },
+    "produtos_avulsos": {
+      "collection": "produtos-avulsos",
+      "via": "loja"
+    },
+    "planos": {
+      "collection": "plano",
+      "via": "loja"
+    },
+    "cestas": {
+      "collection": "cesta",
+      "via": "loja"
     }
   }
 }
