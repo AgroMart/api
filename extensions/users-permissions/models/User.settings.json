@@ -70,6 +70,10 @@
     "enderecos": {
       "collection": "endereco",
       "via": "user"
+    },
+    "assinante": {
+      "via": "usuarios",
+      "model": "assinantes"
     }
   }
 }

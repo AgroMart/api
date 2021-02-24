@@ -28,8 +28,13 @@
       "required": true
     },
     "plano": {
-      "via": "assinantes",
-      "model": "plano"
+      "model": "plano",
+      "via": "assinantes"
+    },
+    "usuarios": {
+      "plugin": "users-permissions",
+      "collection": "user",
+      "via": "assinante"
     }
   }
 }

@@ -11,6 +11,7 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "faker": "^5.4.0",
     "knex": "<0.20.0",
     "pg": "latest",
     "strapi": "3.4.6",

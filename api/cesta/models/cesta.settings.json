@@ -28,8 +28,8 @@
       "via": "cestas"
     },
     "item_da_cesta": {
-      "collection": "item-da-cesta",
-      "via": "cesta"
+      "via": "cesta",
+      "collection": "item-da-cesta"
     }
   }
 }

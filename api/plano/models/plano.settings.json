@@ -35,8 +35,8 @@
       "via": "planos"
     },
     "assinantes": {
-      "collection": "assinantes",
-      "via": "plano"
+      "via": "plano",
+      "collection": "assinantes"
     }
   }
 }
