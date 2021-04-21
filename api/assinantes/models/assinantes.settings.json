@@ -28,8 +28,8 @@
       "required": true
     },
     "plano": {
-      "model": "plano",
-      "via": "assinantes"
+      "via": "assinantes",
+      "model": "plano"
     },
     "usuarios": {
       "plugin": "users-permissions",

@@ -520,7 +520,7 @@
           "nome",
           "descricao",
           "valor",
-          "quantidade_de_Cestas"
+          "quantidade_de_cestas"
         ],
         "properties": {
           "id": {
@@ -535,7 +535,7 @@
           "valor": {
             "type": "number"
           },
-          "quantidade_de_Cestas": {
+          "quantidade_de_cestas": {
             "type": "integer"
           },
           "quantidade": {
@@ -671,7 +671,7 @@
           "nome",
           "descricao",
           "valor",
-          "quantidade_de_Cestas"
+          "quantidade_de_cestas"
         ],
         "properties": {
           "nome": {
@@ -683,7 +683,7 @@
           "valor": {
             "type": "number"
           },
-          "quantidade_de_Cestas": {
+          "quantidade_de_cestas": {
             "type": "integer"
           },
           "quantidade": {

@@ -538,7 +538,8 @@
           "tipo_de_entrega": {
             "type": "string",
             "enum": [
-              "entrega"
+              "Receber",
+              "Buscar"
             ]
           },
           "loja": {
@@ -703,7 +704,8 @@
           "tipo_de_entrega": {
             "type": "string",
             "enum": [
-              "entrega"
+              "Receber",
+              "Buscar"
             ]
           },
           "loja": {

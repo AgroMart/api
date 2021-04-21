@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "02/25/2021 8:53:25 PM"
+    "x-generation-date": "02/28/2021 4:19:32 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6290,7 +6290,7 @@
               "nome",
               "descricao",
               "valor",
-              "quantidade_de_Cestas"
+              "quantidade_de_cestas"
             ],
             "properties": {
               "id": {
@@ -6305,7 +6305,7 @@
               "valor": {
                 "type": "number"
               },
-              "quantidade_de_Cestas": {
+              "quantidade_de_cestas": {
                 "type": "integer"
               },
               "quantidade": {
@@ -6851,7 +6851,8 @@
           "tipo_de_entrega": {
             "type": "string",
             "enum": [
-              "entrega"
+              "Receber",
+              "Buscar"
             ]
           },
           "loja": {
@@ -7016,7 +7017,8 @@
           "tipo_de_entrega": {
             "type": "string",
             "enum": [
-              "entrega"
+              "Receber",
+              "Buscar"
             ]
           },
           "loja": {
@@ -7205,7 +7207,8 @@
           "tipos_de_entrega": {
             "type": "string",
             "enum": [
-              "encomenda"
+              "Entregar",
+              "Receber"
             ]
           },
           "contato": {
@@ -7427,7 +7430,7 @@
                 "nome",
                 "descricao",
                 "valor",
-                "quantidade_de_Cestas"
+                "quantidade_de_cestas"
               ],
               "properties": {
                 "id": {
@@ -7442,7 +7445,7 @@
                 "valor": {
                   "type": "number"
                 },
-                "quantidade_de_Cestas": {
+                "quantidade_de_cestas": {
                   "type": "integer"
                 },
                 "quantidade": {
@@ -7534,7 +7537,8 @@
           "tipos_de_entrega": {
             "type": "string",
             "enum": [
-              "encomenda"
+              "Entregar",
+              "Receber"
             ]
           },
           "contato": {
@@ -7595,7 +7599,7 @@
           "nome",
           "descricao",
           "valor",
-          "quantidade_de_Cestas"
+          "quantidade_de_cestas"
         ],
         "properties": {
           "id": {
@@ -7610,7 +7614,7 @@
           "valor": {
             "type": "number"
           },
-          "quantidade_de_Cestas": {
+          "quantidade_de_cestas": {
             "type": "integer"
           },
           "quantidade": {
@@ -7746,7 +7750,7 @@
           "nome",
           "descricao",
           "valor",
-          "quantidade_de_Cestas"
+          "quantidade_de_cestas"
         ],
         "properties": {
           "nome": {
@@ -7758,7 +7762,7 @@
           "valor": {
             "type": "number"
           },
-          "quantidade_de_Cestas": {
+          "quantidade_de_cestas": {
             "type": "integer"
           },
           "quantidade": {

@@ -601,7 +601,8 @@
           "tipos_de_entrega": {
             "type": "string",
             "enum": [
-              "encomenda"
+              "Entregar",
+              "Receber"
             ]
           },
           "contato": {
@@ -823,7 +824,7 @@
                 "nome",
                 "descricao",
                 "valor",
-                "quantidade_de_Cestas"
+                "quantidade_de_cestas"
               ],
               "properties": {
                 "id": {
@@ -838,7 +839,7 @@
                 "valor": {
                   "type": "number"
                 },
-                "quantidade_de_Cestas": {
+                "quantidade_de_cestas": {
                   "type": "integer"
                 },
                 "quantidade": {
@@ -930,7 +931,8 @@
           "tipos_de_entrega": {
             "type": "string",
             "enum": [
-              "encomenda"
+              "Entregar",
+              "Receber"
             ]
           },
           "contato": {

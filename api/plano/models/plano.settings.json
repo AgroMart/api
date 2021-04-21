@@ -23,7 +23,7 @@
       "type": "float",
       "required": true
     },
-    "quantidade_de_Cestas": {
+    "quantidade_de_cestas": {
       "type": "integer",
       "required": true
     },
@@ -35,8 +35,8 @@
       "via": "planos"
     },
     "assinantes": {
-      "via": "plano",
-      "collection": "assinantes"
+      "collection": "assinantes",
+      "via": "plano"
     }
   }
 }
