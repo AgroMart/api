@@ -60,20 +60,19 @@
       "configurable": false
     },
     "loja": {
-      "via": "usuario",
-      "model": "loja"
+      "model": "loja",
+      "via": "usuario"
     },
     "extratos": {
-      "via": "user",
-      "collection": "extrato"
+      "collection": "extrato",
+      "via": "user"
     },
-    "enderecos": {
-      "via": "user",
-      "collection": "endereco"
+    "endereco": {
+      "model": "endereco"
     },
     "assinante": {
-      "via": "usuarios",
-      "model": "assinantes"
+      "model": "assinantes",
+      "via": "usuarios"
     }
   }
 }

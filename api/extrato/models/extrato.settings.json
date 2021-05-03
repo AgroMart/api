@@ -36,9 +36,9 @@
       "model": "loja"
     },
     "user": {
+      "via": "extratos",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "extratos"
+      "model": "user"
     }
   }
 }

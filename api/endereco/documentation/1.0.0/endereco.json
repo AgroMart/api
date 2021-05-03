@@ -542,69 +542,6 @@
           "rua": {
             "type": "string"
           },
-          "user": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmationToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "loja": {
-                "type": "string"
-              },
-              "extratos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "assinante": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "bairro": {
             "type": "string",
             "enum": [
@@ -668,9 +605,6 @@
             "type": "string"
           },
           "rua": {
-            "type": "string"
-          },
-          "user": {
             "type": "string"
           },
           "bairro": {

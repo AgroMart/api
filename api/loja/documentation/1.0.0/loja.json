@@ -658,11 +658,8 @@
                   "type": "string"
                 }
               },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "endereco": {
+                "type": "string"
               },
               "assinante": {
                 "type": "string"
@@ -744,9 +741,6 @@
                 "type": "string"
               },
               "rua": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               },
               "bairro": {

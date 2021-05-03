@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/02/2021 7:59:12 PM"
+    "x-generation-date": "05/02/2021 9:06:11 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6379,11 +6379,8 @@
                     "type": "string"
                   }
                 },
-                "enderecos": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                "endereco": {
+                  "type": "string"
                 },
                 "assinante": {
                   "type": "string"
@@ -6634,69 +6631,6 @@
           "rua": {
             "type": "string"
           },
-          "user": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmationToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "loja": {
-                "type": "string"
-              },
-              "extratos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "assinante": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "bairro": {
             "type": "string",
             "enum": [
@@ -6760,9 +6694,6 @@
             "type": "string"
           },
           "rua": {
-            "type": "string"
-          },
-          "user": {
             "type": "string"
           },
           "bairro": {
@@ -6956,11 +6887,8 @@
                   "type": "string"
                 }
               },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "endereco": {
+                "type": "string"
               },
               "assinante": {
                 "type": "string"
@@ -7246,11 +7174,8 @@
                   "type": "string"
                 }
               },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "endereco": {
+                "type": "string"
               },
               "assinante": {
                 "type": "string"
@@ -7332,9 +7257,6 @@
                 "type": "string"
               },
               "rua": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               },
               "bairro": {
@@ -8075,11 +7997,8 @@
                     "type": "string"
                   }
                 },
-                "enderecos": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                "endereco": {
+                  "type": "string"
                 },
                 "assinante": {
                   "type": "string"
@@ -8310,51 +8229,45 @@
               }
             }
           },
-          "enderecos": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "cidade",
-                "numero",
-                "cep",
-                "rua",
-                "bairro"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "cidade": {
-                  "type": "string"
-                },
-                "numero": {
-                  "type": "integer"
-                },
-                "complemento": {
-                  "type": "string"
-                },
-                "cep": {
-                  "type": "string"
-                },
-                "rua": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "bairro": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
+          "endereco": {
+            "required": [
+              "id",
+              "cidade",
+              "numero",
+              "cep",
+              "rua",
+              "bairro"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "cidade": {
+                "type": "string"
+              },
+              "numero": {
+                "type": "integer"
+              },
+              "complemento": {
+                "type": "string"
+              },
+              "cep": {
+                "type": "string"
+              },
+              "rua": {
+                "type": "string"
+              },
+              "bairro": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
@@ -8451,11 +8364,8 @@
               "type": "string"
             }
           },
-          "enderecos": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "endereco": {
+            "type": "string"
           },
           "assinante": {
             "type": "string"

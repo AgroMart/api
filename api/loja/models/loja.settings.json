@@ -44,9 +44,9 @@
       "default": "cnpj"
     },
     "usuario": {
+      "via": "loja",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "loja"
+      "model": "user"
     },
     "extratos": {
       "collection": "extrato",
