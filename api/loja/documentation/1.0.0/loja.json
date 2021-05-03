@@ -718,54 +718,48 @@
               }
             }
           },
-          "enderecos": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "cidade",
-                "bairro",
-                "numero",
-                "cep",
-                "rua"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "cidade": {
-                  "type": "string"
-                },
-                "bairro": {
-                  "type": "string"
-                },
-                "numero": {
-                  "type": "integer"
-                },
-                "complemento": {
-                  "type": "string"
-                },
-                "cep": {
-                  "type": "string"
-                },
-                "rua": {
-                  "type": "string"
-                },
-                "loja": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
+          "endereco": {
+            "required": [
+              "id",
+              "cidade",
+              "numero",
+              "cep",
+              "rua",
+              "bairro"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "cidade": {
+                "type": "string"
+              },
+              "numero": {
+                "type": "integer"
+              },
+              "complemento": {
+                "type": "string"
+              },
+              "cep": {
+                "type": "string"
+              },
+              "rua": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              },
+              "bairro": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
@@ -951,11 +945,8 @@
               "type": "string"
             }
           },
-          "enderecos": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "endereco": {
+            "type": "string"
           },
           "produtos_avulsos": {
             "type": "array",

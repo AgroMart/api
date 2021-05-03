@@ -68,8 +68,8 @@
       "collection": "extrato"
     },
     "enderecos": {
-      "collection": "endereco",
-      "via": "user"
+      "via": "user",
+      "collection": "endereco"
     },
     "assinante": {
       "via": "usuarios",

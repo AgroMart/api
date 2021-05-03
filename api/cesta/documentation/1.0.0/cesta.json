@@ -572,11 +572,8 @@
                   "type": "string"
                 }
               },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "endereco": {
+                "type": "string"
               },
               "produtos_avulsos": {
                 "type": "array",

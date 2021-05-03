@@ -1289,11 +1289,8 @@
                   "type": "string"
                 }
               },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "endereco": {
+                "type": "string"
               },
               "produtos_avulsos": {
                 "type": "array",
@@ -1373,19 +1370,16 @@
               "required": [
                 "id",
                 "cidade",
-                "bairro",
                 "numero",
                 "cep",
-                "rua"
+                "rua",
+                "bairro"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
                 "cidade": {
-                  "type": "string"
-                },
-                "bairro": {
                   "type": "string"
                 },
                 "numero": {
@@ -1400,10 +1394,10 @@
                 "rua": {
                   "type": "string"
                 },
-                "loja": {
+                "user": {
                   "type": "string"
                 },
-                "user": {
+                "bairro": {
                   "type": "string"
                 },
                 "published_at": {

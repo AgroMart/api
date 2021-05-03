@@ -49,20 +49,19 @@
       "via": "loja"
     },
     "extratos": {
-      "via": "loja",
-      "collection": "extrato"
-    },
-    "enderecos": {
-      "collection": "endereco",
+      "collection": "extrato",
       "via": "loja"
+    },
+    "endereco": {
+      "model": "endereco"
     },
     "produtos_avulsos": {
       "collection": "produtos-avulsos",
       "via": "loja"
     },
     "planos": {
-      "via": "loja",
-      "collection": "plano"
+      "collection": "plano",
+      "via": "loja"
     },
     "cestas": {
       "collection": "cesta",

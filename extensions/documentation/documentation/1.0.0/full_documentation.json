@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "02/28/2021 4:19:32 PM"
+    "x-generation-date": "05/02/2021 7:59:12 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6502,11 +6502,8 @@
                   "type": "string"
                 }
               },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "endereco": {
+                "type": "string"
               },
               "produtos_avulsos": {
                 "type": "array",
@@ -6613,19 +6610,16 @@
         "required": [
           "id",
           "cidade",
-          "bairro",
           "numero",
           "cep",
-          "rua"
+          "rua",
+          "bairro"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
           "cidade": {
-            "type": "string"
-          },
-          "bairro": {
             "type": "string"
           },
           "numero": {
@@ -6639,79 +6633,6 @@
           },
           "rua": {
             "type": "string"
-          },
-          "loja": {
-            "required": [
-              "id",
-              "nome",
-              "tipos_de_entrega",
-              "cnpj"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "nome": {
-                "type": "string"
-              },
-              "descricao": {
-                "type": "string"
-              },
-              "banner": {
-                "type": "string"
-              },
-              "tipos_de_entrega": {
-                "type": "string"
-              },
-              "contato": {
-                "type": "string"
-              },
-              "cnpj": {
-                "type": "string"
-              },
-              "usuario": {
-                "type": "string"
-              },
-              "extratos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "produtos_avulsos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "planos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "cestas": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
           },
           "user": {
             "required": [
@@ -6776,6 +6697,41 @@
               }
             }
           },
+          "bairro": {
+            "type": "string",
+            "enum": [
+              "Aguas_Claras",
+              "Brazlandia",
+              "Candangolandia",
+              "Ceilandia",
+              "Cruzeiro",
+              "Fercal",
+              "Gama",
+              "Guara",
+              "Itapoa",
+              "Jardim_Botanico",
+              "Lago_Norte",
+              "N_Bandeirante",
+              "Paranoa",
+              "Park_Way",
+              "Planaltina",
+              "Plano_Piloto",
+              "Rec_das_Emas",
+              "Riacho_Fundo_l",
+              "Riacho_Fundo_ll",
+              "Santa_Maria",
+              "Samambaia",
+              "Sao_Sebastiao",
+              "SCIA_Estrutural",
+              "SIA",
+              "Sobradinho",
+              "Sobradinho_II",
+              "Taguatinga",
+              "Varjao",
+              "Vicente_Pires",
+              "Sud_Oct"
+            ]
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -6785,16 +6741,13 @@
       "NewEndereco": {
         "required": [
           "cidade",
-          "bairro",
           "numero",
           "cep",
-          "rua"
+          "rua",
+          "bairro"
         ],
         "properties": {
           "cidade": {
-            "type": "string"
-          },
-          "bairro": {
             "type": "string"
           },
           "numero": {
@@ -6809,11 +6762,43 @@
           "rua": {
             "type": "string"
           },
-          "loja": {
-            "type": "string"
-          },
           "user": {
             "type": "string"
+          },
+          "bairro": {
+            "type": "string",
+            "enum": [
+              "Aguas_Claras",
+              "Brazlandia",
+              "Candangolandia",
+              "Ceilandia",
+              "Cruzeiro",
+              "Fercal",
+              "Gama",
+              "Guara",
+              "Itapoa",
+              "Jardim_Botanico",
+              "Lago_Norte",
+              "N_Bandeirante",
+              "Paranoa",
+              "Park_Way",
+              "Planaltina",
+              "Plano_Piloto",
+              "Rec_das_Emas",
+              "Riacho_Fundo_l",
+              "Riacho_Fundo_ll",
+              "Santa_Maria",
+              "Samambaia",
+              "Sao_Sebastiao",
+              "SCIA_Estrutural",
+              "SIA",
+              "Sobradinho",
+              "Sobradinho_II",
+              "Taguatinga",
+              "Varjao",
+              "Vicente_Pires",
+              "Sud_Oct"
+            ]
           },
           "published_at": {
             "type": "string",
@@ -6893,11 +6878,8 @@
                   "type": "string"
                 }
               },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "endereco": {
+                "type": "string"
               },
               "produtos_avulsos": {
                 "type": "array",
@@ -7324,54 +7306,48 @@
               }
             }
           },
-          "enderecos": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "cidade",
-                "bairro",
-                "numero",
-                "cep",
-                "rua"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "cidade": {
-                  "type": "string"
-                },
-                "bairro": {
-                  "type": "string"
-                },
-                "numero": {
-                  "type": "integer"
-                },
-                "complemento": {
-                  "type": "string"
-                },
-                "cep": {
-                  "type": "string"
-                },
-                "rua": {
-                  "type": "string"
-                },
-                "loja": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
+          "endereco": {
+            "required": [
+              "id",
+              "cidade",
+              "numero",
+              "cep",
+              "rua",
+              "bairro"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "cidade": {
+                "type": "string"
+              },
+              "numero": {
+                "type": "integer"
+              },
+              "complemento": {
+                "type": "string"
+              },
+              "cep": {
+                "type": "string"
+              },
+              "rua": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              },
+              "bairro": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
@@ -7557,11 +7533,8 @@
               "type": "string"
             }
           },
-          "enderecos": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "endereco": {
+            "type": "string"
           },
           "produtos_avulsos": {
             "type": "array",
@@ -7658,11 +7631,8 @@
                   "type": "string"
                 }
               },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "endereco": {
+                "type": "string"
               },
               "produtos_avulsos": {
                 "type": "array",
@@ -7921,11 +7891,8 @@
                   "type": "string"
                 }
               },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "endereco": {
+                "type": "string"
               },
               "produtos_avulsos": {
                 "type": "array",
@@ -8268,11 +8235,8 @@
                   "type": "string"
                 }
               },
-              "enderecos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "endereco": {
+                "type": "string"
               },
               "produtos_avulsos": {
                 "type": "array",
@@ -8352,19 +8316,16 @@
               "required": [
                 "id",
                 "cidade",
-                "bairro",
                 "numero",
                 "cep",
-                "rua"
+                "rua",
+                "bairro"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
                 "cidade": {
-                  "type": "string"
-                },
-                "bairro": {
                   "type": "string"
                 },
                 "numero": {
@@ -8379,10 +8340,10 @@
                 "rua": {
                   "type": "string"
                 },
-                "loja": {
+                "user": {
                   "type": "string"
                 },
-                "user": {
+                "bairro": {
                   "type": "string"
                 },
                 "published_at": {

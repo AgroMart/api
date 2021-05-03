@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "enderecos",
   "info": {
-    "name": "endereco"
+    "name": "endereco",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,10 +12,6 @@
   },
   "attributes": {
     "cidade": {
-      "type": "string",
-      "required": true
-    },
-    "bairro": {
       "type": "string",
       "required": true
     },
@@ -33,14 +30,46 @@
       "type": "string",
       "required": true
     },
-    "loja": {
-      "via": "enderecos",
-      "model": "loja"
-    },
     "user": {
-      "via": "enderecos",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "enderecos"
+    },
+    "bairro": {
+      "type": "enumeration",
+      "enum": [
+        "Aguas_Claras",
+        "Brazlandia",
+        "Candangolandia",
+        "Ceilandia",
+        "Cruzeiro",
+        "Fercal",
+        "Gama",
+        "Guara",
+        "Itapoa",
+        "Jardim_Botanico",
+        "Lago_Norte",
+        "N_Bandeirante",
+        "Paranoa",
+        "Park_Way",
+        "Planaltina",
+        "Plano_Piloto",
+        "Rec_das_Emas",
+        "Riacho_Fundo_l",
+        "Riacho_Fundo_ll",
+        "Santa_Maria",
+        "Samambaia",
+        "Sao_Sebastiao",
+        "SCIA_Estrutural",
+        "SIA",
+        "Sobradinho",
+        "Sobradinho_II",
+        "Taguatinga",
+        "Varjao",
+        "Vicente_Pires",
+        "Sud_Oct"
+      ],
+      "required": true
     }
   }
 }
