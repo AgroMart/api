@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "valor": {
@@ -24,12 +24,8 @@
       "required": true
     },
     "loja": {
-      "via": "cestas",
-      "model": "loja"
-    },
-    "item_da_cesta": {
-      "via": "cesta",
-      "collection": "item-da-cesta"
+      "model": "loja",
+      "via": "cestas"
     }
   }
 }

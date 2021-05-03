@@ -603,39 +603,6 @@
                 "type": "string"
               }
             }
-          },
-          "item_da_cesta": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "quantidade"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "quantidade": {
-                  "type": "integer"
-                },
-                "cesta": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           }
         }
       },
@@ -657,16 +624,6 @@
           },
           "loja": {
             "type": "string"
-          },
-          "item_da_cesta": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           },
           "created_by": {
             "type": "string"

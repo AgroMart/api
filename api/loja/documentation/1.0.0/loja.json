@@ -703,8 +703,8 @@
                 "user": {
                   "type": "string"
                 },
-                "published_at": {
-                  "type": "string"
+                "pagamento_realizado": {
+                  "type": "boolean"
                 },
                 "created_by": {
                   "type": "string"
@@ -744,9 +744,6 @@
                 "type": "string"
               },
               "bairro": {
-                "type": "string"
-              },
-              "published_at": {
                 "type": "string"
               },
               "created_by": {
@@ -790,9 +787,6 @@
                   "type": "integer"
                 },
                 "loja": {
-                  "type": "string"
-                },
-                "published_at": {
                   "type": "string"
                 },
                 "created_by": {
@@ -842,9 +836,6 @@
                     "type": "string"
                   }
                 },
-                "published_at": {
-                  "type": "string"
-                },
                 "created_by": {
                   "type": "string"
                 },
@@ -877,15 +868,6 @@
                   "type": "string"
                 },
                 "loja": {
-                  "type": "string"
-                },
-                "item_da_cesta": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "published_at": {
                   "type": "string"
                 },
                 "created_by": {

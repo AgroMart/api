@@ -672,9 +672,9 @@
               }
             }
           },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
+          "pagamento_realizado": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -708,9 +708,9 @@
           "user": {
             "type": "string"
           },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
+          "pagamento_realizado": {
+            "type": "boolean",
+            "default": false
           },
           "created_by": {
             "type": "string"

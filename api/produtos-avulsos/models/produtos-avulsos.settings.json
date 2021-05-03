@@ -2,12 +2,13 @@
   "kind": "collectionType",
   "collectionName": "produtos_avulsos",
   "info": {
-    "name": "Produtos Avulsos"
+    "name": "Produtos Avulsos",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "nome": {
@@ -39,8 +40,8 @@
       "required": true
     },
     "loja": {
-      "via": "produtos_avulsos",
-      "model": "loja"
+      "model": "loja",
+      "via": "produtos_avulsos"
     }
   }
 }

@@ -49,23 +49,23 @@
       "model": "user"
     },
     "extratos": {
-      "collection": "extrato",
-      "via": "loja"
+      "via": "loja",
+      "collection": "extrato"
     },
     "endereco": {
       "model": "endereco"
     },
     "produtos_avulsos": {
-      "collection": "produtos-avulsos",
-      "via": "loja"
+      "via": "loja",
+      "collection": "produtos-avulsos"
     },
     "planos": {
-      "collection": "plano",
-      "via": "loja"
+      "via": "loja",
+      "collection": "plano"
     },
     "cestas": {
-      "collection": "cesta",
-      "via": "loja"
+      "via": "loja",
+      "collection": "cesta"
     }
   }
 }

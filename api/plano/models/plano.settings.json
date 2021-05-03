@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "nome": {
@@ -31,8 +31,8 @@
       "type": "integer"
     },
     "loja": {
-      "via": "planos",
-      "model": "loja"
+      "model": "loja",
+      "via": "planos"
     },
     "assinantes": {
       "collection": "assinantes",

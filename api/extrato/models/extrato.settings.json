@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "itens": {
@@ -32,13 +32,17 @@
       ]
     },
     "loja": {
-      "via": "extratos",
-      "model": "loja"
+      "model": "loja",
+      "via": "extratos"
     },
     "user": {
-      "via": "extratos",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "extratos"
+    },
+    "pagamento_realizado": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
