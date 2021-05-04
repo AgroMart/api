@@ -64,15 +64,16 @@
       "via": "usuario"
     },
     "extratos": {
-      "via": "user",
-      "collection": "extrato"
+      "collection": "extrato",
+      "via": "user"
     },
     "endereco": {
-      "model": "endereco"
+      "model": "endereco",
+      "via": "user"
     },
     "assinante": {
-      "via": "usuarios",
-      "model": "assinantes"
+      "model": "assinantes",
+      "via": "usuarios"
     }
   }
 }

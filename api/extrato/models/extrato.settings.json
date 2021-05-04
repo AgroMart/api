@@ -36,9 +36,9 @@
       "via": "extratos"
     },
     "user": {
+      "via": "extratos",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "extratos"
+      "model": "user"
     },
     "pagamento_realizado": {
       "type": "boolean",

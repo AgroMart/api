@@ -32,9 +32,9 @@
       "model": "plano"
     },
     "usuarios": {
+      "via": "assinante",
       "plugin": "users-permissions",
-      "collection": "user",
-      "via": "assinante"
+      "collection": "user"
     }
   }
 }

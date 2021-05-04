@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/03/2021 5:01:29 PM"
+    "x-generation-date": "05/03/2021 11:21:07 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6087,6 +6087,66 @@
               "Vicente_Pires",
               "Sud_Oct"
             ]
+          },
+          "user": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "loja": {
+                "type": "string"
+              },
+              "extratos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "endereco": {
+                "type": "string"
+              },
+              "assinante": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -6148,6 +6208,9 @@
               "Vicente_Pires",
               "Sud_Oct"
             ]
+          },
+          "user": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
@@ -6593,6 +6656,9 @@
                 "type": "string"
               },
               "bairro": {
+                "type": "string"
+              },
+              "user": {
                 "type": "string"
               },
               "created_by": {
@@ -7554,6 +7620,9 @@
                 "type": "string"
               },
               "bairro": {
+                "type": "string"
+              },
+              "user": {
                 "type": "string"
               },
               "created_by": {

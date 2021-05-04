@@ -65,6 +65,11 @@
         "Sud_Oct"
       ],
       "required": true
+    },
+    "user": {
+      "via": "endereco",
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }
