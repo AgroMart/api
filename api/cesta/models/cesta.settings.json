@@ -27,7 +27,7 @@
       "model": "loja",
       "via": "cestas"
     },
-    "image": {
+    "imagem": {
       "model": "file",
       "via": "related",
       "allowedTypes": [

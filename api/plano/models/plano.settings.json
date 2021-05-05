@@ -38,7 +38,7 @@
       "collection": "assinantes",
       "via": "plano"
     },
-    "image": {
+    "imagem": {
       "model": "file",
       "via": "related",
       "allowedTypes": [

@@ -574,7 +574,7 @@
                   "type": "string"
                 }
               },
-              "image": {
+              "imagem": {
                 "type": "string"
               },
               "created_by": {

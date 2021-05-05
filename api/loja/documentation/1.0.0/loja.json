@@ -839,7 +839,7 @@
                     "type": "string"
                   }
                 },
-                "image": {
+                "imagem": {
                   "type": "string"
                 },
                 "created_by": {
@@ -876,7 +876,7 @@
                 "loja": {
                   "type": "string"
                 },
-                "image": {
+                "imagem": {
                   "type": "string"
                 },
                 "created_by": {
