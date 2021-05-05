@@ -839,6 +839,9 @@
                     "type": "string"
                   }
                 },
+                "image": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -871,6 +874,9 @@
                   "type": "string"
                 },
                 "loja": {
+                  "type": "string"
+                },
+                "image": {
                   "type": "string"
                 },
                 "created_by": {

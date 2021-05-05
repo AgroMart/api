@@ -26,6 +26,15 @@
     "loja": {
       "model": "loja",
       "via": "cestas"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }
