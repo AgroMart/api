@@ -617,7 +617,6 @@
               "required": [
                 "id",
                 "nome",
-                "cpf",
                 "pular_cesta"
               ],
               "properties": {
@@ -625,9 +624,6 @@
                   "type": "string"
                 },
                 "nome": {
-                  "type": "string"
-                },
-                "cpf": {
                   "type": "string"
                 },
                 "cestas_disponiveis": {
@@ -639,11 +635,8 @@
                 "plano": {
                   "type": "string"
                 },
-                "usuarios": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                "usuario": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"

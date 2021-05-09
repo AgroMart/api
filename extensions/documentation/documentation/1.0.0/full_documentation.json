@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/05/2021 12:16:44 PM"
+    "x-generation-date": "05/09/2021 7:58:01 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5740,7 +5740,6 @@
         "required": [
           "id",
           "nome",
-          "cpf",
           "pular_cesta"
         ],
         "properties": {
@@ -5748,9 +5747,6 @@
             "type": "string"
           },
           "nome": {
-            "type": "string"
-          },
-          "cpf": {
             "type": "string"
           },
           "cestas_disponiveis": {
@@ -5807,66 +5803,66 @@
               }
             }
           },
-          "usuarios": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "username",
-                "email"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "username": {
-                  "type": "string"
-                },
-                "email": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "password": {
-                  "type": "string"
-                },
-                "resetPasswordToken": {
-                  "type": "string"
-                },
-                "confirmationToken": {
-                  "type": "string"
-                },
-                "confirmed": {
-                  "type": "boolean"
-                },
-                "blocked": {
-                  "type": "boolean"
-                },
-                "role": {
-                  "type": "string"
-                },
-                "loja": {
-                  "type": "string"
-                },
-                "extratos": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "endereco": {
-                  "type": "string"
-                },
-                "assinante": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
+          "usuario": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "loja": {
+                "type": "string"
+              },
+              "extratos": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
+              },
+              "endereco": {
+                "type": "string"
+              },
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           }
@@ -5875,14 +5871,10 @@
       "NewAssinantes": {
         "required": [
           "nome",
-          "cpf",
           "pular_cesta"
         ],
         "properties": {
           "nome": {
-            "type": "string"
-          },
-          "cpf": {
             "type": "string"
           },
           "cestas_disponiveis": {
@@ -5895,11 +5887,8 @@
           "plano": {
             "type": "string"
           },
-          "usuarios": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "usuario": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
@@ -6207,8 +6196,11 @@
               "endereco": {
                 "type": "string"
               },
-              "assinante": {
-                "type": "string"
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -6437,8 +6429,11 @@
               "endereco": {
                 "type": "string"
               },
-              "assinante": {
-                "type": "string"
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -6643,8 +6638,11 @@
               "endereco": {
                 "type": "string"
               },
-              "assinante": {
-                "type": "string"
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -7048,7 +7046,6 @@
               "required": [
                 "id",
                 "nome",
-                "cpf",
                 "pular_cesta"
               ],
               "properties": {
@@ -7056,9 +7053,6 @@
                   "type": "string"
                 },
                 "nome": {
-                  "type": "string"
-                },
-                "cpf": {
                   "type": "string"
                 },
                 "cestas_disponiveis": {
@@ -7070,11 +7064,8 @@
                 "plano": {
                   "type": "string"
                 },
-                "usuarios": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                "usuario": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
@@ -7505,8 +7496,11 @@
                 "endereco": {
                   "type": "string"
                 },
-                "assinante": {
-                  "type": "string"
+                "assinantes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"
@@ -7776,43 +7770,39 @@
               }
             }
           },
-          "assinante": {
-            "required": [
-              "id",
-              "nome",
-              "cpf",
-              "pular_cesta"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "nome": {
-                "type": "string"
-              },
-              "cpf": {
-                "type": "string"
-              },
-              "cestas_disponiveis": {
-                "type": "integer"
-              },
-              "pular_cesta": {
-                "type": "boolean"
-              },
-              "plano": {
-                "type": "string"
-              },
-              "usuarios": {
-                "type": "array",
-                "items": {
+          "assinantes": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "nome",
+                "pular_cesta"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "nome": {
+                  "type": "string"
+                },
+                "cestas_disponiveis": {
+                  "type": "integer"
+                },
+                "pular_cesta": {
+                  "type": "boolean"
+                },
+                "plano": {
+                  "type": "string"
+                },
+                "usuario": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
                   "type": "string"
                 }
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
               }
             }
           }
@@ -7869,8 +7859,11 @@
           "endereco": {
             "type": "string"
           },
-          "assinante": {
-            "type": "string"
+          "assinantes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"

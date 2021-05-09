@@ -518,7 +518,6 @@
         "required": [
           "id",
           "nome",
-          "cpf",
           "pular_cesta"
         ],
         "properties": {
@@ -526,9 +525,6 @@
             "type": "string"
           },
           "nome": {
-            "type": "string"
-          },
-          "cpf": {
             "type": "string"
           },
           "cestas_disponiveis": {
@@ -585,66 +581,66 @@
               }
             }
           },
-          "usuarios": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "username",
-                "email"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "username": {
-                  "type": "string"
-                },
-                "email": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "password": {
-                  "type": "string"
-                },
-                "resetPasswordToken": {
-                  "type": "string"
-                },
-                "confirmationToken": {
-                  "type": "string"
-                },
-                "confirmed": {
-                  "type": "boolean"
-                },
-                "blocked": {
-                  "type": "boolean"
-                },
-                "role": {
-                  "type": "string"
-                },
-                "loja": {
-                  "type": "string"
-                },
-                "extratos": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "endereco": {
-                  "type": "string"
-                },
-                "assinante": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
+          "usuario": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "loja": {
+                "type": "string"
+              },
+              "extratos": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
+              },
+              "endereco": {
+                "type": "string"
+              },
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           }
@@ -653,14 +649,10 @@
       "NewAssinantes": {
         "required": [
           "nome",
-          "cpf",
           "pular_cesta"
         ],
         "properties": {
           "nome": {
-            "type": "string"
-          },
-          "cpf": {
             "type": "string"
           },
           "cestas_disponiveis": {
@@ -673,11 +665,8 @@
           "plano": {
             "type": "string"
           },
-          "usuarios": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "usuario": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
