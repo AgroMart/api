@@ -1406,43 +1406,39 @@
               }
             }
           },
-          "assinante": {
-            "required": [
-              "id",
-              "nome",
-              "cpf",
-              "pular_cesta"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "nome": {
-                "type": "string"
-              },
-              "cpf": {
-                "type": "string"
-              },
-              "cestas_disponiveis": {
-                "type": "integer"
-              },
-              "pular_cesta": {
-                "type": "boolean"
-              },
-              "plano": {
-                "type": "string"
-              },
-              "usuarios": {
-                "type": "array",
-                "items": {
+          "assinantes": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "nome",
+                "pular_cesta"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "nome": {
+                  "type": "string"
+                },
+                "cestas_disponiveis": {
+                  "type": "integer"
+                },
+                "pular_cesta": {
+                  "type": "boolean"
+                },
+                "plano": {
+                  "type": "string"
+                },
+                "usuario": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
                   "type": "string"
                 }
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
               }
             }
           }
@@ -1499,8 +1495,11 @@
           "endereco": {
             "type": "string"
           },
-          "assinante": {
-            "type": "string"
+          "assinantes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"

@@ -71,9 +71,9 @@
       "model": "endereco",
       "via": "user"
     },
-    "assinante": {
-      "model": "assinantes",
-      "via": "usuarios"
+    "assinantes": {
+      "via": "usuario",
+      "collection": "assinantes"
     }
   }
 }

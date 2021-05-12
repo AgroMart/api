@@ -15,10 +15,6 @@
       "type": "string",
       "required": true
     },
-    "cpf": {
-      "type": "string",
-      "required": true
-    },
     "cestas_disponiveis": {
       "type": "integer"
     },
@@ -28,13 +24,13 @@
       "required": true
     },
     "plano": {
-      "via": "assinantes",
-      "model": "plano"
+      "model": "plano",
+      "via": "assinantes"
     },
-    "usuarios": {
-      "via": "assinante",
+    "usuario": {
       "plugin": "users-permissions",
-      "collection": "user"
+      "model": "user",
+      "via": "assinantes"
     }
   }
 }

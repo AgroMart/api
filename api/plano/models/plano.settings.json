@@ -35,8 +35,17 @@
       "via": "planos"
     },
     "assinantes": {
-      "collection": "assinantes",
-      "via": "plano"
+      "via": "plano",
+      "collection": "assinantes"
+    },
+    "imagem": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }

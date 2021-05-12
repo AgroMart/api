@@ -661,8 +661,11 @@
               "endereco": {
                 "type": "string"
               },
-              "assinante": {
-                "type": "string"
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -839,6 +842,9 @@
                     "type": "string"
                   }
                 },
+                "imagem": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -871,6 +877,9 @@
                   "type": "string"
                 },
                 "loja": {
+                  "type": "string"
+                },
+                "imagem": {
                   "type": "string"
                 },
                 "created_by": {
