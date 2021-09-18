@@ -9,7 +9,9 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  },
   "dependencies": {
     "faker": "^5.4.0",
     "knex": "<0.20.0",
