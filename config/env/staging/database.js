@@ -1,7 +1,7 @@
 const parse = require('pg-connection-string').parse;
 const config = parse(process.env.DATABASE_URL);
 
-// configuração para ambiente de produção (prod)
+// configuração para ambiente de homologação (staging)
 module.exports = ({ env }) => ({
   defaultConnection: 'default',
   connections: {
