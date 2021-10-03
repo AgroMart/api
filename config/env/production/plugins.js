@@ -1,13 +1,12 @@
 module.exports = ({ env }) => ({
   upload: {
-    provider: 'aws-s3',
+    provider: "firestore",
     providerOptions: {
-      accessKeyId: env('AWS_ACCESS_KEY_ID'),
-      secretAccessKey: env('AWS_ACCESS_SECRET'),
-      region: env('AWS_REGION'),
-      params: {
-        Bucket: env('AWS_BUCKET'),
-      },
+      customBucket: env("BUCKET_NAME"),
+      serviceAccount: require("../service_account_keys.json"),
+      bucket: env("STORAGE_BUCKET_URL"),
+      uploadOptions: {},
+      deleteOptions: {},
     },
   },
 });

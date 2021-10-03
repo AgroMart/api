@@ -115,3 +115,6 @@ build
 
 #db
 data
+
+# firebase
+service_account_keys.json

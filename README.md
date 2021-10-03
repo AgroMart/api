@@ -13,34 +13,45 @@
 - Gerenciar planos;
 - Gerenciar produtos avulsos;
 
-## Principais Tecnologias Utilizadas:
+## Principais Tecnologias Utilizadas :rocket:
 
+- [Node.js](https://nodejs.org/en/)
 - [Strapi](https://github.com/strapi/strapi)
 - [VS Code](https://code.visualstudio.com/) com [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) e [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-## Como executar o projeto
+---
+## Pré requesitos do sistema
+Para executar que o projeto seja executado localmente, são necessárias algumas configurações:
+- [node.js](https://nodejs.org/en/) entre as versões ">=10.16.0 <=14.x.x"
+- [yarn](https://yarnpkg.com/getting-started/install)
+ -  [Docker](https://docs.docker.com/engine/installation/) e [Docker Compose](https://docs.docker.com/compose/install/) para execuçaão banco de dados **Postgres**
+
+---
+## Como executar o projeto localmente
 
 Clone o repositorio:
 
-> \$ git clone https://github.com/AgroMart/api
+> git clone https://github.com/AgroMart/api.git
 
-Acesse a pasta:
+Acesse a pasta do projeto:
 
-> \$ cd api
-
-- É necessário ter yarn e expo instalado.
+> cd api
 
 Instale as dependências:
 
-> \$ yarn
+> yarn install
 
-Execute:
+Crie e inicie o container de serviço do banco de dados:
 
-> \$ yarn develop
+> docker-compose up
+
+Inicie CMS (Strapi) do projeto:
+
+> yarn develop
 
 ---
 
-## Cliente
+## Cliente Mobile
 
 Os dados são providos para o nosso próprio aplicativo disponível em https://github.com/AgroMart/mobile-client
 

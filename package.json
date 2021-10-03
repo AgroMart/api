@@ -4,14 +4,19 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
+    "develop": "ENV_PATH=/absolute/path/to/.env strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
+    "build": "yarn firebase-keys && strapi build",
+    "strapi": "strapi",
+    "firebase-keys": "node donwload-firebase-keys.js"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  },
   "dependencies": {
+    "axios": "^0.21.4",
     "faker": "^5.4.0",
+    "firebase-admin": "^9.12.0",
     "knex": "<0.20.0",
     "pg": "latest",
     "pg-connection-string": "^2.5.0",
@@ -25,7 +30,7 @@
     "strapi-plugin-entity-relationship-chart": "^3.1.0",
     "strapi-plugin-upload": "3.4.6",
     "strapi-plugin-users-permissions": "3.4.6",
-    "strapi-provider-upload-aws-s3": "^3.6.2",
+    "strapi-provider-upload-firestore": "^1.0.1",
     "strapi-utils": "3.4.6"
   },
   "author": {
