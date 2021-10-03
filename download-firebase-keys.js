@@ -12,7 +12,7 @@ async function saveFirebaseKeys() {
       console.log(keys);
     }
 
-    fs.writeFile('service_account_keys.json', keys , function (err) {
+    fs.writeFile('./config/service_account_keys.json', keys , function (err) {
       if (err) throw err;
 
       console.log('service_account_keys saved!');

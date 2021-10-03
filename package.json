@@ -8,7 +8,7 @@
     "start": "strapi start",
     "build": "yarn firebase-keys && strapi build",
     "strapi": "strapi",
-    "firebase-keys": "node donwload-firebase-keys.js"
+    "firebase-keys": "node download-firebase-keys.js"
   },
   "devDependencies": {
     "dotenv": "^10.0.0"
