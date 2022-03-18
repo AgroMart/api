@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notificacoes",
+  "info": {
+    "name": "Notificações"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body_text": {
+      "type": "text"
+    },
+    "loja_fk": {
+      "model": "loja"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "devices",
+  "info": {
+    "name": "Devices",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "platform": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "platform_version": {
+      "type": "integer"
+    },
+    "expo_push_token": {
+      "type": "string"
+    },
+    "user_fk": {
+      "plugin": "admin",
+      "model": "user"
+    }
+  }
+}
