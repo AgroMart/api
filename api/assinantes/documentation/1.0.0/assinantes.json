@@ -636,6 +636,9 @@
                   "type": "string"
                 }
               },
+              "device_id": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },

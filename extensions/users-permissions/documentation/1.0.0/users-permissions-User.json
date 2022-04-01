@@ -1310,6 +1310,12 @@
                   "type": "string"
                 }
               },
+              "notificacoes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -1441,6 +1447,40 @@
                 }
               }
             }
+          },
+          "device_id": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string"
+              },
+              "model": {
+                "type": "string"
+              },
+              "platform_version": {
+                "type": "integer"
+              },
+              "expo_push_token": {
+                "type": "string"
+              },
+              "user_id": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -1500,6 +1540,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "device_id": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

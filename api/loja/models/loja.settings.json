@@ -66,6 +66,10 @@
     "cestas": {
       "via": "loja",
       "collection": "cesta"
+    },
+    "notificacoes": {
+      "via": "loja_id",
+      "collection": "notificacoes"
     }
   }
 }

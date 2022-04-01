@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "03/18/2022 1:19:46 PM"
+    "x-generation-date": "04/01/2022 1:32:27 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -7019,6 +7019,9 @@
                   "type": "string"
                 }
               },
+              "device_id": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -7133,6 +7136,12 @@
                 }
               },
               "cestas": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "notificacoes": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -7265,19 +7274,14 @@
           "expo_push_token": {
             "type": "string"
           },
-          "user_fk": {
+          "user_id": {
             "required": [
               "id",
+              "username",
               "email"
             ],
             "properties": {
               "id": {
-                "type": "string"
-              },
-              "firstname": {
-                "type": "string"
-              },
-              "lastname": {
                 "type": "string"
               },
               "username": {
@@ -7286,26 +7290,53 @@
               "email": {
                 "type": "string"
               },
+              "provider": {
+                "type": "string"
+              },
               "password": {
                 "type": "string"
               },
               "resetPasswordToken": {
                 "type": "string"
               },
-              "registrationToken": {
+              "confirmationToken": {
                 "type": "string"
               },
-              "isActive": {
+              "confirmed": {
                 "type": "boolean"
               },
-              "roles": {
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "loja": {
+                "type": "string"
+              },
+              "extratos": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
-              "blocked": {
-                "type": "boolean"
+              "endereco": {
+                "type": "string"
+              },
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "device_id": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
@@ -7329,7 +7360,7 @@
           "expo_push_token": {
             "type": "string"
           },
-          "user_fk": {
+          "user_id": {
             "type": "string"
           },
           "published_at": {
@@ -7461,6 +7492,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "device_id": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -7629,6 +7663,12 @@
                   "type": "string"
                 }
               },
+              "notificacoes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -7694,6 +7734,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "device_id": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -7903,6 +7946,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "device_id": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -8128,6 +8174,37 @@
               }
             }
           },
+          "notificacoes": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "body_text": {
+                  "type": "string"
+                },
+                "loja_id": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -8191,6 +8268,12 @@
               "type": "string"
             }
           },
+          "notificacoes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -8217,7 +8300,7 @@
           "body_text": {
             "type": "string"
           },
-          "loja_fk": {
+          "loja_id": {
             "required": [
               "id",
               "nome",
@@ -8276,6 +8359,12 @@
                   "type": "string"
                 }
               },
+              "notificacoes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -8301,7 +8390,7 @@
           "body_text": {
             "type": "string"
           },
-          "loja_fk": {
+          "loja_id": {
             "type": "string"
           },
           "published_at": {
@@ -8397,6 +8486,12 @@
                 }
               },
               "cestas": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "notificacoes": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -8711,6 +8806,12 @@
                   "type": "string"
                 }
               },
+              "notificacoes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -8874,6 +8975,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "device_id": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
@@ -9047,6 +9151,12 @@
                   "type": "string"
                 }
               },
+              "notificacoes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -9178,6 +9288,40 @@
                 }
               }
             }
+          },
+          "device_id": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string"
+              },
+              "model": {
+                "type": "string"
+              },
+              "platform_version": {
+                "type": "integer"
+              },
+              "expo_push_token": {
+                "type": "string"
+              },
+              "user_id": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -9237,6 +9381,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "device_id": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

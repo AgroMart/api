@@ -602,19 +602,14 @@
           "expo_push_token": {
             "type": "string"
           },
-          "user_fk": {
+          "user_id": {
             "required": [
               "id",
+              "username",
               "email"
             ],
             "properties": {
               "id": {
-                "type": "string"
-              },
-              "firstname": {
-                "type": "string"
-              },
-              "lastname": {
                 "type": "string"
               },
               "username": {
@@ -623,26 +618,53 @@
               "email": {
                 "type": "string"
               },
+              "provider": {
+                "type": "string"
+              },
               "password": {
                 "type": "string"
               },
               "resetPasswordToken": {
                 "type": "string"
               },
-              "registrationToken": {
+              "confirmationToken": {
                 "type": "string"
               },
-              "isActive": {
+              "confirmed": {
                 "type": "boolean"
               },
-              "roles": {
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "loja": {
+                "type": "string"
+              },
+              "extratos": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
-              "blocked": {
-                "type": "boolean"
+              "endereco": {
+                "type": "string"
+              },
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "device_id": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
@@ -666,7 +688,7 @@
           "expo_push_token": {
             "type": "string"
           },
-          "user_fk": {
+          "user_id": {
             "type": "string"
           },
           "published_at": {

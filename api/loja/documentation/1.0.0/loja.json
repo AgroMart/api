@@ -667,6 +667,9 @@
                   "type": "string"
                 }
               },
+              "device_id": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -891,6 +894,37 @@
               }
             }
           },
+          "notificacoes": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "body_text": {
+                  "type": "string"
+                },
+                "loja_id": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -949,6 +983,12 @@
             }
           },
           "cestas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notificacoes": {
             "type": "array",
             "items": {
               "type": "string"

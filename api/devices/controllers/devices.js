@@ -10,15 +10,17 @@ module.exports = {
     try {
       const { user_id } = ctx.params;
 
-      const device = await strapi.db
-        .query("devices")
-        .findOne({ user_fk: user_id });
+      const device = await strapi.db.query("devices").findOne({ user_id });
 
       if (device) {
         ctx.status = 200;
-        ctx.body = { mensagem: "Device encontrado!", device_id: device.id, status: 200 };
+        ctx.body = {
+          mensagem: "Device encontrado!",
+          device_id: device.id,
+          status: 200,
+        };
       } else {
-        ctx.body = { mensagem: "Device não encontrado!", status: 404};
+        ctx.body = { mensagem: "Device não encontrado!", status: 404 };
       }
     } catch (error) {
       ctx.body = {

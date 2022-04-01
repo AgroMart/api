@@ -23,9 +23,10 @@
     "expo_push_token": {
       "type": "string"
     },
-    "user_fk": {
-      "plugin": "admin",
-      "model": "user"
+    "user_id": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "device_id"
     }
   }
 }

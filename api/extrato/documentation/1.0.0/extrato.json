@@ -601,6 +601,12 @@
                   "type": "string"
                 }
               },
+              "notificacoes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -666,6 +672,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "device_id": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"

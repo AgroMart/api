@@ -20,7 +20,6 @@ module.exports = {
       //   .find({ user_fk: usersIds });
 
       const devices = await strapi.db.query("devices").find();
-      console.log("DEVICES", devices)
 
       const pushTokens = devices.map((device) => {
         return device.expo_push_token;

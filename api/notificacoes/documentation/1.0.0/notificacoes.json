@@ -599,7 +599,7 @@
           "body_text": {
             "type": "string"
           },
-          "loja_fk": {
+          "loja_id": {
             "required": [
               "id",
               "nome",
@@ -658,6 +658,12 @@
                   "type": "string"
                 }
               },
+              "notificacoes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -683,7 +689,7 @@
           "body_text": {
             "type": "string"
           },
-          "loja_fk": {
+          "loja_id": {
             "type": "string"
           },
           "published_at": {

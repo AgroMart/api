@@ -74,6 +74,10 @@
     "assinantes": {
       "via": "usuario",
       "collection": "assinantes"
+    },
+    "device_id": {
+      "via": "user_id",
+      "model": "devices"
     }
   }
 }
