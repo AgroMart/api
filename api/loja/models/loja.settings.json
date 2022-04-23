@@ -44,32 +44,35 @@
       "default": "cnpj"
     },
     "usuario": {
-      "via": "loja",
+      "private": true,
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "loja"
     },
     "extratos": {
-      "via": "loja",
-      "collection": "extrato"
+      "private": true,
+      "collection": "extrato",
+      "via": "loja"
     },
     "endereco": {
       "model": "endereco"
     },
     "produtos_avulsos": {
-      "via": "loja",
-      "collection": "produtos-avulsos"
+      "collection": "produtos-avulsos",
+      "via": "loja"
     },
     "planos": {
-      "via": "loja",
-      "collection": "plano"
+      "collection": "plano",
+      "via": "loja"
     },
     "cestas": {
-      "via": "loja",
-      "collection": "cesta"
+      "collection": "cesta",
+      "via": "loja"
     },
     "notificacoes": {
-      "via": "loja_id",
-      "collection": "notificacoes"
+      "private": true,
+      "collection": "notificacoes",
+      "via": "loja_id"
     }
   }
 }

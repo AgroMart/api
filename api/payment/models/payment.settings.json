@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "name": "Payment",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "transaction_id": {
+      "type": "string"
+    },
+    "installments": {
+      "type": "integer"
+    },
+    "payment_id": {
+      "type": "string"
+    },
+    "release_date": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "fee": {
+      "type": "decimal"
+    },
+    "status": {
+      "type": "string"
+    },
+    "fail_reason": {
+      "type": "string"
+    },
+    "juno_credit_card": {
+      "model": "juno-credit-card"
+    },
+    "billing": {
+      "model": "billing"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

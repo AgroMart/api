@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "juno_credit_cards",
+  "info": {
+    "name": "Juno Credit Card",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "credit_card_id": {
+      "type": "string",
+      "private": true
+    },
+    "last_4_numbers": {
+      "type": "integer"
+    },
+    "expiration_month": {
+      "type": "integer"
+    },
+    "expiration_year": {
+      "type": "integer"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "role"
+    },
+    "cardholder_name": {
+      "type": "string"
+    }
+  }
+}

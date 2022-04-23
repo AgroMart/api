@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/lojas": {
+    "/payments": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Loja"
+                    "$ref": "#/components/schemas/Payment"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Payment"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Loja"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Payment"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewLoja"
+                "$ref": "#/components/schemas/NewPayment"
               }
             }
           }
         }
       }
     },
-    "/lojas/count": {
+    "/payments/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Payment"
         ],
         "parameters": []
       }
     },
-    "/lojas/{id}": {
+    "/payments/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Loja"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Payment"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Loja"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Payment"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewLoja"
+                "$ref": "#/components/schemas/NewPayment"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Payment"
         ],
         "parameters": [
           {
@@ -514,80 +514,65 @@
   },
   "components": {
     "schemas": {
-      "Loja": {
+      "Payment": {
         "required": [
-          "id",
-          "nome",
-          "tipos_de_entrega",
-          "cnpj"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "nome": {
+          "transaction_id": {
             "type": "string"
           },
-          "descricao": {
+          "installments": {
+            "type": "integer"
+          },
+          "payment_id": {
             "type": "string"
           },
-          "banner": {
+          "release_date": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "fee": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          },
+          "fail_reason": {
+            "type": "string"
+          },
+          "juno_credit_card": {
             "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
+              "id"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "name": {
+              "credit_card_id": {
                 "type": "string"
               },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
+              "last_4_numbers": {
                 "type": "integer"
               },
-              "height": {
+              "expiration_month": {
                 "type": "integer"
               },
-              "formats": {
-                "type": "object"
+              "expiration_year": {
+                "type": "integer"
               },
-              "hash": {
+              "user": {
                 "type": "string"
               },
-              "ext": {
+              "cardholder_name": {
                 "type": "string"
               },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
+              "published_at": {
                 "type": "string"
               },
               "created_by": {
@@ -598,54 +583,68 @@
               }
             }
           },
-          "tipos_de_entrega": {
-            "type": "string",
-            "enum": [
-              "Entregar",
-              "Receber"
-            ]
-          },
-          "contato": {
-            "type": "string"
-          },
-          "cnpj": {
-            "type": "string",
-            "default": "cnpj"
-          },
-          "endereco": {
+          "billing": {
             "required": [
-              "id",
-              "cidade",
-              "numero",
-              "cep",
-              "rua",
-              "bairro"
+              "id"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "cidade": {
+              "charge_id": {
                 "type": "string"
               },
-              "numero": {
+              "charge_description": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string"
+              },
+              "document": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "birth_date": {
+                "type": "string"
+              },
+              "street": {
+                "type": "string"
+              },
+              "number": {
                 "type": "integer"
               },
-              "complemento": {
+              "complement": {
                 "type": "string"
               },
-              "cep": {
+              "neighborhood": {
                 "type": "string"
               },
-              "rua": {
+              "city": {
                 "type": "string"
               },
-              "bairro": {
+              "state": {
+                "type": "string"
+              },
+              "postCode": {
                 "type": "string"
               },
               "user": {
                 "type": "string"
               },
+              "loja": {
+                "type": "string"
+              },
+              "checkout_url": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -654,134 +653,69 @@
               }
             }
           },
-          "produtos_avulsos": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "nome",
-                "unidade_medida",
-                "valor",
-                "quantidade"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "nome": {
-                  "type": "string"
-                },
-                "imagem": {
-                  "type": "string"
-                },
-                "unidade_medida": {
-                  "type": "string"
-                },
-                "descricao": {
-                  "type": "string"
-                },
-                "valor": {
-                  "type": "number"
-                },
-                "quantidade": {
-                  "type": "integer"
-                },
-                "loja": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "planos": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "nome",
-                "descricao",
-                "valor",
-                "quantidade_de_cestas"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "nome": {
-                  "type": "string"
-                },
-                "descricao": {
-                  "type": "string"
-                },
-                "valor": {
-                  "type": "number"
-                },
-                "quantidade_de_cestas": {
-                  "type": "integer"
-                },
-                "quantidade": {
-                  "type": "integer"
-                },
-                "loja": {
-                  "type": "string"
-                },
-                "assinantes": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "imagem": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
+          "user": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "loja": {
+                "type": "string"
+              },
+              "extratos": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
-              }
-            }
-          },
-          "cestas": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "valor",
-                "quantidade",
-                "descricao"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "valor": {
-                  "type": "number"
-                },
-                "quantidade": {
-                  "type": "integer"
-                },
-                "descricao": {
-                  "type": "string"
-                },
-                "loja": {
-                  "type": "string"
-                },
-                "imagem": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
+              },
+              "endereco": {
+                "type": "string"
+              },
+              "assinantes": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
+              },
+              "device_id": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
@@ -791,68 +725,40 @@
           }
         }
       },
-      "NewLoja": {
-        "required": [
-          "nome",
-          "tipos_de_entrega",
-          "cnpj"
-        ],
+      "NewPayment": {
         "properties": {
-          "nome": {
+          "transaction_id": {
             "type": "string"
           },
-          "descricao": {
+          "installments": {
+            "type": "integer"
+          },
+          "payment_id": {
             "type": "string"
           },
-          "tipos_de_entrega": {
-            "type": "string",
-            "enum": [
-              "Entregar",
-              "Receber"
-            ]
-          },
-          "contato": {
+          "release_date": {
             "type": "string"
           },
-          "cnpj": {
-            "type": "string",
-            "default": "cnpj"
+          "amount": {
+            "type": "number"
           },
-          "usuario": {
+          "fee": {
+            "type": "number"
+          },
+          "status": {
             "type": "string"
           },
-          "extratos": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "endereco": {
+          "fail_reason": {
             "type": "string"
           },
-          "produtos_avulsos": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "juno_credit_card": {
+            "type": "string"
           },
-          "planos": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "billing": {
+            "type": "string"
           },
-          "cestas": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "notificacoes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "user": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -870,7 +776,7 @@
   },
   "tags": [
     {
-      "name": "Loja"
+      "name": "Payment"
     }
   ]
 }

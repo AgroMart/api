@@ -32,8 +32,8 @@
       ]
     },
     "loja": {
-      "model": "loja",
-      "via": "extratos"
+      "via": "extratos",
+      "model": "loja"
     },
     "user": {
       "via": "extratos",

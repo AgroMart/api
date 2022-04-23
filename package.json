@@ -11,15 +11,20 @@
     "firebase-keys": "node download-firebase-keys.js"
   },
   "dependencies": {
+    "@types/qs": "^6.9.7",
     "add": "^2.0.6",
-    "axios": "^0.21.4",
+    "axios": "^0.26.1",
+    "base-64": "^1.0.0",
     "dotenv": "^16.0.0",
     "expo-server-sdk": "^3.6.0",
     "faker": "^5.4.0",
     "firebase-admin": "^9.12.0",
+    "isomorphic-webcrypto": "^2.3.8",
+    "jsrsasign": "^10.5.17",
     "knex": "<0.20.0",
     "pg": "latest",
     "pg-connection-string": "^2.5.0",
+    "qs": "^6.10.3",
     "strapi": "3.4.6",
     "strapi-admin": "3.4.6",
     "strapi-connector-bookshelf": "3.4.6",
@@ -32,6 +37,7 @@
     "strapi-plugin-users-permissions": "3.4.6",
     "strapi-provider-upload-firestore": "^1.0.1",
     "strapi-utils": "3.4.6",
+    "text-encoding": "^0.7.0",
     "yarn": "^1.22.17"
   },
   "author": {

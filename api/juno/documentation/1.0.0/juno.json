@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/lojas": {
+    "/junos": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Loja"
+                    "$ref": "#/components/schemas/Juno"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Juno"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Loja"
+                  "$ref": "#/components/schemas/Juno"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Juno"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewLoja"
+                "$ref": "#/components/schemas/NewJuno"
               }
             }
           }
         }
       }
     },
-    "/lojas/count": {
+    "/junos/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Juno"
         ],
         "parameters": []
       }
     },
-    "/lojas/{id}": {
+    "/junos/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Loja"
+                  "$ref": "#/components/schemas/Juno"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Juno"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Loja"
+                  "$ref": "#/components/schemas/Juno"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Juno"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewLoja"
+                "$ref": "#/components/schemas/NewJuno"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Loja"
+          "Juno"
         ],
         "parameters": [
           {
@@ -510,280 +510,88 @@
           }
         ]
       }
+    },
+    "/payment/credit-card": {
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Juno"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "Loja": {
+      "Juno": {
         "required": [
-          "id",
-          "nome",
-          "tipos_de_entrega",
-          "cnpj"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
-          },
-          "nome": {
-            "type": "string"
-          },
-          "descricao": {
-            "type": "string"
-          },
-          "banner": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {
-                "type": "object"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "tipos_de_entrega": {
-            "type": "string",
-            "enum": [
-              "Entregar",
-              "Receber"
-            ]
-          },
-          "contato": {
-            "type": "string"
-          },
-          "cnpj": {
-            "type": "string",
-            "default": "cnpj"
-          },
-          "endereco": {
-            "required": [
-              "id",
-              "cidade",
-              "numero",
-              "cep",
-              "rua",
-              "bairro"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "cidade": {
-                "type": "string"
-              },
-              "numero": {
-                "type": "integer"
-              },
-              "complemento": {
-                "type": "string"
-              },
-              "cep": {
-                "type": "string"
-              },
-              "rua": {
-                "type": "string"
-              },
-              "bairro": {
-                "type": "string"
-              },
-              "user": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "produtos_avulsos": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "nome",
-                "unidade_medida",
-                "valor",
-                "quantidade"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "nome": {
-                  "type": "string"
-                },
-                "imagem": {
-                  "type": "string"
-                },
-                "unidade_medida": {
-                  "type": "string"
-                },
-                "descricao": {
-                  "type": "string"
-                },
-                "valor": {
-                  "type": "number"
-                },
-                "quantidade": {
-                  "type": "integer"
-                },
-                "loja": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "planos": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "nome",
-                "descricao",
-                "valor",
-                "quantidade_de_cestas"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "nome": {
-                  "type": "string"
-                },
-                "descricao": {
-                  "type": "string"
-                },
-                "valor": {
-                  "type": "number"
-                },
-                "quantidade_de_cestas": {
-                  "type": "integer"
-                },
-                "quantidade": {
-                  "type": "integer"
-                },
-                "loja": {
-                  "type": "string"
-                },
-                "assinantes": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "imagem": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "cestas": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "valor",
-                "quantidade",
-                "descricao"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "valor": {
-                  "type": "number"
-                },
-                "quantidade": {
-                  "type": "integer"
-                },
-                "descricao": {
-                  "type": "string"
-                },
-                "loja": {
-                  "type": "string"
-                },
-                "imagem": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
           },
           "published_at": {
             "type": "string",
@@ -791,68 +599,22 @@
           }
         }
       },
-      "NewLoja": {
-        "required": [
-          "nome",
-          "tipos_de_entrega",
-          "cnpj"
-        ],
+      "NewJuno": {
         "properties": {
-          "nome": {
+          "client_secret": {
             "type": "string"
           },
-          "descricao": {
+          "client_id": {
             "type": "string"
           },
-          "tipos_de_entrega": {
-            "type": "string",
-            "enum": [
-              "Entregar",
-              "Receber"
-            ]
-          },
-          "contato": {
+          "private_token": {
             "type": "string"
           },
-          "cnpj": {
-            "type": "string",
-            "default": "cnpj"
-          },
-          "usuario": {
+          "public_token": {
             "type": "string"
           },
-          "extratos": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "endereco": {
+          "user": {
             "type": "string"
-          },
-          "produtos_avulsos": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "planos": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "cestas": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "notificacoes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "published_at": {
             "type": "string",
@@ -870,7 +632,7 @@
   },
   "tags": [
     {
-      "name": "Loja"
+      "name": "Juno"
     }
   ]
 }

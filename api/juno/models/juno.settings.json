@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "junos",
+  "info": {
+    "name": "Juno",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "client_secret": {
+      "type": "string",
+      "private": true
+    },
+    "client_id": {
+      "type": "string",
+      "private": true
+    },
+    "private_token": {
+      "type": "string",
+      "private": true
+    },
+    "public_token": {
+      "type": "string",
+      "private": true
+    },
+    "user": {
+      "private": true,
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

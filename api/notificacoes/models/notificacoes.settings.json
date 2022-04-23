@@ -18,8 +18,8 @@
       "type": "text"
     },
     "loja_id": {
-      "model": "loja",
-      "via": "notificacoes"
+      "via": "notificacoes",
+      "model": "loja"
     }
   }
 }
