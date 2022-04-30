@@ -593,6 +593,96 @@
           "id": {
             "type": "string"
           },
+          "user": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "loja": {
+                "type": "string"
+              },
+              "extratos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "endereco": {
+                "type": "string"
+              },
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "device_id": {
+                "type": "string"
+              },
+              "billings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "junos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "payments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "juno_credit_cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"

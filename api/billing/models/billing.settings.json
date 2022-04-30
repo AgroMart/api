@@ -54,14 +54,20 @@
       "type": "string"
     },
     "user": {
+      "via": "billings",
       "plugin": "users-permissions",
       "model": "user"
     },
     "loja": {
+      "via": "billings",
       "model": "loja"
     },
     "checkout_url": {
       "type": "string"
+    },
+    "payment": {
+      "via": "billings",
+      "model": "payment"
     }
   }
 }

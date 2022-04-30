@@ -31,6 +31,10 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "assinantes"
+    },
+    "loja": {
+      "model": "loja",
+      "via": "assinantes"
     }
   }
 }

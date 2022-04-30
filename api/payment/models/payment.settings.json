@@ -36,12 +36,15 @@
       "type": "string"
     },
     "juno_credit_card": {
+      "via": "payments",
       "model": "juno-credit-card"
     },
-    "billing": {
-      "model": "billing"
+    "billings": {
+      "collection": "billing",
+      "via": "payment"
     },
     "user": {
+      "via": "payments",
       "plugin": "users-permissions",
       "model": "user"
     }

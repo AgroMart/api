@@ -43,6 +43,9 @@
     "pagamento_realizado": {
       "type": "boolean",
       "default": false
+    },
+    "payment": {
+      "model": "payment"
     }
   }
 }

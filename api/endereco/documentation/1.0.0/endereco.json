@@ -635,6 +635,30 @@
               "device_id": {
                 "type": "string"
               },
+              "billings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "junos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "payments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "juno_credit_cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },

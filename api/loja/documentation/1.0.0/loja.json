@@ -612,6 +612,142 @@
             "type": "string",
             "default": "cnpj"
           },
+          "usuario": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "loja": {
+                "type": "string"
+              },
+              "extratos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "endereco": {
+                "type": "string"
+              },
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "device_id": {
+                "type": "string"
+              },
+              "billings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "junos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "payments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "juno_credit_cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "extratos": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "itens",
+                "valor",
+                "entregue"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "itens": {
+                  "type": "object"
+                },
+                "valor": {
+                  "type": "number"
+                },
+                "entregue": {
+                  "type": "boolean"
+                },
+                "tipo_de_entrega": {
+                  "type": "string"
+                },
+                "loja": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "pagamento_realizado": {
+                  "type": "boolean"
+                },
+                "payment": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "endereco": {
             "required": [
               "id",
@@ -785,6 +921,45 @@
               }
             }
           },
+          "assinantes": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "nome",
+                "pular_cesta"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "nome": {
+                  "type": "string"
+                },
+                "cestas_disponiveis": {
+                  "type": "integer"
+                },
+                "pular_cesta": {
+                  "type": "boolean"
+                },
+                "plano": {
+                  "type": "string"
+                },
+                "usuario": {
+                  "type": "string"
+                },
+                "loja": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -849,6 +1024,18 @@
             }
           },
           "notificacoes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "billings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "assinantes": {
             "type": "array",
             "items": {
               "type": "string"

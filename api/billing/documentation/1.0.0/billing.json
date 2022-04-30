@@ -622,6 +622,30 @@
               "device_id": {
                 "type": "string"
               },
+              "billings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "junos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "payments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "juno_credit_cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
@@ -695,6 +719,18 @@
                   "type": "string"
                 }
               },
+              "billings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -708,6 +744,61 @@
           },
           "checkout_url": {
             "type": "string"
+          },
+          "payment": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "transaction_id": {
+                "type": "string"
+              },
+              "installments": {
+                "type": "integer"
+              },
+              "payment_id": {
+                "type": "string"
+              },
+              "release_date": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "number"
+              },
+              "fee": {
+                "type": "number"
+              },
+              "status": {
+                "type": "string"
+              },
+              "fail_reason": {
+                "type": "string"
+              },
+              "juno_credit_card": {
+                "type": "string"
+              },
+              "billings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -766,6 +857,9 @@
             "type": "string"
           },
           "checkout_url": {
+            "type": "string"
+          },
+          "payment": {
             "type": "string"
           },
           "published_at": {

@@ -139,7 +139,7 @@ chargeOnCreditCard: async (chargeId, billingData, creditCardId, accessToken, pri
       },
     });
 
-    console.log("Payment response\n", response);
+    console.log("Payment response\n", response.data.payments[0]);
 
     return {
       transactionId: response.data.transactionId,

@@ -44,13 +44,11 @@
       "default": "cnpj"
     },
     "usuario": {
-      "private": true,
+      "via": "loja",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "loja"
+      "model": "user"
     },
     "extratos": {
-      "private": true,
       "collection": "extrato",
       "via": "loja"
     },
@@ -73,6 +71,15 @@
       "private": true,
       "collection": "notificacoes",
       "via": "loja_id"
+    },
+    "billings": {
+      "private": true,
+      "collection": "billing",
+      "via": "loja"
+    },
+    "assinantes": {
+      "via": "loja",
+      "collection": "assinantes"
     }
   }
 }

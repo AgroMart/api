@@ -544,31 +544,83 @@
           "expiration_year": {
             "type": "integer"
           },
-          "user": {
+          "users_permissions_user": {
             "required": [
               "id",
-              "name"
+              "username",
+              "email"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "name": {
+              "username": {
                 "type": "string"
               },
-              "description": {
+              "email": {
                 "type": "string"
               },
-              "type": {
+              "provider": {
                 "type": "string"
               },
-              "permissions": {
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "loja": {
+                "type": "string"
+              },
+              "extratos": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
-              "users": {
+              "endereco": {
+                "type": "string"
+              },
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "device_id": {
+                "type": "string"
+              },
+              "billings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "junos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "payments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "juno_credit_cards": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -584,6 +636,64 @@
           },
           "cardholder_name": {
             "type": "string"
+          },
+          "payments": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "transaction_id": {
+                  "type": "string"
+                },
+                "installments": {
+                  "type": "integer"
+                },
+                "payment_id": {
+                  "type": "string"
+                },
+                "release_date": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "number"
+                },
+                "fee": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "fail_reason": {
+                  "type": "string"
+                },
+                "juno_credit_card": {
+                  "type": "string"
+                },
+                "billings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "user": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -605,11 +715,17 @@
           "expiration_year": {
             "type": "integer"
           },
-          "user": {
+          "users_permissions_user": {
             "type": "string"
           },
           "cardholder_name": {
             "type": "string"
+          },
+          "payments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "published_at": {
             "type": "string",

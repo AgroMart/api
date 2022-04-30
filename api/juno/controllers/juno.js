@@ -69,8 +69,6 @@ module.exports = {
         privateToken
       );
 
-      console.log("payment", payment);
-
       await strapi.query("payment").create({
         transaction_id: payment.transactionId,
         installments: payment.installments,

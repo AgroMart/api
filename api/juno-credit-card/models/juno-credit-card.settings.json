@@ -24,12 +24,17 @@
     "expiration_year": {
       "type": "integer"
     },
-    "user": {
+    "users_permissions_user": {
+      "via": "juno_credit_cards",
       "plugin": "users-permissions",
-      "model": "role"
+      "model": "user"
     },
     "cardholder_name": {
       "type": "string"
+    },
+    "payments": {
+      "collection": "payment",
+      "via": "juno_credit_card"
     }
   }
 }

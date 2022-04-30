@@ -28,7 +28,7 @@
       "private": true
     },
     "user": {
-      "private": true,
+      "via": "junos",
       "plugin": "users-permissions",
       "model": "user"
     }
