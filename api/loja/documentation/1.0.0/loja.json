@@ -670,6 +670,30 @@
               "device_id": {
                 "type": "string"
               },
+              "billings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "junos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "payments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "juno_credit_cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
@@ -711,6 +735,9 @@
                 },
                 "pagamento_realizado": {
                   "type": "boolean"
+                },
+                "payment": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
@@ -894,26 +921,34 @@
               }
             }
           },
-          "notificacoes": {
+          "assinantes": {
             "type": "array",
             "items": {
               "required": [
-                "id"
+                "id",
+                "nome",
+                "pular_cesta"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "title": {
+                "nome": {
                   "type": "string"
                 },
-                "body_text": {
+                "cestas_disponiveis": {
+                  "type": "integer"
+                },
+                "pular_cesta": {
+                  "type": "boolean"
+                },
+                "plano": {
                   "type": "string"
                 },
-                "loja_id": {
+                "usuario": {
                   "type": "string"
                 },
-                "published_at": {
+                "loja": {
                   "type": "string"
                 },
                 "created_by": {
@@ -989,6 +1024,18 @@
             }
           },
           "notificacoes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "billings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "assinantes": {
             "type": "array",
             "items": {
               "type": "string"

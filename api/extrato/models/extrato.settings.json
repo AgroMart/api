@@ -32,8 +32,8 @@
       ]
     },
     "loja": {
-      "model": "loja",
-      "via": "extratos"
+      "via": "extratos",
+      "model": "loja"
     },
     "user": {
       "via": "extratos",
@@ -43,6 +43,9 @@
     "pagamento_realizado": {
       "type": "boolean",
       "default": false
+    },
+    "payment": {
+      "model": "payment"
     }
   }
 }

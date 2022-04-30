@@ -606,6 +606,18 @@
                   "type": "string"
                 }
               },
+              "billings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -642,6 +654,9 @@
                   "type": "string"
                 },
                 "usuario": {
+                  "type": "string"
+                },
+                "loja": {
                   "type": "string"
                 },
                 "created_by": {

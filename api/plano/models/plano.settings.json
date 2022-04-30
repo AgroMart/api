@@ -31,8 +31,8 @@
       "type": "integer"
     },
     "loja": {
-      "model": "loja",
-      "via": "planos"
+      "via": "planos",
+      "model": "loja"
     },
     "assinantes": {
       "via": "plano",

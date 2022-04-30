@@ -639,6 +639,118 @@
               "device_id": {
                 "type": "string"
               },
+              "billings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "junos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "payments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "juno_credit_cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "loja": {
+            "required": [
+              "id",
+              "nome",
+              "tipos_de_entrega",
+              "cnpj"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "nome": {
+                "type": "string"
+              },
+              "descricao": {
+                "type": "string"
+              },
+              "banner": {
+                "type": "string"
+              },
+              "tipos_de_entrega": {
+                "type": "string"
+              },
+              "contato": {
+                "type": "string"
+              },
+              "cnpj": {
+                "type": "string"
+              },
+              "usuario": {
+                "type": "string"
+              },
+              "extratos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "endereco": {
+                "type": "string"
+              },
+              "produtos_avulsos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "planos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cestas": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "notificacoes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "billings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "assinantes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "published_at": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -669,6 +781,9 @@
             "type": "string"
           },
           "usuario": {
+            "type": "string"
+          },
+          "loja": {
             "type": "string"
           },
           "created_by": {

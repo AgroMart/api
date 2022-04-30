@@ -24,8 +24,8 @@
       "required": true
     },
     "loja": {
-      "model": "loja",
-      "via": "cestas"
+      "via": "cestas",
+      "model": "loja"
     },
     "imagem": {
       "model": "file",

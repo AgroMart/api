@@ -24,9 +24,9 @@
       "type": "string"
     },
     "user_id": {
+      "via": "device_id",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "device_id"
+      "model": "user"
     }
   }
 }

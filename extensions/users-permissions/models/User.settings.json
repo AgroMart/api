@@ -76,8 +76,25 @@
       "collection": "assinantes"
     },
     "device_id": {
-      "via": "user_id",
-      "model": "devices"
+      "model": "devices",
+      "via": "user_id"
+    },
+    "billings": {
+      "collection": "billing",
+      "via": "user"
+    },
+    "junos": {
+      "collection": "juno",
+      "via": "user"
+    },
+    "payments": {
+      "collection": "payment",
+      "via": "user"
+    },
+    "juno_credit_cards": {
+      "private": true,
+      "collection": "juno-credit-card",
+      "via": "users_permissions_user"
     }
   }
 }
