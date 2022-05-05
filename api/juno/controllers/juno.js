@@ -8,7 +8,9 @@ module.exports = {
       const { storeId, userId, creditCard, chargeData, billingData } =
         ctx.request.body;
 
-      const apiKeys = await strapi.db.query("juno").findOne({ user: userId });
+      const store = await strapi.db.query("loja").findOne({ id: storeId })
+
+      const apiKeys = await strapi.db.query("juno").findOne({ user: store.usuario.id });
 
       const clientSecret = apiKeys.client_secret;
       const clientId = apiKeys.client_id;
@@ -64,11 +66,12 @@ module.exports = {
       const payment = await junoServices.chargeOnCreditCard(
         charge.id,
         billingData,
-        "9c471d5f-b01c-4fdc-9a4b-741ffa53d109",
+        tokenizedCard.creditCardId,
         accessToken,
         privateToken
       );
 
+      console.log("PAGAMENTO\n\n", payment);
       await strapi.query("payment").create({
         transaction_id: payment.transactionId,
         installments: payment.installments,

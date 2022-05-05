@@ -921,6 +921,82 @@
               }
             }
           },
+          "billings": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "charge_id": {
+                  "type": "string"
+                },
+                "charge_description": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "number"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "document": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "birth_date": {
+                  "type": "string"
+                },
+                "street": {
+                  "type": "string"
+                },
+                "number": {
+                  "type": "integer"
+                },
+                "complement": {
+                  "type": "string"
+                },
+                "neighborhood": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "state": {
+                  "type": "string"
+                },
+                "postCode": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "loja": {
+                  "type": "string"
+                },
+                "checkout_url": {
+                  "type": "string"
+                },
+                "payment": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "assinantes": {
             "type": "array",
             "items": {

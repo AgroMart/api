@@ -44,9 +44,9 @@
       "default": "cnpj"
     },
     "usuario": {
-      "via": "loja",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "loja"
     },
     "extratos": {
       "collection": "extrato",
@@ -73,13 +73,12 @@
       "via": "loja_id"
     },
     "billings": {
-      "private": true,
-      "collection": "billing",
-      "via": "loja"
+      "via": "loja",
+      "collection": "billing"
     },
     "assinantes": {
-      "via": "loja",
-      "collection": "assinantes"
+      "collection": "assinantes",
+      "via": "loja"
     }
   }
 }

@@ -127,6 +127,7 @@ chargeOnCreditCard: async (chargeId, billingData, creditCardId, accessToken, pri
       creditCardId
   }
 }
+console.log("KSHDFKSFGSFKHG\n\n\n\n", paymentData)
   try {
     const response = await axios.post(paymentUrl,
       paymentData,
@@ -147,7 +148,7 @@ chargeOnCreditCard: async (chargeId, billingData, creditCardId, accessToken, pri
       ...response.data.payments[0]
     };
   } catch (error) {
-    console.log("Erro ao precessar pagamento\n", error);
+    console.log("Erro ao precessar pagamento\n", error.response);
   }
 }
 

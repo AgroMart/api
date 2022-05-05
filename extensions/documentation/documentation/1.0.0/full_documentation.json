@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/30/2022 4:32:52 PM"
+    "x-generation-date": "05/04/2022 8:42:49 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9445,94 +9445,6 @@
               }
             }
           },
-          "loja": {
-            "required": [
-              "id",
-              "nome",
-              "tipos_de_entrega",
-              "cnpj"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "nome": {
-                "type": "string"
-              },
-              "descricao": {
-                "type": "string"
-              },
-              "banner": {
-                "type": "string"
-              },
-              "tipos_de_entrega": {
-                "type": "string"
-              },
-              "contato": {
-                "type": "string"
-              },
-              "cnpj": {
-                "type": "string"
-              },
-              "usuario": {
-                "type": "string"
-              },
-              "extratos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "endereco": {
-                "type": "string"
-              },
-              "produtos_avulsos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "planos": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "cestas": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "notificacoes": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "billings": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "assinantes": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "checkout_url": {
             "type": "string"
           },
@@ -11303,6 +11215,82 @@
               }
             }
           },
+          "billings": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "charge_id": {
+                  "type": "string"
+                },
+                "charge_description": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "number"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "document": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "birth_date": {
+                  "type": "string"
+                },
+                "street": {
+                  "type": "string"
+                },
+                "number": {
+                  "type": "integer"
+                },
+                "complement": {
+                  "type": "string"
+                },
+                "neighborhood": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "state": {
+                  "type": "string"
+                },
+                "postCode": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "loja": {
+                  "type": "string"
+                },
+                "checkout_url": {
+                  "type": "string"
+                },
+                "payment": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "assinantes": {
             "type": "array",
             "items": {
@@ -12912,101 +12900,6 @@
                   "type": "string"
                 },
                 "payment": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "junos": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "client_secret": {
-                  "type": "string"
-                },
-                "client_id": {
-                  "type": "string"
-                },
-                "private_token": {
-                  "type": "string"
-                },
-                "public_token": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "payments": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "transaction_id": {
-                  "type": "string"
-                },
-                "installments": {
-                  "type": "integer"
-                },
-                "payment_id": {
-                  "type": "string"
-                },
-                "release_date": {
-                  "type": "string"
-                },
-                "amount": {
-                  "type": "number"
-                },
-                "fee": {
-                  "type": "number"
-                },
-                "status": {
-                  "type": "string"
-                },
-                "fail_reason": {
-                  "type": "string"
-                },
-                "juno_credit_card": {
-                  "type": "string"
-                },
-                "billings": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "user": {
                   "type": "string"
                 },
                 "published_at": {

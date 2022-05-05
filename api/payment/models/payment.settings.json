@@ -40,8 +40,8 @@
       "model": "juno-credit-card"
     },
     "billings": {
-      "collection": "billing",
-      "via": "payment"
+      "via": "payment",
+      "collection": "billing"
     },
     "user": {
       "via": "payments",
