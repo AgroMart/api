@@ -60,8 +60,8 @@
       "configurable": false
     },
     "loja": {
-      "model": "loja",
-      "via": "usuario"
+      "via": "usuario",
+      "model": "loja"
     },
     "extratos": {
       "collection": "extrato",
@@ -72,22 +72,24 @@
       "via": "user"
     },
     "assinantes": {
-      "via": "usuario",
-      "collection": "assinantes"
+      "collection": "assinantes",
+      "via": "usuario"
     },
     "device_id": {
       "model": "devices",
       "via": "user_id"
     },
     "billings": {
-      "collection": "billing",
-      "via": "user"
+      "via": "user",
+      "collection": "billing"
     },
     "junos": {
+      "private": true,
       "collection": "juno",
       "via": "user"
     },
     "payments": {
+      "private": true,
       "collection": "payment",
       "via": "user"
     },

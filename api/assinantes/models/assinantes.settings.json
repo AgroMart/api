@@ -28,13 +28,13 @@
       "via": "assinantes"
     },
     "usuario": {
+      "via": "assinantes",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "assinantes"
+      "model": "user"
     },
     "loja": {
-      "model": "loja",
-      "via": "assinantes"
+      "via": "assinantes",
+      "model": "loja"
     }
   }
 }
