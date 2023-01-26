@@ -1,7 +1,16 @@
 #!/bin/bash
 #!/usr/bin/expect
 
+eval "$(
+  cat auto-config.env | awk '!/^\s*#/' | awk '!/^\s*$/' | while IFS='' read -r line; do
+    key=$(echo "$line" | cut -d '=' -f 1)
+    value=$(echo "$line" | cut -d '=' -f 2-)
+    echo "export $key=\"$value\""
+  done
+)"
+camelCaseString=$( echo "$NOME_CSA" | awk 'BEGIN{OFS=""};{for(j=1;j<=NF;j++){ if(j==1){$j=tolower($j)} else {$j=toupper(substr($j,1,1)) tolower(substr($j,2)) }}}1')
 
+export NOME_CSA_STRIPED=$camelCaseString
 echo $NOME_CSA
 echo $RESPONSAVEL_CSA
 echo $EMAIL
@@ -9,10 +18,11 @@ echo $NOME_CSA_STRIPED
 
 
 git checkout -b main
+exit
 heroku login
-expect "heroku: Press any key to open up the browser to login or q to exit:"
-send "world"
-send "worlasdasd"
+
+
+
 heroku create "${NOME_CSA_STRIPED}-agromart"
 heroku git:remote -a "${NOME_CSA_STRIPED}-agromart"
 heroku addons:create heroku-postgresql:mini -a "${NOME_CSA_STRIPED}-agromart"
