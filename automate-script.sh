@@ -18,7 +18,7 @@ echo $NOME_CSA_STRIPED
 
 
 git checkout -b main
-exit
+
 heroku login
 
 
