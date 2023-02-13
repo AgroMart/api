@@ -9,8 +9,8 @@ eval "$(
   done
 )"
 camelCaseString=$( echo "$NOME_CSA" | awk 'BEGIN{OFS=""};{for(j=1;j<=NF;j++){ if(j==1){$j=tolower($j)} else {$j=toupper(substr($j,1,1)) tolower(substr($j,2)) }}}1')
-
-export NOME_CSA_STRIPED=$camelCaseString
+NOME_CSA_STRIPED=$(echo "$NOME_CSA" | tr '[:upper:]' '[:lower:]')
+export NOME_CSA_STRIPED=$NOME_CSA_STRIPED
 echo $NOME_CSA
 echo $RESPONSAVEL_CSA
 echo $EMAIL
@@ -30,7 +30,7 @@ heroku config:set ADMIN_JWT_SECRET=ADMIN_JWT_SECRET
 heroku config:set BUCKET_NAME=agromart-fga
 heroku config:set EXPO_ACCESS_TOKEN=K1Y7cWKpo2Q6pugNGZLaNakDjT6QJUVfzgOds3WT
 heroku config:set JWT_SECRET=2fab93bc23357e25de5cdb159d6353cd
-heroku config:set SERVICE_ACCOUNT_KEY_URL='https://firebasestorage.googleapis.com/v0/b/agromart-fga.appspot.com/o/agromart-fga-firebase-adminsdk-85mwf-7287dc44b9.json?alt=media&token=f3b1682d-ecc4-484d-83c2-bd355bca6ed2'
+heroku config:set SERVICE_ACCOUNT_KEY_URL="https://firebasestorage.googleapis.com/v0/b/agromart-fga.appspot.com/o/agromart-fga-firebase-adminsdk-85mwf-7287dc44b9.json?alt=media&token=f3b1682d-ecc4-484d-83c2-bd355bca6ed2"
 heroku config:set STORAGE_BUCKET_URL=agromart-fga.appspot.com
 git push heroku HEAD:main
 
