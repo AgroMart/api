@@ -49,4 +49,4 @@ def get_envvars(env_file='auto-config.env', set_environ=True, ignore_not_found_e
     return env_vars
 
 print(get_envvars())
-subprocess.call('./automate-script.sh.sh')
+subprocess.run(['C:\\cygwin64\\bin\\bash.exe', '-l', 'automate-script.sh'],cwd='C:\\Users\\andre\\Documents\\amigo\\api\\')
