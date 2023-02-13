@@ -2,7 +2,7 @@
 #!/usr/bin/expect
 
 eval "$(
-  cat auto-config.txt | awk '!/^\s*#/' | awk '!/^\s*$/' | while IFS='' read -r line; do
+  cat auto-config | awk '!/^\s*#/' | awk '!/^\s*$/' | while IFS='' read -r line; do
     key=$(echo "$line" | cut -d '=' -f 1)
     value=$(echo "$line" | cut -d '=' -f 2-)
     echo "export $key=\"$value\""
