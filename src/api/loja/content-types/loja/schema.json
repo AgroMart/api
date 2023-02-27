@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lojas",
+  "info": {
+    "singularName": "loja",
+    "pluralName": "lojas",
+    "displayName": "Loja"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nome": {
+      "type": "string"
+    },
+    "Descricao": {
+      "type": "text",
+      "default": "Descrição"
+    },
+    "Banner": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "Endereco": {
+      "type": "string"
+    },
+    "Tipos_de_entrega": {
+      "type": "enumeration",
+      "enum": [
+        "Entregar",
+        "Receber"
+      ]
+    },
+    "Contato": {
+      "type": "biginteger"
+    },
+    "CNPJ": {
+      "type": "biginteger"
+    }
+  }
+}

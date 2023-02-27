@@ -1,53 +1,29 @@
 {
-  "name": "api",
+  "name": "my-project",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "ENV_PATH=/absolute/path/to/.env strapi develop",
+    "develop": "strapi develop",
     "start": "strapi start",
-    "build": "yarn firebase-keys && strapi build",
-    "strapi": "strapi",
-    "firebase-keys": "node download-firebase-keys.js"
+    "build": "strapi build",
+    "strapi": "strapi"
   },
+  "devDependencies": {},
   "dependencies": {
-    "@types/qs": "^6.9.7",
-    "add": "^2.0.6",
-    "axios": "^0.26.1",
-    "base-64": "^1.0.0",
-    "dotenv": "^16.0.0",
-    "expo-server-sdk": "^3.6.0",
-    "faker": "^5.4.0",
-    "firebase-admin": "^9.12.0",
-    "isomorphic-webcrypto": "^2.3.8",
-    "jsrsasign": "^10.5.17",
-    "knex": "<0.20.0",
-    "pg": "latest",
-    "pg-connection-string": "^2.5.0",
-    "qs": "^6.10.3",
-    "strapi": "3.4.6",
-    "strapi-admin": "3.4.6",
-    "strapi-connector-bookshelf": "3.4.6",
-    "strapi-plugin-content-manager": "3.4.6",
-    "strapi-plugin-content-type-builder": "3.4.6",
-    "strapi-plugin-documentation": "3.4.6",
-    "strapi-plugin-email": "3.4.6",
-    "strapi-plugin-entity-relationship-chart": "^3.1.0",
-    "strapi-plugin-upload": "3.4.6",
-    "strapi-plugin-users-permissions": "3.4.6",
-    "strapi-provider-upload-firestore": "^1.0.1",
-    "strapi-utils": "3.4.6",
-    "text-encoding": "^0.7.0",
-    "yarn": "^1.22.17"
+    "@strapi/strapi": "4.6.2",
+    "@strapi/plugin-users-permissions": "4.6.2",
+    "@strapi/plugin-i18n": "4.6.2",
+    "better-sqlite3": "8.0.1"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "989ede7f-f65f-4c24-8bde-2c4fc58d3e05"
+    "uuid": "a555995a-934c-4028-823c-62b847c6f243"
   },
   "engines": {
-    "node": ">=10.16.0 <=14.x.x",
+    "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
