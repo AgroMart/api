@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  agromart_db_service:
+    container_name: agromart_db_container
+    restart: always
+    image: postgres
+    environment:
+      POSTGRES_DB: agromart_db
+      POSTGRES_USER: agromart
+      POSTGRES_PASSWORD: agromartpass
+    ports:
+      - '5432:5432'
+    volumes:
+      - ../data:/var/lib/postgresql/data
