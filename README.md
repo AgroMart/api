@@ -1,57 +1,76 @@
-# 🚀 Getting started with Strapi
+<h1 align="center">
+  <img alt="AgroMart" title="AgroMart" src="https://raw.githubusercontent.com/Hackathon-FGA-2020/Desafio-3-Grupo-6-mobile/master/src/assets/images/logo_0.5.png"/>
+</h1>
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
+# 🌱 API
 
-### `develop`
+## Funcionalidades
+- Criação de conta de usuário e Autenticação;
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
+## :rocket: Principais Tecnologias Utilizadas
+
+- [Node.js](https://nodejs.org/en/)
+- [Strapi](https://github.com/strapi/strapi)
+
+---
+## Pré requesitos do sistema
+Para executar que o projeto seja executado localmente, são necessárias algumas configurações:
+- [node.js](https://nodejs.org/en/) entre as versões ">=10.16.0 <=14.x.x"
+- [yarn](https://yarnpkg.com/getting-started/install)
+-  [Docker](https://docs.docker.com/engine/installation/) e [Docker Compose](https://docs.docker.com/compose/install/) para execuçaão banco de dados **Postgres**
+
+---
+## Como executar o projeto localmente
+
+Clone o repositorio:
 
 ```
-npm run develop
-# or
-yarn develop
+git clone https://github.com/AgroMart/api.git
 ```
 
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
+Acesse a pasta do projeto:
 
 ```
-npm run start
-# or
-yarn start
+cd api
 ```
 
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
+Instale as dependências:
 
 ```
 npm run build
-# or
+# ou
 yarn build
 ```
 
-## ⚙️ Deployment
+Crie e inicie o container de serviço do banco de dados:
 
-Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
+```
+docker-compose up
+```
 
-## 📚 Learn more
+Inicie CMS (Strapi) do projeto:
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://docs.strapi.io) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+```
+npm run develop
+# ou
+yarn develop
+```
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+---
+## Cliente Mobile
 
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+Os dados são providos para o nosso próprio aplicativo disponível em https://github.com/AgroMart/mobile-client
 
 ---
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+## Como Contribuir
+
+- Se você for um colaborador externo, dê um fork no projeto.
+- Crie sua branch e envie seu código nela.
+- Faça um pull request da sua branch para a devel.
+
+---
+
+## Licença:
+
+Esse projeto utiliza a licença GNU GENERAL PUBLIC LICENSE. Para mais informações [clique aqui](https://github.com/AgroMart/api/blob/master/LICENSE)
