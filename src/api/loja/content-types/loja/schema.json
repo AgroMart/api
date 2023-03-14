@@ -43,6 +43,12 @@
     },
     "CNPJ": {
       "type": "biginteger"
+    },
+    "produto_avulsos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::produto-avulso.produto-avulso",
+      "mappedBy": "loja"
     }
   }
 }
