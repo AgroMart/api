@@ -42,6 +42,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "assinantes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::assinante.assinante",
+      "mappedBy": "planos"
     }
   }
 }

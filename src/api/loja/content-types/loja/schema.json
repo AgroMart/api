@@ -55,6 +55,12 @@
       "relation": "manyToMany",
       "target": "api::plano.plano",
       "mappedBy": "lojas"
+    },
+    "assinantes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::assinante.assinante",
+      "mappedBy": "lojas"
     }
   }
 }
