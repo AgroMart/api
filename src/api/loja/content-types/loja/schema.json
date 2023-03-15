@@ -49,6 +49,18 @@
       "relation": "oneToMany",
       "target": "api::produto-avulso.produto-avulso",
       "mappedBy": "loja"
+    },
+    "planos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::plano.plano",
+      "mappedBy": "lojas"
+    },
+    "assinantes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::assinante.assinante",
+      "mappedBy": "lojas"
     }
   }
 }
