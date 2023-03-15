@@ -49,6 +49,12 @@
       "relation": "oneToMany",
       "target": "api::produto-avulso.produto-avulso",
       "mappedBy": "loja"
+    },
+    "cestas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cesta.cesta",
+      "mappedBy": "loja"
     }
   }
 }
