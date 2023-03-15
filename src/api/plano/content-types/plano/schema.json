@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "planos",
+  "info": {
+    "singularName": "plano",
+    "pluralName": "planos",
+    "displayName": "Plano"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "descricao": {
+      "type": "text",
+      "required": true
+    },
+    "valor": {
+      "type": "float",
+      "required": true
+    },
+    "quantidade_de_cestas": {
+      "type": "integer",
+      "required": true
+    },
+    "quantidade": {
+      "type": "integer"
+    },
+    "lojas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::loja.loja",
+      "inversedBy": "planos"
+    },
+    "imagem": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "assinantes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::assinante.assinante",
+      "mappedBy": "planos"
+    }
+  }
+}
