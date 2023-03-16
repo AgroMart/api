@@ -55,6 +55,7 @@
       "relation": "oneToMany",
       "target": "api::cesta.cesta",
       "mappedBy": "loja"
+    },
     "planos": {
       "type": "relation",
       "relation": "manyToMany",
