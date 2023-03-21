@@ -6,6 +6,13 @@
 
 ## Funcionalidades
 - Criação de conta de usuário e Autenticação;
+- Gerenciar lojas;
+- Gerenciar assinantes;
+- Gerenciar cestas;
+- Gerenciar endereços;
+- Gerenciar extratos;
+- Gerenciar planos;
+- Gerenciar produtos avulsos;
 
 ## :rocket: Principais Tecnologias Utilizadas
 
