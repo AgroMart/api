@@ -45,9 +45,37 @@ it("Deve encontrar o device", async () => {
     .expect(200)
     .then((data) => {
       expect(data.body).toBeDefined();
-      console.log(data.body);
       expect(data.body.mensagem).toBe("Device encontrado!");
       expect(data.body.device_id).toBe("expoPushToken");
       expect(data.body.status).toBe(200);
+    });
+});
+
+it("Usuário não encontrado", async () => {
+  await request(strapi.server.httpServer)
+    .get(path + 'inexistente')
+    .set("accept", "application/json")
+    .set("Content-Type", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(400)
+    .then((data) => {
+      expect(data.body).toBeDefined();
+      console.log(data.body);
+      expect(data.body.message).toBe("Ops! Aconteceu tivemos um problema em processar sua requisição.");
+      expect(data.body.error).toBe("expoPushToken");
+    });
+});
+
+it("Usuário não enviado", async () => {
+  await request(strapi.server.httpServer)
+    .get(path)
+    .set("accept", "application/json")
+    .set("Content-Type", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(404)
+    .then((data) => {
+      expect(data.body).toBeDefined();
+      expect(data.body.error.name).toBe("NotFoundError");
+      expect(data.body.error.message).toBe("Not Found");
     });
 });

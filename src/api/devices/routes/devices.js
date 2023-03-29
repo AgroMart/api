@@ -34,13 +34,6 @@ module.exports = {
         "policies": []
       }
     },
-    /*
-  todo:
-  test user nao encontrado
-  test nenhum parametro enviado
-  test user_id não enviado
-  test outros parametros enviados em conjunto
-  */
     {
       "method": "GET",
       "path": "/devices/user/:user_id",
