@@ -12,3 +12,5 @@ afterAll(async () => {
 it("strapi is defined", () => {
   expect(strapi).toBeDefined();
 });
+
+require('./devices');
