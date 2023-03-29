@@ -1,9 +1,9 @@
 const request = require('supertest');
 
-const path = "/devices/user/";
+const path = "/api/devices/user/";
 
 const mockUserData = {
-  username: "usuario3",
+  username: "user1",
   email: "testador@strapi.com",
   provider: "local",
   password: "1234abc",
@@ -33,7 +33,7 @@ it("Não deve encontrar o device", async () => {
 it("Deve encontrar o device", async () => {
   const user = await strapi.plugins["users-permissions"].services.user.add({
     ...mockUserData,
-    username: 'usuario4',
+    username: 'user2',
     expoPushToken: 'expoPushToken'
   });
 
