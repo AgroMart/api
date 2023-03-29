@@ -35,9 +35,7 @@ module.exports = {
       }
     },
     /*
-  todo: 
-  test Device encontrado
-  test Device não encontrado
+  todo:
   test user nao encontrado
   test nenhum parametro enviado
   test user_id não enviado

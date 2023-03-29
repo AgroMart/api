@@ -27,11 +27,11 @@ module.exports = {
         .findUserExpoPushToken(user_id);
       console.log(data, "data");
 
-      if (data) {
+      if (data.expoPushToken) {
         ctx.status = 200;
         ctx.body = {
           mensagem: "Device encontrado!",
-          device_id: data,
+          device_id: data.expoPushToken,
           status: 200,
         };
       } else {
