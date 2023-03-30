@@ -25,7 +25,6 @@ module.exports = {
       const data = await strapi
         .service("api::devices.devices")
         .findUserExpoPushToken(user_id);
-      console.log(data, "data");
 
       if (data.expoPushToken) {
         ctx.status = 200;

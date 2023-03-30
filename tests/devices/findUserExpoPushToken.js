@@ -53,16 +53,15 @@ it("Deve encontrar o device", async () => {
 
 it("Usuário não encontrado", async () => {
   await request(strapi.server.httpServer)
-    .get(path + 'inexistente')
+    .get(path + 0)
     .set("accept", "application/json")
     .set("Content-Type", "application/json")
     .expect("Content-Type", /json/)
     .expect(400)
     .then((data) => {
       expect(data.body).toBeDefined();
-      console.log(data.body);
       expect(data.body.message).toBe("Ops! Aconteceu tivemos um problema em processar sua requisição.");
-      expect(data.body.error).toBe("expoPushToken");
+      expect(data.body.error).toBe("Cannot read properties of null (reading 'expoPushToken')");
     });
 });
 

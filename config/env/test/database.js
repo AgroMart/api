@@ -21,5 +21,6 @@ module.exports = ({ env }) => ({
     },
     useNullAsDefault: true,
     debug: false
-  },
+    },
+  }
 });

@@ -14,17 +14,17 @@ async function setupStrapi() {
 }
 
 async function cleanupStrapi() {
-  const dbSettings = strapi.config.get("database.connection");
-
+  const dbSettings = strapi.config.get('database.connections.default.settings');
   //close server to release the db-file
   await strapi.server.httpServer.close();
-
+  
   // close the connection to the database before deletion
   await strapi.db.connection.destroy();
-
+  
   //delete test database after all tests have completed
   if (dbSettings && dbSettings.connection && dbSettings.connection.filename) {
     const tmpDbFile = dbSettings.connection.filename;
+    console.log(tmpDbFile);
     if (fs.existsSync(tmpDbFile)) {
       fs.unlinkSync(tmpDbFile);
     }
