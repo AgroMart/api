@@ -55,6 +55,22 @@ npm run develop
 # ou
 yarn develop
 ```
+---
+## Como executar os testes unitários
+
+Crie e inicie o container de serviço do banco de dados:
+
+```
+docker-compose -f docker-compose.dev.yml up
+```
+
+Execute os testes:
+
+```
+npm test
+# ou
+yarn test
+```
 
 ---
 ## Cliente Mobile
