@@ -1,6 +1,5 @@
 const Strapi = require("@strapi/strapi");
-const { exec } = require('child_process');
-const fs = require("fs");
+const { Pool } = require('pg');
 
 let instance;
 
@@ -14,35 +13,31 @@ async function setupStrapi() {
   return instance;
 }
 
-async function cleanupStrapi() {
-  const dbSettings = strapi.config.get("database.connection");
+const cleanupStrapi = async () => {
+  const tableNamesQuery = strapi.db.connection.raw(`
+  SELECT tablename 
+  FROM pg_tables 
+  WHERE schemaname = 'public'
+  `);
 
-  //close server to release the db-file
+  const resp = await tableNamesQuery.then();
+
+  const tableNames = await resp.rows.map(row => row.tablename);
+
+  // Itera sobre cada tabela e exclui seus registros
+  for (const tableName of tableNames) {
+    const clearTableQuery = strapi.db.connection.raw(`
+      TRUNCATE ${tableName} RESTART IDENTITY CASCADE;
+    `);
+
+    await clearTableQuery;
+  }
+
   await strapi.server.httpServer.close();
+  strapi.db.connection.destroy();
 
-  // close the connection to the database before deletion
-  await strapi.db.connection.destroy();
-  // Build the command to drop the test database
-  const command = `dropdb
-  --if-exists 
-  --host=${dbSettings.connection.host} 
-  --port=${dbSettings.connection.port} 
-  --username=${dbSettings.connection.user} 
-  --password=${dbSettings.connection.password} 
-  ${dbSettings.connection.database}`;
- 
-   // Execute the command to drop the test database
-   exec(command, (error, stdout, stderr) => {
-     if (error) {
-       console.error(`Error dropping test database: ${error.message}`);
-       return;
-     }
-     if (stderr) {
-       console.error(`Stderr from dropping test database: ${stderr}`);
-       return;
-     }
-     console.log(`Test database dropped: ${stdout}`);
-   });
-}
+  // Disconnect from the Strapi app
+  await strapi.destroy();
+};
 
 module.exports = { setupStrapi, cleanupStrapi };
