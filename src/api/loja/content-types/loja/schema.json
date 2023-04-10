@@ -67,12 +67,6 @@
       "relation": "manyToMany",
       "target": "api::assinante.assinante",
       "mappedBy": "lojas"
-    },
-    "notificacoes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::notificacao.notificacao",
-      "mappedBy": "loja"
     }
   }
 }
