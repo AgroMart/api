@@ -9,14 +9,18 @@ module.exports = {
   async update(ctx, next) {
     try {
       const { body } = ctx.request.body;
+      if(body === undefined || 
+        body.user_id === undefined || 
+        body.expo_push_token === undefined){
+        throw new Error('Body não está definido');
+      }
       const data = await strapi
         .service("api::devices.devices")
         .update(body);
-      console.log(data, "data");
 
       ctx.body = data;
     } catch (err) {
-      ctx.badRequest("PUT devices error", { moreDetails: err });
+      ctx.badRequest("Devices error", { moreDetails: err });
     }
   },
   async findUserExpoPushToken(ctx, next) {

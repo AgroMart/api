@@ -1,1 +1,2 @@
 require('./findUserExpoPushToken');
+require('./update');

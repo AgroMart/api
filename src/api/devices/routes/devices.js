@@ -1,13 +1,5 @@
 module.exports = {
   routes: [
-    /*
-  todo: 
-  test salvo no banco
-  test body nao enviado
-  test body com atributos a mais
-  test body com atributos faltantes
-  test outros parametros enviados em conjunto
-  */
     {
       "method": "POST",
       "path": "/devices",
@@ -16,16 +8,6 @@ module.exports = {
         "policies": []
       }
     },
-    /*
-  todo: 
-  test salvo no banco
-  test body nao enviado
-  test body com atributos a mais
-  test body com atributos faltantes
-  test nenhum parametro enviado
-  test oldExpoPushToken não enviado
-  test outros parametros enviados em conjunto
-  */
     {
       "method": "PUT",
       "path": "/devices/:oldExpoPushToken",

@@ -27,6 +27,9 @@ async function boostrapPermissions(){
   await setPublicPermissions({
     'devices': [ 'findUserExpoPushToken','update' ], 
   }, publicRole );
+
+  // se necessario pegar a const defaultRole = await strapi.query('plugin::users-permissions.role').findOne({}, []);
+  
 };
 module.exports = {
   /**

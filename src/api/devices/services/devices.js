@@ -13,7 +13,6 @@ module.exports = () => ({
                     expoPushToken: body.expo_push_token,
                 },
               });
-
             return user;
         } catch (error) {
             return error;
