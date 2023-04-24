@@ -37,6 +37,7 @@ email = laranja.secreta@gmail.com
 
 2. Execute o arquivo `deploy.exe` ao clicar no arquivo com o botão direito e `Abrir`:
 
+![image](https://user-images.githubusercontent.com/31159235/234134157-8782839a-4595-4619-9565-477aef97c232.png)
 
 ---
 ## Como executar o projeto localmente
