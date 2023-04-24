@@ -1,7 +1,7 @@
 const request = require('supertest');
 
 describe('Tester para achar o User Expo Push Token', () => {
-  const path = "/api/devices/user/";
+  const path = "/devices/user/";
   const mockUserData = {
     username: "user1",
     email: "testador@strapi.com",

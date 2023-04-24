@@ -1,7 +1,7 @@
 const request = require('supertest');
 
 describe('Teste para alterar o User Expo Push Token', () => {
-  const path = "/api/devices/";
+  const path = "/devices/";
 
   beforeAll(async () => {
     user = await strapi.query('plugin::users-permissions.user').findOne({}, []);
