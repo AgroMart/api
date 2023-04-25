@@ -1,11 +1,3 @@
-/*
-api.post('auth/local/register', {
-        username,
-        password,
-        email,
-      })
-*/ 
-
 const request = require('supertest');
 
 describe('Teste para lidar com registro de usuário', () => {
