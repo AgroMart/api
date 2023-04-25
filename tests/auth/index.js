@@ -1,0 +1,2 @@
+require('./login');
+require('./register');

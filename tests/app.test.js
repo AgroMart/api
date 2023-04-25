@@ -14,4 +14,5 @@ it("strapi is defined", () => {
   expect(strapi).toBeDefined();
 });
 
+require('./auth');
 require('./devices');
