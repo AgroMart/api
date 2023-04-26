@@ -9,11 +9,12 @@ module.exports = () => {
         && !ctx.url.startsWith('/expo-notifications')
         && !ctx.url.startsWith('/plugins')
         && !ctx.url.startsWith('/users-permissions')
-        // && !ctx.url.startsWith('/auth/local')
         && !ctx.url.startsWith('/auth/google')
         && !ctx.url.startsWith('/auth/facebook')
         && !ctx.url.startsWith('/auth/github')
-        && !ctx.url.startsWith('/email')) {
+        && !ctx.url.startsWith('/email')
+        && ctx.url != '/'
+        && ctx.url != '' ) {
       // Redireciona para a mesma URL com o prefixo "/api" adicionado
       ctx.url = `/api${ctx.url}`;
     }
