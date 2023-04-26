@@ -5,5 +5,7 @@
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
-
-module.exports = createCoreController('api::assinante.assinante');
+const modelUid = "api::assinante.assinante"
+module.exports = createCoreController(modelUid,({ strapi })=>({
+    
+}));

@@ -1,5 +1,7 @@
 'use strict';
 
+const customRouter = {
+} 
 /**
  * assinante router
  */
