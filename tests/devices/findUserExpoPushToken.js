@@ -3,10 +3,10 @@ const request = require('supertest');
 describe('Tester para achar o User Expo Push Token', () => {
   const path = "/devices/user/";
   const mockUserData = {
-    username: "user1",
-    email: "testador@strapi.com",
+    username: "userExpo",
+    email: "userExpo@strapi.com",
     provider: "local",
-    password: "1234abc",
+    password: "1234userExpo",
     confirmed: true,
     blocked: null,
     expoPushToken: null
@@ -14,19 +14,22 @@ describe('Tester para achar o User Expo Push Token', () => {
 
   beforeAll(async () => {
     /** Creates a new user an push to database */
-    user = await strapi.plugins['users-permissions'].services.user.add({
-      ...mockUserData
-    });
-
-    jwt = strapi.plugins['users-permissions'].services.jwt.issue({
-      id: user.id,
-    });
+    response = await request(strapi.server.httpServer)
+      .post('/auth/local/register')
+      .send({
+        username: mockUserData.username,
+        password: mockUserData.password,
+        email: mockUserData.email,
+    })
+    user = response.body.user
+    jwt = response.body.jwt
   });
 
   it("Não deve encontrar o device", async () => {
     await request(strapi.server.httpServer)
       .get(path + user.id)
       .set("accept", "application/json")
+      .set("Authorization","Bearer "+jwt)
       .set("Content-Type", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)
@@ -47,6 +50,7 @@ describe('Tester para achar o User Expo Push Token', () => {
     await request(strapi.server.httpServer)
       .get(path + user.id)
       .set("accept", "application/json")
+      .set("Authorization","Bearer "+jwt)
       .set("Content-Type", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)
@@ -62,6 +66,7 @@ describe('Tester para achar o User Expo Push Token', () => {
     await request(strapi.server.httpServer)
       .get(path + 0)
       .set("accept", "application/json")
+      .set("Authorization","Bearer "+jwt)
       .set("Content-Type", "application/json")
       .expect("Content-Type", /json/)
       .expect(400)
@@ -76,6 +81,7 @@ describe('Tester para achar o User Expo Push Token', () => {
     await request(strapi.server.httpServer)
       .get(path)
       .set("accept", "application/json")
+      .set("Authorization","Bearer "+jwt)
       .set("Content-Type", "application/json")
       .expect("Content-Type", /json/)
       .expect(404)
