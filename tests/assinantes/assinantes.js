@@ -37,25 +37,30 @@ describe('Teste para lidar com assinantes', () => {
         };
         await request(strapi.server.httpServer)
             .post(path)
-            .send({data:subscriberBody})
+            .send(subscriberBody)
             .set("accept", "application/json")
             .set("Authorization","Bearer "+jwt)
             .set("Content-Type", "application/json")
             .expect(200)
             .then((data) => {
                 expect(data.body).toBeDefined();
+                expect(data.body.data.id).toBeDefined();
+                expect(data.body.data.attributes).toBeDefined();
             });
-    })/*
+    });
     it("Get assinantes por id", async () => {
         await request(strapi.server.httpServer)
-            .get(path+'?usuario=${'+jwt.id+'}')
+            .get(path+'?usuario=${'+user.id+'}')
+            .set("Authorization","Bearer "+jwt)
             .set("accept", "application/json")
             .set("Content-Type", "application/json")
             .expect(200)
             .then((data) => {
-            expect(data.body).toBeDefined();
+                console.log(data.body)
+                expect(data.body.data).toBeDefined();
             });
     })
+    /*
     it("Get todos assinante", async () => {
         await request(strapi.server.httpServer)
             .get(path+'/')
