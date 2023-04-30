@@ -36,7 +36,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
       .post(path)
       .send({body})
       .set("accept", "application/json")
-      .set("Authorization","Bearer "+jwt)
+      .set("Authorization",`Bearer  ${jwt}`)
       .set("Content-Type", "application/json")
       .expect("Content-Type", /json/)
       .expect(200);
@@ -53,7 +53,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
     await request(strapi.server.httpServer)
       .post(path)
       .set("accept", "application/json")
-      .set("Authorization","Bearer "+jwt)
+      .set("Authorization",`Bearer  ${jwt}`)
       .set("Content-Type", "application/json")
       .expect("Content-Type", /json/)
       .expect(400)
@@ -70,7 +70,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
       .post(path)
       .send({body})
       .set("accept", "application/json")
-      .set("Authorization","Bearer "+jwt)
+      .set("Authorization",`Bearer  ${jwt}`)
       .set("Content-Type", "application/json")
       .expect("Content-Type", /json/)
       .expect(400)
@@ -89,7 +89,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
       .send({body})
       .set("accept", "application/json")
       .set("Content-Type", "application/json")
-      .set("Authorization","Bearer "+jwt)
+      .set("Authorization",`Bearer  ${jwt}`)
       .expect("Content-Type", /json/)
       .expect(400)
       .then((data) => {
@@ -109,7 +109,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
       .put(path + 'pushToken')
       .send({body})
       .set("accept", "application/json")
-      .set("Authorization","Bearer "+jwt)
+      .set("Authorization",`Bearer  ${jwt}`)
       .set("Content-Type", "application/json")
       .expect(200);
 
@@ -133,7 +133,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
       .put(path)
       .send({body})
       .set("accept", "application/json")
-      .set("Authorization","Bearer "+jwt)
+      .set("Authorization",`Bearer  ${jwt}`)
       .set("Content-Type", "application/json")
       .expect(405)
       .then((data) => {
