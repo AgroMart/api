@@ -26,7 +26,8 @@ async function boostrapPermissions(){
   });
   await setAuthenticatedPermissions({
     'devices': [ 'findUserExpoPushToken','update' ],
-    'assinante' : ['create','delete','find','findOne','update'] 
+    'assinante' : ['create','delete','find','findOne','update'],
+    'plano' : ['create','delete','find','findOne','update'],
   }, authenticatedRole );
   // se necessario pegar a const defaultRole = await strapi.query('plugin::users-permissions.role').findOne({}, []);
   
