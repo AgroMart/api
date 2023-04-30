@@ -1,4 +1,5 @@
 const defaultRoute = require('./defaultRoutes');
+const transformObject = require('./transformObject');
 
 module.exports = () => {
     return async (ctx, next) => {
@@ -16,19 +17,21 @@ module.exports = () => {
                 const id = data.id;
                 data = data.attributes;
                 data.id = id;
+                data = transformObject.transformObjectKeys(data)
             }
 
             if(Array.isArray(data)){
                 arr = []
-                for (const item in data){
+                data.forEach(item => {
                     if(item.attributes){
                         const id = item.id;
                         temp = item.attributes;
                         temp.id = id;
-                        arr.push(temp);
+                        arr.push(transformObject.transformObjectKeys(temp));
                     }
-                }
+                })
                 data = arr;
+                console.log(data)
             }
             
             ctx.response.body = data;
