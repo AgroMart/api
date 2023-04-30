@@ -11,4 +11,5 @@ module.exports = [
   'strapi::public',
   'global::apiPrefix',
   'global::wrapBody',
+  'global::transformResponse',
 ];
