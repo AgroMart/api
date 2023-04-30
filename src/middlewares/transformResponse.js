@@ -31,7 +31,6 @@ module.exports = () => {
                     }
                 })
                 data = arr;
-                console.log(data)
             }
             
             ctx.response.body = data;
