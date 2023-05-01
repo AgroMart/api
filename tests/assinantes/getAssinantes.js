@@ -28,8 +28,9 @@ describe('Teste para recuperação de informações de assinantes', () => {
         .post('/lojas')
         .set("Authorization",`Bearer  ${jwt}`)
         .send({
-            nome: 'nome',
-            descricao: 'descricao',
+            nome: 'lojaGetAssinante',
+            descricao: 'loja para o teste de get assinante',
+            endereco: 1,
         })
         loja = lojaResponse.body
 

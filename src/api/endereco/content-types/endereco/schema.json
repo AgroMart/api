@@ -4,7 +4,8 @@
   "info": {
     "singularName": "endereco",
     "pluralName": "enderecos",
-    "displayName": "Endereco"
+    "displayName": "Endereco",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -65,10 +66,11 @@
         "Sud_Oct"
       ]
     },
-    "usuario": {
+    "users": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "endereco"
     }
   }
 }

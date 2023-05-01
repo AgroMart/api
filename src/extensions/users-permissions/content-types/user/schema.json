@@ -65,6 +65,17 @@
     },
     "expoPushToken": {
       "type": "string"
+    },
+    "loja": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::loja.loja"
+    },
+    "endereco": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::endereco.endereco",
+      "mappedBy": "users"
     }
   }
 }

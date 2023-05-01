@@ -10,6 +10,7 @@ function isDefaultRoute(url) {
         && !url.startsWith('/auth/facebook')
         && !url.startsWith('/auth/github')
         && !url.startsWith('/email')
+        && !url.startsWith('/_health')        
         && url != '/'
         && url != '' ){
         return false
