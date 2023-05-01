@@ -2,9 +2,26 @@ const request = require('supertest');
 
 describe('Teste para alterar o User Expo Push Token', () => {
   const path = "/devices/";
+  const mockUserData = {
+    username: "userUpdate",
+    email: "userUpdate@strapi.com",
+    provider: "local",
+    password: "1234userUpdate",
+    confirmed: true,
+    blocked: null,
+    expoPushToken: null
+  };
 
   beforeAll(async () => {
-    user = await strapi.query('plugin::users-permissions.user').findOne({}, []);
+    response = await request(strapi.server.httpServer)
+      .post('/auth/local/register')
+      .send({
+        username: mockUserData.username,
+        password: mockUserData.password,
+        email: mockUserData.email,
+      })
+    user = response.body.user
+    jwt = response.body.jwt
   });
 
   it("Deve adicionar o User Expo Push Token", async () => {
@@ -19,6 +36,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
       .post(path)
       .send({body})
       .set("accept", "application/json")
+      .set("Authorization",`Bearer  ${jwt}`)
       .set("Content-Type", "application/json")
       .expect("Content-Type", /json/)
       .expect(200);
@@ -35,6 +53,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
     await request(strapi.server.httpServer)
       .post(path)
       .set("accept", "application/json")
+      .set("Authorization",`Bearer  ${jwt}`)
       .set("Content-Type", "application/json")
       .expect("Content-Type", /json/)
       .expect(400)
@@ -51,6 +70,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
       .post(path)
       .send({body})
       .set("accept", "application/json")
+      .set("Authorization",`Bearer  ${jwt}`)
       .set("Content-Type", "application/json")
       .expect("Content-Type", /json/)
       .expect(400)
@@ -69,6 +89,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
       .send({body})
       .set("accept", "application/json")
       .set("Content-Type", "application/json")
+      .set("Authorization",`Bearer  ${jwt}`)
       .expect("Content-Type", /json/)
       .expect(400)
       .then((data) => {
@@ -88,6 +109,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
       .put(path + 'pushToken')
       .send({body})
       .set("accept", "application/json")
+      .set("Authorization",`Bearer  ${jwt}`)
       .set("Content-Type", "application/json")
       .expect(200);
 
@@ -111,6 +133,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
       .put(path)
       .send({body})
       .set("accept", "application/json")
+      .set("Authorization",`Bearer  ${jwt}`)
       .set("Content-Type", "application/json")
       .expect(405)
       .then((data) => {
