@@ -37,7 +37,7 @@ describe('Teste para recuperação de informações de assinantes', () => {
         .post('/planos')
         .set("Authorization",`Bearer  ${jwt}`)
         .send({
-            nome: 'nome',
+            nome: 'teste nome',
             descricao: 'descricao',
             valor: 1.0,
             quantidade_de_cestas: 1,
@@ -51,6 +51,16 @@ describe('Teste para recuperação de informações de assinantes', () => {
         .set("Authorization",`Bearer  ${jwt}`)
         .send({
             nome: "Subcription Name",
+            cestas_disponiveis: 0,
+            planos: plano.id,
+            usuario: user.id,
+            loja: loja.id
+        });
+        subscriber = subcriberResponse.body;subcriberResponse = await request(strapi.server.httpServer)
+        .post("/assinantes")
+        .set("Authorization",`Bearer  ${jwt}`)
+        .send({
+            nome: "Other Subcription Name",
             cestas_disponiveis: 0,
             planos: plano.id,
             usuario: user.id,
@@ -77,6 +87,7 @@ describe('Teste para recuperação de informações de assinantes', () => {
                         expect(plano.quantidade_de_cestas).toBeDefined();
                         expect(plano.valor).toBeDefined();
                         expect(plano.nome).toBeDefined();
+                        expect(plano.nome).toBe("teste nome");
                         expect(plano.descricao).toBeDefined();
                         })
                     })
@@ -91,6 +102,7 @@ describe('Teste para recuperação de informações de assinantes', () => {
             .expect(200)
             .then((data) => {
                 expect(data.body).toBeDefined();
+                expect(data.body.length).toBe(2);
                 data.body.forEach(item => {
                     expect(item.id).toBeDefined();
                     expect(item.pular_cesta).toBeDefined();
