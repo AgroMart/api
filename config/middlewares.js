@@ -10,4 +10,6 @@ module.exports = [
   'strapi::favicon',
   'strapi::public',
   'global::apiPrefix',
+  'global::wrapBody',
+  'global::transformResponse',
 ];

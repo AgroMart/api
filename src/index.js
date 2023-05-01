@@ -1,6 +1,6 @@
 'use strict';
 
-async function setPublicPermissions(newPermissions, publicRole) {
+async function setAuthenticatedPermissions(newPermissions, publicRole) {
   const allPermissionsToCreate = [];
   Object.keys(newPermissions).map((controller) => {
     const actions = newPermissions[controller];
@@ -17,17 +17,19 @@ async function setPublicPermissions(newPermissions, publicRole) {
   await Promise.all(allPermissionsToCreate);
 }
 async function boostrapPermissions(){
-  const publicRole = await strapi
+  const authenticatedRole = await strapi
   .query("plugin::users-permissions.role")
   .findOne({
     where: {
-      type: "public",
+      type: "authenticated",
     },
   });
-  await setPublicPermissions({
-    'devices': [ 'findUserExpoPushToken','update' ], 
-  }, publicRole );
-
+  await setAuthenticatedPermissions({
+    'assinante' : ['create','delete','find','findOne','update'],
+    'devices': [ 'findUserExpoPushToken','update' ],
+    'loja' : ['create','delete','find','findOne','update'],
+    'plano' : ['create','delete','find','findOne','update'],
+  }, authenticatedRole );
   // se necessario pegar a const defaultRole = await strapi.query('plugin::users-permissions.role').findOne({}, []);
   
 };
