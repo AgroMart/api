@@ -40,7 +40,6 @@
       "required": true
     },
     "loja": {
-      "type": "relation",
       "relation": "manyToOne",
       "target": "api::loja.loja",
       "inversedBy": "produto_avulsos"

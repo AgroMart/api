@@ -44,6 +44,7 @@
       "type": "biginteger"
     },
     "endereco": {
+
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::endereco.endereco"

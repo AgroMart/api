@@ -40,6 +40,10 @@
       "relation": "manyToMany",
       "target": "api::loja.loja",
       "inversedBy": "assinantes"
+<<<<<<< HEAD
     }
+=======
+    },
+>>>>>>> ac1739748beabd4bb817d0e5c2733e011b768f01
   }
 }
