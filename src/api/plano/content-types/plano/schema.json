@@ -4,7 +4,8 @@
   "info": {
     "singularName": "plano",
     "pluralName": "planos",
-    "displayName": "Plano"
+    "displayName": "Plano",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -30,24 +31,25 @@
     "quantidade": {
       "type": "integer"
     },
-    "lojas": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::loja.loja",
-      "inversedBy": "planos"
-    },
     "imagem": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "assinantes": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::assinante.assinante",
       "mappedBy": "planos"
+    },
+    "lojas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::loja.loja",
+      "inversedBy": "planos"
     }
   }
 }

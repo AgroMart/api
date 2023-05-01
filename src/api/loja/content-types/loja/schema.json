@@ -4,7 +4,8 @@
   "info": {
     "singularName": "loja",
     "pluralName": "lojas",
-    "displayName": "Loja"
+    "displayName": "Loja",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,17 +20,15 @@
       "default": "Descrição"
     },
     "banner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
-    },
-    "endereco": {
-      "type": "string"
+      ]
     },
     "tipos_de_entrega": {
       "type": "enumeration",
@@ -44,11 +43,10 @@
     "cnpj": {
       "type": "biginteger"
     },
-    "produto_avulsos": {
+    "endereco": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::produto-avulso.produto-avulso",
-      "mappedBy": "loja"
+      "relation": "oneToOne",
+      "target": "api::endereco.endereco"
     },
     "cestas": {
       "type": "relation",
@@ -67,6 +65,12 @@
       "relation": "manyToMany",
       "target": "api::assinante.assinante",
       "mappedBy": "lojas"
+    },
+    "produto_avulsos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::produto-avulso.produto-avulso",
+      "mappedBy": "loja"
     }
   }
 }
