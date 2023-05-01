@@ -1,2 +1,2 @@
-require('./register');
 require('./getAssinantes')
+require('./register');

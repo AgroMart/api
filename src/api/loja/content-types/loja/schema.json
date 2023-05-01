@@ -11,14 +11,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Nome": {
+    "nome": {
       "type": "string"
     },
-    "Descricao": {
+    "descricao": {
       "type": "text",
       "default": "Descrição"
     },
-    "Banner": {
+    "banner": {
       "allowedTypes": [
         "images",
         "files",
@@ -28,20 +28,20 @@
       "type": "media",
       "multiple": false
     },
-    "Endereco": {
+    "endereco": {
       "type": "string"
     },
-    "Tipos_de_entrega": {
+    "tipos_de_entrega": {
       "type": "enumeration",
       "enum": [
         "Entregar",
         "Receber"
       ]
     },
-    "Contato": {
+    "contato": {
       "type": "biginteger"
     },
-    "CNPJ": {
+    "cnpj": {
       "type": "biginteger"
     },
     "produto_avulsos": {

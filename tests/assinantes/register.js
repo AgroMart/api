@@ -22,7 +22,16 @@ describe('Testes para registros de assinantes', () => {
         user = response.body.user
         jwt = response.body.jwt
 
-        response = await request(strapi.server.httpServer)
+        lojaResponse = await request(strapi.server.httpServer)
+        .post('/lojas')
+        .set("Authorization",`Bearer  ${jwt}`)
+        .send({
+            nome: 'nome',
+            descricao: 'descricao',
+        })
+        loja = lojaResponse.body
+
+        planoResponse = await request(strapi.server.httpServer)
         .post('/planos')
         .set("Authorization",`Bearer  ${jwt}`)
         .send({
@@ -31,8 +40,9 @@ describe('Testes para registros de assinantes', () => {
             valor: 1.0,
             quantidade_de_cestas: 1,
             quantidade: 1,
+            lojas: loja.id
         })
-        plano = response.body
+        plano = planoResponse.body
     });
 
     it("Criação de assinantes", async () => {
@@ -41,7 +51,7 @@ describe('Testes para registros de assinantes', () => {
             cestas_disponiveis: 0,
             planos: plano.id,
             usuario: user.id,
-            loja: 1
+            loja: loja.id
         };
         await request(strapi.server.httpServer)
             .post(path)
