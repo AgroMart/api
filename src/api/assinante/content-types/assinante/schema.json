@@ -4,7 +4,8 @@
   "info": {
     "singularName": "assinante",
     "pluralName": "assinantes",
-    "displayName": "Assinante"
+    "displayName": "Assinante",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,12 +24,6 @@
       "default": false,
       "required": true
     },
-    "lojas": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::loja.loja",
-      "inversedBy": "assinantes"
-    },
     "planos": {
       "type": "relation",
       "relation": "manyToMany",
@@ -39,6 +34,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
-    }
+    },
+    "lojas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::loja.loja",
+      "inversedBy": "assinantes"
+    },
   }
 }

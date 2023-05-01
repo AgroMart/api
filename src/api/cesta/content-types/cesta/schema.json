@@ -4,7 +4,8 @@
   "info": {
     "singularName": "cesta",
     "pluralName": "cestas",
-    "displayName": "Cesta"
+    "displayName": "Cesta",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,18 +24,19 @@
       "type": "text",
       "required": true
     },
+    "imagem": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "loja": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::loja.loja",
       "inversedBy": "cestas"
-    },
-    "imagem": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": true
     }
   }
 }

@@ -18,3 +18,4 @@ require('./assinantes');
 require('./auth');
 require('./devices');
 require('./enderecos');
+require('./lojas');
