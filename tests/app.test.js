@@ -20,4 +20,5 @@ require('./cestas');
 require('./devices');
 require('./enderecos');
 require('./lojas');
+require('./planos');
 require('./produtos-avulsos');
