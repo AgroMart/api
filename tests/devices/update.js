@@ -121,7 +121,7 @@ describe('Teste para alterar o User Expo Push Token', () => {
     expect(body.expo_push_token).toBe(expoPushToken.expoPushToken);
   });
 
-  it("Não deve atualizar o User Expo Push Token com caminho errrado", async () => {
+  it("Não deve atualizar o User Expo Push Token com caminho errado", async () => {
     const body = {
         platform: 'Platform.OS',
         model: 'Device.modelName',

@@ -3,7 +3,7 @@
   "collectionName": "produto_avulsos",
   "info": {
     "singularName": "produto-avulso",
-    "pluralName": "produto-avulsos",
+    "pluralName": "produtos-avulsos",
     "displayName": "Produto Avulso",
     "description": ""
   },
