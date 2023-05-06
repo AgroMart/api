@@ -19,3 +19,4 @@ require('./auth');
 require('./devices');
 require('./enderecos');
 require('./lojas');
+require('./produtos-avulsos');
