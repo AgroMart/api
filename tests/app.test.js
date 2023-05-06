@@ -16,6 +16,7 @@ it("strapi is defined", () => {
 
 require('./assinantes');
 require('./auth');
+require('./cestas');
 require('./devices');
 require('./enderecos');
 require('./lojas');

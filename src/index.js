@@ -26,6 +26,7 @@ async function boostrapPermissions(){
   });
   await setAuthenticatedPermissions({
     'assinante' : ['create','delete','find','findOne','update'],
+    'cesta' : ['create','delete','find','findOne','update'],
     'devices': [ 'findUserExpoPushToken','update' ],
     'endereco' : ['create','delete','find','findOne','update'],
     'loja' : ['create','delete','find','findOne','update'],
