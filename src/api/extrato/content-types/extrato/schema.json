@@ -11,7 +11,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "users_permissions_user": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
@@ -39,8 +39,7 @@
       "enum": [
         "Receber",
         "Buscar"
-      ],
-      "required": true
+      ]
     },
     "pagamento_realizado": {
       "type": "boolean",
