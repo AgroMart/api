@@ -19,5 +19,6 @@ require('./auth');
 require('./cestas');
 require('./devices');
 require('./enderecos');
+require('./extratoes');
 require('./lojas');
 require('./produtos-avulsos');

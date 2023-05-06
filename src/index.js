@@ -29,6 +29,7 @@ async function boostrapPermissions(){
     'cesta' : ['create','delete','find','findOne','update'],
     'devices': [ 'findUserExpoPushToken','update' ],
     'endereco' : ['create','delete','find','findOne','update'],
+    'extrato' : ['create','delete','find','findOne','update'],
     'loja' : ['create','delete','find','findOne','update'],
     'plano' : ['create','delete','find','findOne','update'],
     'produto-avulso' : ['create','delete','find','findOne','update'],
