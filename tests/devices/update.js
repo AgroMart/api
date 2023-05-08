@@ -2,28 +2,7 @@ const request = require('supertest');
 
 describe('Teste para alterar o User Expo Push Token', () => {
   const path = "/devices/";
-  const mockUserData = {
-    username: "userUpdate",
-    email: "userUpdate@strapi.com",
-    provider: "local",
-    password: "1234userUpdate",
-    confirmed: true,
-    blocked: null,
-    expoPushToken: null
-  };
-
-  beforeAll(async () => {
-    response = await request(strapi.server.httpServer)
-      .post('/auth/local/register')
-      .send({
-        username: mockUserData.username,
-        password: mockUserData.password,
-        email: mockUserData.email,
-      })
-    user = response.body.user
-    jwt = response.body.jwt
-  });
-
+  
   it("Deve adicionar o User Expo Push Token", async () => {
     const body = {
         platform: 'Platform.OS',

@@ -2,27 +2,6 @@ const request = require('supertest');
 
 describe('Teste para lidar com enderecos', () => {
     const path = "/enderecos";
-    const mockUserData = {
-        username: "userenderecos",
-        email: "userenderecos@strapi.com",
-        provider: "local",
-        password: "1234userenderecos",
-        confirmed: true,
-        blocked: null,
-        expoPushToken: null
-    };
-    
-    beforeAll(async () => {
-        response = await request(strapi.server.httpServer)
-        .post('/auth/local/register')
-        .send({
-            username: mockUserData.username,
-            password: mockUserData.password,
-            email: mockUserData.email,
-        })
-        user = response.body.user
-        jwt = response.body.jwt
-    });
 
     it("Criação de endereco", async () => {
         const mockBody = {

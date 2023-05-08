@@ -1,5 +1,5 @@
-const defaultRoute = require('./defaultRoutes');
-const transformObject = require('./transformObject');
+const defaultRoute = require('./helpers/defaultRoutes');
+const transformObject = require('./helpers/transformObject');
 
 module.exports = () => {
     return async (ctx, next) => {
@@ -18,9 +18,7 @@ module.exports = () => {
                 data = data.attributes;
                 data.id = id;
                 data = transformObject.transformObjectKeys(data)
-            }
-
-            if(Array.isArray(data)){
+            } else if(Array.isArray(data)){
                 arr = []
                 data.forEach(item => {
                     if(item.attributes){

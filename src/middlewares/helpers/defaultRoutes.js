@@ -1,6 +1,6 @@
 function isDefaultRoute(url) {
     if (!url.startsWith('/admin')
-        && !url.startsWith('/i18n/locales')
+        && !url.startsWith('/i18n')
         && !url.startsWith('/content')
         && !url.startsWith('/upload')
         && !url.startsWith('/expo-notifications')

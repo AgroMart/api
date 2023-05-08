@@ -1,4 +1,4 @@
-const defaultRoute = require('./defaultRoutes');
+const defaultRoute = require('./helpers/defaultRoutes');
 
 module.exports = () => {
   return async (ctx, next) => {

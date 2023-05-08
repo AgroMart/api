@@ -2,21 +2,9 @@ const request = require('supertest');
 
 describe('Testes de produtos', () => {
     const path = "/produtos-avulsos";
-    const mockUserData = {
-        username: "userregister",
-        email: "userregister@strapi.com",
-        password: "1234userregister"
-      };
+    
     beforeAll(async () => {
         response = await request(strapi.server.httpServer)
-            .post('/auth/local')
-            .send({
-                identifier: mockUserData.email,
-                password: mockUserData.password});
-        user = response.body.user
-        jwt = response.body.jwt
-
-        await request(strapi.server.httpServer)
         .post('/lojas')
         .set("Authorization",`Bearer  ${jwt}`)
         .send({
