@@ -2,25 +2,8 @@ const request = require('supertest');
 
 describe('Testes coletar Lojas', () => {
     const path = "/lojas";
-    const mockUserData = {
-        username: "userlojas",
-        email: "userlojas@strapi.com",
-        provider: "local",
-        password: "1234userlojas",
-        confirmed: true,
-        blocked: null,
-        expoPushToken: null
-      };
+    
     beforeAll(async () => {
-        response = await request(strapi.server.httpServer)
-        .post('/auth/local/register')
-        .send({
-            username: mockUserData.username,
-            password: mockUserData.password,
-            email: mockUserData.email,
-        })
-        user = response.body.user
-        jwt = response.body.jwt
 
         await request(strapi.server.httpServer)
         .post('/lojas')

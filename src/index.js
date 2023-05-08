@@ -36,6 +36,12 @@ async function boostrapPermissions(){
   }, authenticatedRole );
   // se necessario pegar a const defaultRole = await strapi.query('plugin::users-permissions.role').findOne({}, []);
   
+  await strapi.query("plugin::users-permissions.permission").create({
+    data: {
+      action: `plugin::users-permissions.user.update`,
+      role: authenticatedRole.id,
+    },
+  });
 };
 module.exports = {
   /**

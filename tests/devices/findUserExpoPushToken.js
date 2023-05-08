@@ -12,19 +12,6 @@ describe('Tester para achar o User Expo Push Token', () => {
     expoPushToken: null
   };
 
-  beforeAll(async () => {
-    /** Creates a new user an push to database */
-    response = await request(strapi.server.httpServer)
-      .post('/auth/local/register')
-      .send({
-        username: mockUserData.username,
-        password: mockUserData.password,
-        email: mockUserData.email,
-    })
-    user = response.body.user
-    jwt = response.body.jwt
-  });
-
   it("Não deve encontrar o device", async () => {
     await request(strapi.server.httpServer)
       .get(path + user.id)
