@@ -55,4 +55,22 @@ describe('Testes para registros de extratos e produtos', () => {
                 expect(data.body.id).toBeDefined();
             });
     });
+
+    it("Coleta de extratoes", async () => {      
+        await request(strapi.server.httpServer)
+            .get(`${path}?user=${user.id}`)
+            .set("accept", "application/json")
+            .set("Authorization",`Bearer  ${jwt}`)
+            .set("Content-Type", "application/json")
+            .expect(200)
+            .then((data) => {
+                expect(data.body).toBeDefined();
+                data.body.forEach(item => {
+                    expect(item.loja.nome).toBeDefined();
+                    expect(item.valor).toBeDefined();
+                    expect(item.pagamento_realizado).toBeDefined();
+                    expect(item.created_at).toBeDefined();
+                })
+            });
+    });
 });

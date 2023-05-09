@@ -2,18 +2,6 @@ const request = require('supertest');
 
 describe('Testes coletar Lojas', () => {
     const path = "/lojas";
-    
-    beforeAll(async () => {
-
-        await request(strapi.server.httpServer)
-        .post('/lojas')
-        .set("Authorization",`Bearer  ${jwt}`)
-        .send({
-            nome: 'lojaLoja',
-            descricao: 'loja para o teste de coletar lojas',
-            endereco: 1,
-        })
-    });
 
     it("Coleta lojas", async () => {
         await request(strapi.server.httpServer)
