@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { setupStrapi, cleanupStrapi } = require("./helpers/strapi");
+const { setupStrapi, cleanupStrapi, destroyStrapi } = require("./helpers/strapi");
 const { getUser, getJWT, setupUser } = require("./helpers/user");
 
 jest.setTimeout(150000);
@@ -12,6 +12,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await cleanupStrapi();
+  await destroyStrapi();
 });
 
 it("strapi is defined", () => {
@@ -25,5 +26,6 @@ require('./devices');
 require('./enderecos');
 require('./extratoes');
 require('./lojas');
+require('./notificacoes');
 require('./planos');
 require('./produtos-avulsos');

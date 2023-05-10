@@ -5,13 +5,28 @@ describe('Testes para registros de extratos e produtos', () => {
     
     beforeAll(async () => {
 
+        enderecoResponse = await request(strapi.server.httpServer)
+        .post( "/enderecos")
+        .set("Authorization",`Bearer  ${jwt}`)
+        .send({
+            cidade: 'cidade2',
+            numero: 2,
+            complemento: 'complemento2',
+            rua: 'rua2',
+            cep: 'cep2',
+            bairro: "Gama",
+            user: user.id,
+        })
+
+        endereco = enderecoResponse.body
+
         lojaResponse = await request(strapi.server.httpServer)
         .post('/lojas')
         .set("Authorization",`Bearer  ${jwt}`)
         .send({
-            nome: 'lojaRegisterAssinante',
-            descricao: 'loja para o teste de registrar assinante',
-            endereco: 1,
+            nome: 'lojaExtrato',
+            descricao: 'loja para o teste de registrar extrato',
+            endereco: endereco.id,
         })
         loja = lojaResponse.body
     });

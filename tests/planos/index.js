@@ -5,23 +5,31 @@ describe('Testes de planos', () => {
     
     beforeAll(async () => {
 
-        await request(strapi.server.httpServer)
+        response = await request(strapi.server.httpServer)
+        .post( "/enderecos")
+        .set("Authorization",`Bearer  ${jwt}`)
+        .send({
+            cidade: 'cidade3',
+            numero: 3,
+            complemento: 'complemento3',
+            rua: 'rua3',
+            cep: 'cep3',
+            bairro: "Gama",
+            user: user.id,
+        })
+
+        endereco = response.body
+
+        response = await request(strapi.server.httpServer)
         .post('/lojas')
         .set("Authorization",`Bearer  ${jwt}`)
         .send({
             nome: 'lojaLoja',
             descricao: 'loja para o teste de produtos',
-            endereco: 1,
+            endereco: endereco.id,
         });
 
         loja = response.body
-        subscriberBody = {
-            nome: user.username,
-            cestas_disponiveis: 0,
-            planos: plano.id,
-            usuario: user.id,
-            loja: loja.id
-        };
 
         response = await request(strapi.server.httpServer)
             .post( "/assinantes") 
