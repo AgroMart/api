@@ -2,7 +2,19 @@ const request = require('supertest');
 
 describe('Testes coletar notificacoes', () => {
     const path = "/notificacoes";
-    
+
+    beforeAll(async () => {
+        data = {
+            title: "Título da notificação",
+            subtitle: "Corpo da notificação",
+            data: { foo: "bar" },
+            receivers: ["ExponentPushToken[xxxxxx]", "ExponentPushToken[yyyyyy]"]
+        }
+        await strapi.entityService.create(
+            "plugin::expo-notifications.exponotification",
+            { data: data }
+          );
+    });
 
     it("Coleta notificacoes", async () => {
         await request(strapi.server.httpServer)
@@ -12,13 +24,12 @@ describe('Testes coletar notificacoes', () => {
             .set("Content-Type", "application/json")
             .expect(200)
             .then((data) => {
-                console.log(data.body)
-            //     expect(data.body).toBeDefined();
-            //     data.body.forEach(item => {
-            //         expect(item.index).toBeDefined();
-            //         expect(item.title).toBeDefined();
-            //         expect(item.body_text).toBeDefined();
-            // });
+                expect(data.body).toBeDefined();
+                data.body.forEach(item => {
+                    expect(item.index).toBeDefined();
+                    expect(item.title).toBeDefined();
+                    expect(item.body_text).toBeDefined();
+            });
         });
     });
 });

@@ -5,15 +5,17 @@
  */
 
 "use strict";
-const { sanitizeEntity } = require("strapi-utils");
-
 module.exports = () => ({
     find: async () => {
         try {
-            const notifications = await strapi.services.notification.find();
-            console.log(notifications);
+            const notifications = await strapi.entityService.findMany("plugin::expo-notifications.exponotification");
+
             return notifications.map((notification) =>
-              sanitizeEntity(notification, strapi.models.notification)
+              ({
+                index: notification.id,
+                title: notification.id,
+                body_text: notification.subtitle
+              })
             );
         } catch (error) {
             return error;
