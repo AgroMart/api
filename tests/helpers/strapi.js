@@ -32,12 +32,15 @@ const cleanupStrapi = async () => {
 
     await clearTableQuery;
   }
+};
 
+async function destroyStrapi() {
   await strapi.server.httpServer.close();
   strapi.db.connection.destroy();
 
   // Disconnect from the Strapi app
   await strapi.destroy();
-};
+}
 
-module.exports = { setupStrapi, cleanupStrapi };
+
+module.exports = { setupStrapi, cleanupStrapi, destroyStrapi };

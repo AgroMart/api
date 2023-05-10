@@ -31,6 +31,7 @@ async function boostrapPermissions(){
     'endereco' : ['create','delete','find','findOne','update'],
     'extrato' : ['create','delete','find','findOne','update'],
     'loja' : ['create','delete','find','findOne','update'],
+    'notificacao' : ['find'],
     'plano' : ['create','delete','find','findOne','update'],
     'produto-avulso' : ['create','delete','find','findOne','update'],
   }, authenticatedRole );
