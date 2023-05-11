@@ -25,7 +25,8 @@
   },
   "engines": {
     "node": "18.x.x",
-    "npm": "8.x"
+    "npm": "8.x",
+    "yarn": "1.22.x"
   },
   "license": "MIT",
   "devDependencies": {
