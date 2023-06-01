@@ -13,13 +13,19 @@ module.exports = {
     },
     pluginOptions: {
       'content-manager': {
-        visible: false,
+        visible: true,
       },
       'content-type-builder': {
         visible: false,
       }
     },
     attributes: {
+      nome: {
+        type: 'string',
+        min: 1,
+        max: 50,
+        configurable: false,
+      },
       client_id: {
         type: 'string',
         min: 1,
@@ -30,6 +36,11 @@ module.exports = {
         type: 'string',
         min: 1,
         max: 50,
+        configurable: false,
+      },
+      ativado: {
+        type: "boolean",
+        default: false,
         configurable: false,
       },
     }
