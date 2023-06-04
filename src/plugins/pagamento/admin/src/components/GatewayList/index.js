@@ -25,10 +25,10 @@ const GatewayList = ({gatewayList}) => {
   }
 
   const toggleGatewayPage = (item) => {
-    if(!item.ativado){
+    if(item.ativado == false){
       routeChange(`/plugins/${pluginId}/gateway/${item.id}`);
     } else {
-      item.ativado = !item.ativado;
+      item.ativado = false;
     }
   };
 

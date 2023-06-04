@@ -19,7 +19,7 @@ import './index.css'
 
 
 import gatewayRequests from '../../api/gateway';
-const PayPall = ({gateway}) => {
+const GatewayEdit = ({gateway}) => {
   console.log(gateway)
 
   const [client_id, setClientID] = useState(gateway.client_id);
@@ -73,4 +73,4 @@ const PayPall = ({gateway}) => {
   );
 };
 
-export default PayPall;
+export default GatewayEdit;

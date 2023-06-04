@@ -13,7 +13,7 @@ import { Link } from '@strapi/design-system/Link';
 import ArrowLeft from '@strapi/icons/ArrowLeft';
 import { LoadingIndicatorPage } from '@strapi/helper-plugin';
 
-import PayPall from '../../components/PayPall';
+import GatewayEdit from '../../components/GatewayEdit';
 import gatewayRequests from '../../api/gateway';
 import pluginId from '../../pluginId';
 
@@ -35,10 +35,10 @@ const GatewayPage = () => {
   if (isLoading) return <LoadingIndicatorPage />;
 
   let Form;
-  if(gateway.nome == "PayPall"){
-    Form = <PayPall gateway={gateway}/>
-  } else{
+  if(gateway.nome == "PagSeguro"){
     Form = <p>Todo</p>
+  } else{
+    Form = <GatewayEdit gateway={gateway}/>
   }
 
   return (
