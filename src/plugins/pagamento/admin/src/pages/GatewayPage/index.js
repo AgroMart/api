@@ -14,6 +14,7 @@ import ArrowLeft from '@strapi/icons/ArrowLeft';
 import { LoadingIndicatorPage } from '@strapi/helper-plugin';
 
 import GatewayEdit from '../../components/GatewayEdit';
+import PagSeguro from '../../components/PagSeguro';
 import gatewayRequests from '../../api/gateway';
 import pluginId from '../../pluginId';
 
@@ -36,7 +37,7 @@ const GatewayPage = () => {
 
   let Form;
   if(gateway.nome == "PagSeguro"){
-    Form = <p>Todo</p>
+    Form = <PagSeguro gateway={gateway}/>
   } else{
     Form = <GatewayEdit gateway={gateway}/>
   }

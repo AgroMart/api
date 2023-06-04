@@ -38,6 +38,12 @@ module.exports = {
         max: 50,
         configurable: false,
       },
+      token: {
+        type: 'string',
+        min: 32,
+        max: 32,
+        configurable: false,
+      },
       ativado: {
         type: "boolean",
         default: false,
