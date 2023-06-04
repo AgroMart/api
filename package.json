@@ -20,7 +20,8 @@
     "@strapi/plugin-users-permissions": "4.6.2",
     "@strapi/strapi": "4.6.2",
     "@surunnuage/strapi-plugin-expo-notifications": "^1.0.7",
-    "pg": "^8.9.0"
+    "pg": "^8.9.0",
+    "": "./src/plugins/"
   },
   "author": {
     "name": "A Strapi developer"
