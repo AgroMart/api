@@ -25,6 +25,7 @@ require('./cestas');
 require('./devices');
 require('./enderecos');
 require('./extratoes');
+require('./gateway');
 require('./lojas');
 require('./notificacoes');
 require('./planos');
