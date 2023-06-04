@@ -1,7 +1,7 @@
 {
   "name": "pagamento",
   "version": "0.0.0",
-  "description": "Esse plugin tem como objetivo gerenciar o pagamento, gateways de pagamento e faturas de uma CSA",
+  "description": "Esse plugin tem como objetivo gerenciar as formas de pagamento de uma CSA",
   "strapi": {
     "name": "Pagamento",
     "description": "Esse plugin tem como objetivo gerenciar o pagamento, gateways de pagamento e faturas de uma CSA",

@@ -13,11 +13,11 @@ import { Table, Thead, Tbody, Tr, Td, Th, TFooter } from '@strapi/design-system'
 import { ToggleInput } from '@strapi/design-system';
 import { Plus } from '@strapi/icons';
 
+import gatewayRequests from '../../api/gateway';
 import pluginId from '../../pluginId';
 
 
 const GatewayList = ({gatewayList}) => {
-
   const history = useHistory();
 
   const routeChange = (path) =>{ 
@@ -29,6 +29,8 @@ const GatewayList = ({gatewayList}) => {
       routeChange(`/plugins/${pluginId}/gateway/${item.id}`);
     } else {
       item.ativado = false;
+      gatewayRequests.updateGateway(item.id, item);
+      routeChange(`/plugins/${pluginId}`);
     }
   };
 

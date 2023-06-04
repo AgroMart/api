@@ -46,7 +46,7 @@ const GatewayPage = () => {
     <>
       <BaseHeaderLayout
         title={pluginId.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
-        subtitle="Página de edição para ativação de um plugin"
+        subtitle="Página de edição para ativação de um modo de pagamento"
         as="h2"
         navigationAction={
           <Link startIcon={<ArrowLeft />} to="/plugins/pagamento/">
