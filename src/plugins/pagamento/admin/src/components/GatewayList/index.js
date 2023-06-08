@@ -12,6 +12,7 @@ import { Box } from '@strapi/design-system';
 import { Table, Thead, Tbody, Tr, Td, Th, TFooter } from '@strapi/design-system';
 import { ToggleInput } from '@strapi/design-system';
 import { Plus } from '@strapi/icons';
+import { Link } from '@strapi/design-system/v2';
 
 import gatewayRequests from '../../api/gateway';
 import pluginId from '../../pluginId';

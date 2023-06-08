@@ -34,5 +34,14 @@ module.exports = {
         auth: false,
       },
     },
+    {
+      method: 'POST',
+      path: '/gateway',
+      handler: 'gateway.create',
+      config: {
+        policies: [],
+        auth: false,
+      },
+    },
   ],
 };

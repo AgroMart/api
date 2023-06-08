@@ -1,6 +1,6 @@
 /*
  *
- * PayPall
+ * GatewayCustom
  *
  */
 
@@ -10,7 +10,6 @@ import { useHistory } from "react-router-dom";
 
 import { Grid, GridItem } from '@strapi/design-system';
 import { Box } from '@strapi/design-system';
-import { Typography } from '@strapi/design-system';
 import { Field, FieldLabel, FieldInput } from '@strapi/design-system';
 import { Button } from '@strapi/design-system';
 
@@ -37,6 +36,7 @@ const GatewayCustom = ({gateway}) => {
     gateway['token'] = token;
     gateway['pagamento_url'] = true;
     gateway['pagamento_method'] = pagamento_method;
+    gateway['ativado'] = true;
     if (gateway.id >= 0){
       gatewayRequests.updateGateway(gateway.id, gateway).then(res => {
         routeChange(`/plugins/${pluginId}`);

@@ -1,6 +1,6 @@
 /*
  *
- * PayPall
+ * GatewayEdit
  *
  */
 
