@@ -24,7 +24,7 @@ const GatewayList = ({gatewayList}) => {
     history.push(path);
   }
 
-  const toggleGatewayPage = (item) => {
+  const toggleGatewayUpdate = (item) => {
     if(item.ativado == false){
       routeChange(`/plugins/${pluginId}/gateway/${item.id}`);
     } else {
@@ -36,7 +36,9 @@ const GatewayList = ({gatewayList}) => {
 
   return (
     <Box padding={8} background="neutral100">
-      <Table footer={<TFooter icon={<Plus />}>Adicione um novo Gateway</TFooter>}>
+      <Table footer={<Link href={`/plugins/${pluginId}/gateway/create`} >
+                      <TFooter icon={<Plus />}> Adicione um novo Gateway</TFooter>
+                    </Link>}>
         <Thead>
           <Tr>
             <Th>Nome</Th>
@@ -48,7 +50,7 @@ const GatewayList = ({gatewayList}) => {
             <Tr key={index}>
               <Td>{item.nome}</Td>
               <Td>
-                <ToggleInput onLabel="Ativado" offLabel="Desativado" checked={item.ativado} onChange={() => toggleGatewayPage(item)}/>
+                <ToggleInput onLabel="Ativado" offLabel="Desativado" checked={item.ativado} onChange={() => toggleGatewayUpdate(item)}/>
               </Td>
             </Tr>
             ))}

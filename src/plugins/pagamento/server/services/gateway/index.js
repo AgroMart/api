@@ -22,4 +22,14 @@ module.exports = ({ strapi }) => ({
         return error;
     }
   },
+  create: async (body) => {
+    try {
+        const gateway = await strapi.db.query('plugin::pagamento.gateway').create({
+            data: body,
+          });
+        return gateway;
+    } catch (error) {
+        return error;
+    }
+  },
 });

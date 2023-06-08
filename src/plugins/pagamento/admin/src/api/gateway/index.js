@@ -14,5 +14,10 @@ const gatewayRequests = {
     const data = await axiosInstance.put(`/pagamento/gateway/${id}`, send);
     return data;
   },
+  createGateway: async (body) => {
+    let send = JSON.stringify(body);
+    const data = await axiosInstance.post(`/pagamento/gateway/`, send);
+    return data;
+  },
 };
 export default gatewayRequests;

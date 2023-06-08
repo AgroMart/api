@@ -45,9 +45,26 @@ module.exports = {
         configurable: false,
       },
       ativado: {
-        type: "boolean",
+        type: 'boolean',
         default: false,
         configurable: false,
       },
+      email: {
+        type: 'email',
+        minLength: 6,
+        configurable: false,
+      },
+      pagamento_url: {
+        type: 'string',
+        min: 1,
+        max: 200,
+        configurable: false,
+      },
+      pagamento_method: {
+        type: 'string',
+        min: 1,
+        max: 6,
+        configurable: false,
+      }
     }
   };

@@ -1,6 +1,6 @@
 /*
  *
- * GatewayPage
+ * GatewayUpdate
  *
  */
 
@@ -13,12 +13,13 @@ import { Link } from '@strapi/design-system/Link';
 import ArrowLeft from '@strapi/icons/ArrowLeft';
 import { LoadingIndicatorPage } from '@strapi/helper-plugin';
 
+import GatewayCustom from '../../components/GatewayCustom';
 import GatewayEdit from '../../components/GatewayEdit';
 import PagSeguro from '../../components/PagSeguro';
 import gatewayRequests from '../../api/gateway';
 import pluginId from '../../pluginId';
 
-const GatewayPage = () => {
+const GatewayUpdate = () => {
   const { id } = useParams();
 
   const { formatMessage } = useIntl();
@@ -38,8 +39,10 @@ const GatewayPage = () => {
   let Form;
   if(gateway.nome == "PagSeguro"){
     Form = <PagSeguro gateway={gateway}/>
-  } else{
+  } else if (gateway.nome == "MercadoPago" || gateway.nome == "PayPall" ) {
     Form = <GatewayEdit gateway={gateway}/>
+  } else {
+    Form = <GatewayCustom gateway={gateway}/>
   }
 
   return (
@@ -63,4 +66,4 @@ const GatewayPage = () => {
   );
 };
 
-export default memo(GatewayPage);
+export default memo(GatewayUpdate);

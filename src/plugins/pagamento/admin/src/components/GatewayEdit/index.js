@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 
 import { useHistory } from "react-router-dom";
 
+import { Alert } from '@strapi/design-system';
 import { Grid, GridItem } from '@strapi/design-system';
 import { Box } from '@strapi/design-system';
 import { Typography } from '@strapi/design-system';
@@ -20,10 +21,11 @@ import './index.css'
 
 import gatewayRequests from '../../api/gateway';
 const GatewayEdit = ({gateway}) => {
-  console.log(gateway)
-
   const [client_id, setClientID] = useState(gateway.client_id);
   const [client_secret, setClientSecret] = useState(gateway.client_secret);
+
+  const [error, setError] = useState('');
+  const [visible, setVisible] = useState(false);
 
   const history = useHistory();
 
@@ -38,11 +40,17 @@ const GatewayEdit = ({gateway}) => {
     gateway['ativado'] = true;
     gatewayRequests.updateGateway(gateway.id, gateway).then(res => {
       routeChange(`/plugins/${pluginId}`);
+    }).catch(function (error) {
+      setVisible(true);
+      setError(error);
     });
   }
 
   return (
     <Box padding={8} background="neutral100" max>
+      {visible ? <Alert title="Error ao editar valores!" variant="danger">
+        {error}
+      </Alert> : null}
       <Box padding={4} >
         <Typography variant="alpha">{gateway.nome}</Typography>
       </Box>
