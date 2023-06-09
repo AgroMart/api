@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lojas",
+  "info": {
+    "singularName": "loja",
+    "pluralName": "lojas",
+    "displayName": "Loja",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "text",
+      "default": "Descrição"
+    },
+    "banner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "tipos_de_entrega": {
+      "type": "enumeration",
+      "enum": [
+        "Entregar",
+        "Receber"
+      ]
+    },
+    "contato": {
+      "type": "biginteger"
+    },
+    "cnpj": {
+      "type": "biginteger"
+    },
+    "endereco": {
+
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::endereco.endereco"
+    },
+    "cestas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cesta.cesta",
+      "mappedBy": "loja"
+    },
+    "planos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::plano.plano",
+      "mappedBy": "lojas"
+    },
+    "assinantes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::assinante.assinante",
+      "mappedBy": "lojas"
+    },
+    "produto_avulsos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::produto-avulso.produto-avulso",
+      "mappedBy": "loja"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "assinantes",
+  "info": {
+    "singularName": "assinante",
+    "pluralName": "assinantes",
+    "displayName": "Assinante",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "cestas_disponiveis": {
+      "type": "integer"
+    },
+    "pular_cesta": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "planos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::plano.plano",
+      "inversedBy": "assinantes"
+    },
+    "usuario": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "lojas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::loja.loja",
+      "inversedBy": "assinantes"
+    }
+  }
+}

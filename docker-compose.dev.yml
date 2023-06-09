@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  agromart_db_service_test:
+    container_name: agromart_db_container_test
+    restart: always
+    image: postgres
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}-test
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - '5432:5432'
+    volumes:
+      - ../data:/var/lib/postgresql/test
