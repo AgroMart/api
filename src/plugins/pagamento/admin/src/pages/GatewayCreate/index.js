@@ -18,7 +18,7 @@ const GatewayCreate = () => {
 
   const { formatMessage } = useIntl();
 
-  const [gateway, setGateway] = useState(null);
+  const [gateway, setGateway] = useState({});
 
   return (
 

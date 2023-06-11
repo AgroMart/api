@@ -1,6 +1,6 @@
 /*
  *
- * GatewayEdit
+ * MercadoPago
  *
  */
 
@@ -20,9 +20,10 @@ import './index.css'
 
 
 import gatewayRequests from '../../api/gateway';
-const GatewayEdit = ({gateway}) => {
+const MercadoPago = ({gateway}) => {
   const [client_id, setClientID] = useState(gateway.client_id);
   const [client_secret, setClientSecret] = useState(gateway.client_secret);
+  const [token, setToken] = useState(gateway.token);
 
   const [error, setError] = useState('');
   const [visible, setVisible] = useState(false);
@@ -37,12 +38,13 @@ const GatewayEdit = ({gateway}) => {
     event.preventDefault();
     gateway['client_id'] = client_id;
     gateway['client_secret'] = client_secret;
+    gateway['token'] = token;
     gateway['ativado'] = true;
     gatewayRequests.updateGateway(gateway.id, gateway).then(res => {
       routeChange(`/plugins/${pluginId}`);
     }).catch(function (error) {
       setVisible(true);
-      setError(error);
+      setError(error.response.data.error);
     });
   }
 
@@ -60,6 +62,12 @@ const GatewayEdit = ({gateway}) => {
           tablet: 2,
           mobile: 1
         }} >
+          <GridItem padding={1} col={6} s={12}>
+            <Field name="token" required>
+                <FieldLabel>Token</FieldLabel>
+                <FieldInput type="text" value={token} onChange={(event) =>setToken(event.target.value)} required/>
+            </Field>
+          </GridItem>
           <GridItem padding={1} col={3} s={6} xs={12}>
             <Field name="client_id" required>
                 <FieldLabel>Client ID</FieldLabel>
@@ -81,4 +89,4 @@ const GatewayEdit = ({gateway}) => {
   );
 };
 
-export default GatewayEdit;
+export default MercadoPago;

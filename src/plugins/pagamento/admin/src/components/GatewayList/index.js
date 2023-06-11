@@ -12,7 +12,6 @@ import { Box } from '@strapi/design-system';
 import { Table, Thead, Tbody, Tr, Td, Th, TFooter } from '@strapi/design-system';
 import { ToggleInput } from '@strapi/design-system';
 import { Plus } from '@strapi/icons';
-import { Link } from '@strapi/design-system/v2';
 
 import gatewayRequests from '../../api/gateway';
 import pluginId from '../../pluginId';
@@ -34,12 +33,9 @@ const GatewayList = ({gatewayList}) => {
       routeChange(`/plugins/${pluginId}`);
     }
   };
-
   return (
     <Box padding={8} background="neutral100">
-      <Table footer={<Link href={`/plugins/${pluginId}/gateway/create`} >
-                      <TFooter icon={<Plus />}> Adicione um novo Gateway</TFooter>
-                    </Link>}>
+      <Table footer={<a href={`/admin/plugins/${pluginId}/gateway/create`}><TFooter  icon={<Plus />}> Adicione um novo Gateway</TFooter></a>}>
         <Thead>
           <Tr>
             <Th>Nome</Th>

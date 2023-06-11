@@ -1,6 +1,6 @@
 'use strict';
-import axios from 'axios'
-import gatewayRequests from '../../utils/gateway';
+const axios = require('axios');
+const gatewayRequests = require('../../utils/gateway');
 
 module.exports = ({ strapi }) => ({
   async find(ctx) {
@@ -48,12 +48,18 @@ module.exports = ({ strapi }) => ({
         throw new Error('Body não está definido');
       }
 
-      const config = gatewayRequests.authRequest(body.nome, body);
-      if (config){
-        axios(config)
-        .catch(function (error) {
-          throw new Error(`Erro em validar credenciais! erro: ${error}`);
-        });
+      if (body.ativado){
+        const configGateway = gatewayRequests.authRequest(body.nome, body);
+        console.log(configGateway)
+        if (configGateway){
+          try {
+            const res = await axios(configGateway);
+            console.log(res);
+            body.token = res.access_token;
+          } catch (error) {
+            throw new Error(`Erro em validar credenciais! Verifique as informações`);
+          }
+        }
       }
 
       const { id } = ctx.params;

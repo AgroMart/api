@@ -5,7 +5,7 @@ async function defaultGateway() {
   if (gateways === null) {
     const dadosIniciais = [
       {
-        nome: 'PayPall'
+        nome: 'PayPal'
       },
       {
         nome: 'Mercado Pago'

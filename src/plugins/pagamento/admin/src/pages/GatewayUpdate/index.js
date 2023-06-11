@@ -14,8 +14,9 @@ import ArrowLeft from '@strapi/icons/ArrowLeft';
 import { LoadingIndicatorPage } from '@strapi/helper-plugin';
 
 import GatewayCustom from '../../components/GatewayCustom';
-import GatewayEdit from '../../components/GatewayEdit';
+import PayPal from '../../components/PayPal';
 import PagSeguro from '../../components/PagSeguro';
+import MercadoPago from '../../components/MercadoPago';
 import gatewayRequests from '../../api/gateway';
 import pluginId from '../../pluginId';
 
@@ -39,8 +40,10 @@ const GatewayUpdate = () => {
   let Form;
   if(gateway.nome == "PagSeguro"){
     Form = <PagSeguro gateway={gateway}/>
-  } else if (gateway.nome == "MercadoPago" || gateway.nome == "PayPall" ) {
-    Form = <GatewayEdit gateway={gateway}/>
+  } else if (gateway.nome == "Mercado Pago"){
+    Form = <MercadoPago gateway={gateway}/>
+  } else if (gateway.nome == "PayPal" ) {
+    Form = <PayPal gateway={gateway}/>
   } else {
     Form = <GatewayCustom gateway={gateway}/>
   }

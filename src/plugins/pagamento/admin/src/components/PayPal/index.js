@@ -1,6 +1,6 @@
 /*
  *
- * PagSeguro
+ * PayPal
  *
  */
 
@@ -20,13 +20,13 @@ import './index.css'
 
 
 import gatewayRequests from '../../api/gateway';
-const PagSeguro = ({gateway}) => {
-  const [token, setToken] = useState(gateway.token);
-  const [email, setEmail] = useState(gateway.email);
-
+const PayPal = ({gateway}) => {
+  const [client_id, setClientID] = useState(gateway.client_id);
+  const [client_secret, setClientSecret] = useState(gateway.client_secret);
 
   const [error, setError] = useState('');
   const [visible, setVisible] = useState(false);
+
   const history = useHistory();
 
   const routeChange = (path) =>{ 
@@ -35,14 +35,14 @@ const PagSeguro = ({gateway}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    gateway['token'] = token;
-    gateway['email'] = email;
+    gateway['client_id'] = client_id;
+    gateway['client_secret'] = client_secret;
     gateway['ativado'] = true;
     gatewayRequests.updateGateway(gateway.id, gateway).then(res => {
       routeChange(`/plugins/${pluginId}`);
     }).catch(function (error) {
       setVisible(true);
-      setError(error.data.error);
+      setError(error.response.data.error);
     });
   }
 
@@ -61,15 +61,15 @@ const PagSeguro = ({gateway}) => {
           mobile: 1
         }} >
           <GridItem padding={1} col={3} s={6} xs={12}>
-            <Field name="token" required>
-                <FieldLabel>Token</FieldLabel>
-                <FieldInput type="text" value={token} onChange={(event) =>setToken(event.target.value)} required/>
+            <Field name="client_id" required>
+                <FieldLabel>Client ID</FieldLabel>
+                <FieldInput type="text" value={client_id} onChange={(event) =>setClientID(event.target.value)} required/>
             </Field>
           </GridItem>
           <GridItem padding={1} col={3} s={6} xs={12}>
-            <Field name="email" required>
-                <FieldLabel>Email</FieldLabel>
-                <FieldInput type="text" value={email} onChange={(event) =>setEmail(event.target.value)} required/>
+            <Field name="client_secret" required>
+                <FieldLabel>Client Secret</FieldLabel>
+                <FieldInput type="text" value={client_secret} onChange={(event) =>setClientSecret(event.target.value)} required/>
             </Field>
           </GridItem>
           <GridItem padding={1} col={8} xs={12}>
@@ -81,4 +81,4 @@ const PagSeguro = ({gateway}) => {
   );
 };
 
-export default PagSeguro;
+export default PayPal;

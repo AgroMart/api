@@ -37,7 +37,7 @@ const GatewayCustom = ({gateway}) => {
     gateway['pagamento_url'] = true;
     gateway['pagamento_method'] = pagamento_method;
     gateway['ativado'] = true;
-    if (gateway.id >= 0){
+    if (gateway.id > 0){
       gatewayRequests.updateGateway(gateway.id, gateway).then(res => {
         routeChange(`/plugins/${pluginId}`);
       });
@@ -49,38 +49,38 @@ const GatewayCustom = ({gateway}) => {
   }
 
   return (
-    <Box padding={8} background="neutral100" max>
+    <Box padding={8} max>
       <form onSubmit={handleSubmit}>
         <Grid gap={{
           desktop: 5,
           tablet: 2,
           mobile: 1
         }} >
-          <GridItem background="neutral100" padding={1} col={6} s={12}>
+          <GridItem padding={1} col={6} s={12}>
             <Field name="nome" required>
                 <FieldLabel>Nome</FieldLabel>
                 <FieldInput type="text" value={nome} onChange={(event) =>setNome(event.target.value)} required/>
             </Field>
           </GridItem>
-          <GridItem background="neutral100" padding={1} col={6} s={12}>
+          <GridItem padding={1} col={6} s={12}>
             <Field name="token" required>
                 <FieldLabel>Token</FieldLabel>
                 <FieldInput type="text" value={token} onChange={(event) =>setToken(event.target.value)} required/>
             </Field>
           </GridItem>
-          <GridItem background="neutral100" padding={1} col={3} s={6} xs={12}>
+          <GridItem padding={1} col={3} s={6} xs={12}>
             <Field name="pagamento_url" required>
                 <FieldLabel>Url de criação de pagamento</FieldLabel>
                 <FieldInput type="text" value={pagamento_url} onChange={(event) =>setPagamentoURL(event.target.value)} required/>
             </Field>
           </GridItem>
-          <GridItem background="neutral100" padding={1} col={3} s={6} xs={12}>
+          <GridItem padding={1} col={3} s={6} xs={12}>
             <Field name="pagamento_method" required>
                 <FieldLabel>Método da url de criação de pagamento</FieldLabel>
                 <FieldInput type="text" value={pagamento_method} onChange={(event) =>setPagamentoMethod(event.target.value)} required/>
             </Field>
           </GridItem>
-          <GridItem background="neutral100" padding={1} col={8} xs={12}>
+          <GridItem padding={1} col={8} xs={12}>
             <Button type="submit">Enviar</Button>
           </GridItem>
         </Grid>
