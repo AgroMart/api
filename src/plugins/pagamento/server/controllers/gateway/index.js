@@ -50,11 +50,9 @@ module.exports = ({ strapi }) => ({
 
       if (body.ativado){
         const configGateway = gatewayRequests.authRequest(body.nome, body);
-        console.log(configGateway)
         if (configGateway){
           try {
             const res = await axios(configGateway);
-            console.log(res);
             body.token = res.access_token;
           } catch (error) {
             throw new Error(`Erro em validar credenciais! Verifique as informações`);
