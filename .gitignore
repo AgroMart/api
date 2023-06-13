@@ -113,3 +113,10 @@ exports
 dist
 build
 .strapi-updater.json
+
+############################
+# Node
+############################
+
+package-lock.json
+yarn-lock.json
