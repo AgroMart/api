@@ -3,13 +3,13 @@
 module.exports = ({ strapi }) => ({
   async find(ctx) {
     try {
-      const extratoes = await strapi
+      const extrato = await strapi
       .plugin('pagamento')
-      .service('extratoes')
+      .service('extrato')
       .find();
 
       ctx.status = 200;
-      ctx.body = extratoes;
+      ctx.body = extrato;
     } catch (error) {
       ctx.body = {
         message:

@@ -1,9 +1,9 @@
 'use strict';
 
 const gateway = require('./gateway');
-const extratos = require('./extratos');
+const extrato = require('./extrato');
 
 module.exports = {
   gateway,
-  extratos,
+  extrato,
 };
