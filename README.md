@@ -83,6 +83,7 @@ docker-compose up
 Inicie CMS (Strapi) do projeto:
 
 ```
+npm run develop -- --watch-admin
 npm run develop
 # ou
 yarn develop

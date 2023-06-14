@@ -28,5 +28,6 @@ require('./extratoes');
 require('./gateway');
 require('./lojas');
 require('./notificacoes');
+require('./pagamento');
 require('./planos');
 require('./produtos-avulsos');
