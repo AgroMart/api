@@ -64,6 +64,7 @@ const PagamentoList = ({pagamentoList}) => {
     sortedRows.forEach((row) => table.appendChild(row));
   };
 
+  console.log(pagamentoList)
 
   return (
     <Box padding={8} background="neutral100">
@@ -90,7 +91,7 @@ const PagamentoList = ({pagamentoList}) => {
             {pagamentoList.map((item, index) => (
                 <Tr key={index}>
                   <Td>{item.user.username}</Td>
-                  <Td>{item.itens}</Td>
+                  <Td>{item.itens.map(i => <p> Produto: {i.produto_avulso.nome||i.plano.nome}, quantidade: {i.quantidade}, valor: {i.valor}</p> )}</Td>
                   <Td>{item.valor}</Td>
                   <Td><Checkbox checked={item.pagamento_realizado}/> </Td>
                   <Td><GatewayLink extrato={item}/></Td>

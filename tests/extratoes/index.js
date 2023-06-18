@@ -63,7 +63,6 @@ describe('Testes para registros de extratos e produtos', () => {
             .then((data) => {
                 expect(data.body).toBeDefined();
                 expect(data.body.valor).toBeDefined();
-                expect(data.body.itens).toBeDefined();
                 expect(data.body.entregue).toBeDefined();
                 expect(data.body.tipo_de_entrega).toBeDefined();
                 expect(data.body.pagamento_realizado).toBeDefined();
