@@ -5,6 +5,12 @@ module.exports = ({ strapi }) => ({
         const gateways = await strapi.db.query('plugin::pagamento.gateway').findMany();
         return gateways
   },
+  ativado: async () => {
+    const gateways = await strapi.db.query('plugin::pagamento.gateway').findMany({
+      where: { ativado: true }
+      });
+    return gateways
+  },
   findOne: async (id) => {
     const gateways = await strapi.db.query('plugin::pagamento.gateway').findOne({
       where: { id: id }

@@ -21,6 +21,24 @@ module.exports = ({ strapi }) => ({
       ctx.status = 400;
     }
   },
+  async ativado(ctx) {
+    try {
+      const gateways = await strapi
+      .plugin('pagamento')
+      .service('gateway')
+      .ativado();
+
+      ctx.status = 200;
+      ctx.body = gateways;
+    } catch (error) {
+      ctx.body = {
+        message:
+          "Ops! Aconteceu tivemos um problema em processar sua requisição.",
+        error: error.message,
+      };
+      ctx.status = 400;
+    }
+  },
   async findOne(ctx) {
     try {
       const { id } = ctx.params;

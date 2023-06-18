@@ -15,6 +15,15 @@ module.exports = {
         policies: [],
         auth: false,
       },
+    },    
+    {
+      method: 'GET',
+      path: '/gateway/ativado',
+      handler: 'gateway.ativado',
+      config: {
+        policies: [],
+        auth: false,
+      },
     },
     {
       method: 'GET',

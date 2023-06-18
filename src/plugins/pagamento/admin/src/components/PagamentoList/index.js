@@ -12,6 +12,8 @@ import { Table, Thead, Tbody, Tr, Td, Th } from '@strapi/design-system';
 import { Checkbox } from '@strapi/design-system';
 import { FieldInput } from '@strapi/design-system';
 
+import GatewayLink from '../GatewayLink';
+
 const PagamentoList = ({pagamentoList}) => {
 
   const [sortColumn, setSortColumn] = React.useState(null);
@@ -91,7 +93,7 @@ const PagamentoList = ({pagamentoList}) => {
                   <Td>{item.itens}</Td>
                   <Td>{item.valor}</Td>
                   <Td><Checkbox checked={item.pagamento_realizado}/> </Td>
-                  <Td>TO DO</Td>
+                  <Td><GatewayLink/></Td>
                 </Tr>
                 ))}
             </Tbody>
