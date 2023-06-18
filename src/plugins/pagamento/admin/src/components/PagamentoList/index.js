@@ -93,7 +93,7 @@ const PagamentoList = ({pagamentoList}) => {
                   <Td>{item.itens}</Td>
                   <Td>{item.valor}</Td>
                   <Td><Checkbox checked={item.pagamento_realizado}/> </Td>
-                  <Td><GatewayLink/></Td>
+                  <Td><GatewayLink extrato={item}/></Td>
                 </Tr>
                 ))}
             </Tbody>
