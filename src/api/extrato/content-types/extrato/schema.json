@@ -26,10 +26,6 @@
       "type": "decimal",
       "required": true
     },
-    "itens": {
-      "type": "json",
-      "required": true
-    },
     "entregue": {
       "type": "boolean",
       "default": false,

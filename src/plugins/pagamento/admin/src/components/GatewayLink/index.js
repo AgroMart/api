@@ -17,7 +17,7 @@ import { Typography } from '@strapi/design-system';
 import { Button } from '@strapi/design-system';
 
 import gatewayRequests from '../../api/gateway';
-import pagamentoRequests from '../../api/gateway';
+import pagamentoRequests from '../../api/pagamento';
 
 const GatewayLink = ({extrato}) => {
 
@@ -46,24 +46,23 @@ const GatewayLink = ({extrato}) => {
     handleClick();
   }
   const handleClick = () => {
-    // if (selectedGateway){
-    //   const body = {
-    //     gateway: selectedGateway,
-    //     extrato: extrato
-    //   }
-    //   pagamentoRequests.createLink(body).then(async res => {
-    //     navigator.clipboard.writeText(res.data).then(() => {
-    //       console.log(`Content copied to clipboard ${res.data}`);
-    //     },() => {
-    //       alert("Link gerado " + res.data);
-    //     });
-    //   }).catch(function (error) {
-    //     alert("Erro: " + error.response.data.error);
-    //   });
-    // } else {
-    //   console.log(gatewayList)
-    //   setIsModalVisible(true);
-    // }
+    if (selectedGateway){
+      const body = {
+        gateway: gatewayList.find((gateway) => gateway.nome==selectedGateway),
+        extrato: extrato
+      }
+      pagamentoRequests.createLink(body).then(async res => {
+        navigator.clipboard.writeText(res.data).then(() => {
+          console.log(`Content copied to clipboard ${res.data}`);
+        },() => {
+          alert("Link gerado " + res.data);
+        });
+      }).catch(function (error) {
+        alert("Erro: " + error.response.data.error);
+      });
+    } else {
+      setIsModalVisible(true);
+    }
   }
 
   if (isLoading) return <LoadingIndicatorPage />;
@@ -71,7 +70,7 @@ const GatewayLink = ({extrato}) => {
     return (
         <>
         {isModalVisible && 
-          <ModalLayout onClose={() => setIsModalVisible(prev => !prev)}>
+          <ModalLayout onClose={() => handleCancel()}>
             <ModalHeader>
               <Typography fontWeight="bold" textColor="neutral800" as="h2" id="title">
               Selecione o Gateway

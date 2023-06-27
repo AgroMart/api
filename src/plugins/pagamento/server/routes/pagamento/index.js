@@ -15,6 +15,15 @@ module.exports = {
         policies: [],
         auth: false,
       },
+    },
+    {
+      method: 'POST',
+      path: '/pagamento/link',
+      handler: 'pagamento.link',
+      config: {
+        policies: [],
+        auth: false,
+      },
     }
   ],
 };

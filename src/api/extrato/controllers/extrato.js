@@ -46,16 +46,13 @@ module.exports = createCoreController('api::extrato.extrato', ({ strapi }) =>  (
             itens_id.push(data.id);
           })
         );
-
         const data = await strapi.service("api::extrato.extrato").create({
-          data: {
             valor: body.valor,
             user: body.user,
             loja: body.loja,
             pagamento_realizado: body.pagamento_realizado,
             itens: itens_id
-          }
-        });
+          });
 
         ctx.body = data;
       } catch (err) {
