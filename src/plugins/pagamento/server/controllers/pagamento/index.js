@@ -47,24 +47,17 @@ module.exports = ({ strapi }) => ({
         let url;
 
         switch (body.gateway.nome) {
-          case 'PagSeguro':
-            await axios(configGateway)
-            .then(response => {
-              xml2js.parseString(response.data, (error, result) => {
-                if (error) {
-                  
-                  console.log(error)
-                  throw new Error(`Erro ao analisar XML: ${error}`);
-                }
-                const code = result.checkout.code;
-                url = `https://pagseguro.uol.com.br/v2/checkout/payment.html?code=${code}`;
-              });
-            })
-            .catch(error => {
-              console.log(error)
-              throw new Error(`Aconteceu o erro: ${error}`);
-            });
-            break;
+          // case 'Mercado Pago':
+          //   await axios(configGateway)
+          //   .then(response => {
+          //       const code = result.checkout.code;
+          //       url = `https://pagseguro.uol.com.br/v2/checkout/payment.html?code=${code}`;
+          //     });
+          //   })
+          //   .catch(error => {
+          //     throw new Error(`Aconteceu o erro: ${error}`);
+          //   });
+          //   break;
           default:
             break;
         }
@@ -72,6 +65,7 @@ module.exports = ({ strapi }) => ({
         .plugin('pagamento')
         .service('pagamento')
         .create(body.extrato.id, body.gateway.id, url);
+        console.log(url);
 
         ctx.status = 200;
         ctx.body = pagamento;

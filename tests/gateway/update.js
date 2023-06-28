@@ -58,28 +58,6 @@ describe('Testes para atualizar gateway de pagamento', () => {
             });
     });
 
-    it("Atualiza gateway de pagamento PagSeguro", async () => {
-        const body = {
-            id: 3,
-            nome: 'PagSeguro',
-            email: 'emaildeteste@gmail.com',
-            token: '95112EE828D94278BD394E91C4388F20',
-            ativado: true
-        }
-        
-        await request(strapi.server.httpServer)
-            .put(`${path}/3`)
-            .set("Authorization",`Bearer  ${jwt}`)
-            .send(body)
-            .expect(200)
-            .then((data) => {
-                expect(data.body).toBeDefined();
-                expect(data.body.nome).toBe(body.nome);
-                expect(data.body.email).toBe(body.email);
-                expect(data.body.token).toBe(body.token);
-            });
-    });
-
     it("Exceção de id", async () => {
         const body = {
             id: 1,

@@ -57,45 +57,6 @@ describe('Testes para gerar link de pagamento', () => {
         extrato = extratoResponse.body;
     });
 
-    it("Gera link de pagamento com base no gateway PagSeguro e extrato", async () => {
-        const mockBody = {
-            extrato: extrato,
-            gateway: {
-                id: 3,
-                nome: 'PagSeguro',
-                email: 'emaildeteste@gmail.com',
-                token: '95112EE828D94278BD394E91C4388F20',
-                ativado: true
-            }
-        };
-
-        const xmlResponse = `
-            <?xml version="1.0" encoding="ISO-8859-1"?>
-            <checkout>
-                <code>8CF4BE7DCECEF0F004A6DFA0A8243412</code>
-                <date>2010-12-02T10:11:28.000-02:00</date>
-            </checkout>
-            `;
-
-        nock('https://ws.pagseguro.uol.com.br')
-        .post('/v2/checkout')
-        .query({ email: 'emaildeteste@gmail.com', token: '95112EE828D94278BD394E91C4388F20'})
-        .reply(200, xmlResponse, { 'Content-Type': 'application/xml' })
-
-
-        await request(strapi.server.httpServer)
-            .post(`${path}/link`)
-            .send(mockBody)
-            .set("accept", "application/json")
-            .set("Authorization",`Bearer  ${jwt}`)
-            .set("Content-Type", "application/json")
-            .expect(200)
-            .then((data) => {
-                expect(data.body).toBeDefined();
-                expect(data.body.url).toBeDefined();
-        });
-    });
-
     it("Coleta link de pagamento com base no gateway e extrato", async () => {
         const mockBody = {
             extrato: extrato,

@@ -9,9 +9,6 @@ async function defaultGateway() {
       },
       {
         nome: 'Mercado Pago'
-      },
-      {
-        nome: 'PagSeguro'
       }
     ];
 
