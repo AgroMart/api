@@ -2,7 +2,6 @@
 
 const axios = require('axios');
 const gatewayRequests = require('../../utils/gateway');
-const xml2js = require('xml2js');
 
 module.exports = ({ strapi }) => ({
   async find(ctx) {
@@ -32,44 +31,15 @@ module.exports = ({ strapi }) => ({
         throw new Error('Body não está definido');
       }
 
+      const url = await gatewayRequests.linkRequest(body.gateway.nome, body);
+
       let pagamento = await strapi
       .plugin('pagamento')
       .service('pagamento')
-      .find(body.extrato.id, body.gateway.id);
+      .create(body.extrato.id, body.gateway.id, url);
 
-      if (pagamento != undefined){
-        ctx.status = 200;
-        ctx.body = pagamento;
-
-      } else {
-        const configGateway = gatewayRequests.linkRequest(body.gateway.nome, body);
-
-        let url;
-
-        switch (body.gateway.nome) {
-          // case 'Mercado Pago':
-          //   await axios(configGateway)
-          //   .then(response => {
-          //       const code = result.checkout.code;
-          //       url = `https://pagseguro.uol.com.br/v2/checkout/payment.html?code=${code}`;
-          //     });
-          //   })
-          //   .catch(error => {
-          //     throw new Error(`Aconteceu o erro: ${error}`);
-          //   });
-          //   break;
-          default:
-            break;
-        }
-        let pagamento = await strapi
-        .plugin('pagamento')
-        .service('pagamento')
-        .create(body.extrato.id, body.gateway.id, url);
-        console.log(url);
-
-        ctx.status = 200;
-        ctx.body = pagamento;
-      }
+      ctx.status = 200;
+      ctx.body = pagamento;
     } catch (error) {
       ctx.body = {
         message:
