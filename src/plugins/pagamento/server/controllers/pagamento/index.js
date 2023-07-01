@@ -31,7 +31,23 @@ module.exports = ({ strapi }) => ({
         throw new Error('Body não está definido');
       }
 
-      const url = await gatewayRequests.linkRequest(body.gateway.nome, body);
+      const gateway = await strapi
+        .plugin('pagamento')
+        .service('gateway')
+        .findGateway(body.gateway.nome);
+
+      console.log(gateway)
+
+      const data = {
+        extrato: body.extrato,
+        gateway: gateway
+      }
+
+      console.log(data)
+
+      const url = await gatewayRequests.linkRequest(body.gateway.nome, data);
+
+      console.log(url)
 
       let pagamento = await strapi
       .plugin('pagamento')

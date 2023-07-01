@@ -22,10 +22,6 @@
       "relation": "oneToOne",
       "target": "api::loja.loja"
     },
-    "valor": {
-      "type": "decimal",
-      "required": true
-    },
     "entregue": {
       "type": "boolean",
       "default": false,

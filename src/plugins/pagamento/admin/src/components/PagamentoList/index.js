@@ -87,7 +87,7 @@ const PagamentoList = ({pagamentoList}) => {
                 <Tr key={index}>
                   <Td>{item.user.username}</Td>
                   <Td>{item.itens.map(i => <p> Produto: {i.produto_avulso.nome||i.plano.nome}, quantidade: {i.quantidade}, valor: {i.valor}</p> )}</Td>
-                  <Td>{item.valor}</Td>
+                  <Td>{item.itens.reduce((total, item) => total + (item.quantidade * item.valor), 0)}</Td>
                   <Td><GatewayLink extrato={item}/></Td>
                 </Tr>
                 ))}

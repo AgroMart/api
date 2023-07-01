@@ -46,6 +46,10 @@ function authPayPal(client_secret, client_id) {
   return makeConfig('POST', 'https://api-m.paypal.com/v1/oauth2/token', config);
 }
 
+async function linkPayPal(gateway, itens) {
+  
+  return await Promise.resolve(response.body);
+}
 
 const gatewayRequests = {
   authRequest: (gateway, data) => {
@@ -64,7 +68,7 @@ const gatewayRequests = {
   linkRequest: (gateway, data) => {
     switch (gateway) {
       case 'PayPal':
-        return authPayPal(data.client_secret, data.client_id);
+        return linkPayPal(data.client_secret, data.client_id);
       case 'Mercado Pago':
         return linkMercadoPago(data.gateway, data.extrato.itens);
       default:
