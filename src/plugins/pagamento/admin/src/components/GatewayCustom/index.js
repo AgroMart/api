@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 import { Grid, GridItem } from '@strapi/design-system';
 import { Box } from '@strapi/design-system';
 import { Field, FieldLabel, FieldInput } from '@strapi/design-system';
+import { Textarea } from '@strapi/design-system';
 import { Button } from '@strapi/design-system';
 
 import pluginId from '../../pluginId';
@@ -23,6 +24,7 @@ const GatewayCustom = ({gateway}) => {
   const [token, setToken] = useState(gateway.token);
   const [pagamento_url, setPagamentoURL] = useState(gateway.pagamento_url);
   const [pagamento_method, setPagamentoMethod] = useState(gateway.pagamento_method);
+  const [pagamento_dados, setPagamentoDados] = useState(gateway.pagamento_dados);
 
   const history = useHistory();
 
@@ -36,6 +38,7 @@ const GatewayCustom = ({gateway}) => {
     gateway['token'] = token;
     gateway['pagamento_url'] = true;
     gateway['pagamento_method'] = pagamento_method;
+    gateway['pagamento_dados'] = pagamento_dados;
     gateway['ativado'] = true;
     if (gateway.id > 0){
       gatewayRequests.updateGateway(gateway.id, gateway).then(res => {
@@ -78,6 +81,12 @@ const GatewayCustom = ({gateway}) => {
             <Field name="pagamento_method" required>
                 <FieldLabel>Método da url de criação de pagamento</FieldLabel>
                 <FieldInput type="text" value={pagamento_method} onChange={(event) =>setPagamentoMethod(event.target.value)} required/>
+            </Field>
+          </GridItem>
+          <GridItem padding={1} col={8} xs={12}>
+            <Field name="pagamento_method" required>
+              <FieldLabel>Dados da requisição</FieldLabel>
+              <Textarea value={pagamento_dados} onChange={(event) =>setPagamentoDados(event.target.value)} required/>
             </Field>
           </GridItem>
           <GridItem padding={1} col={8} xs={12}>

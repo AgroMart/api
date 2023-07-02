@@ -47,7 +47,7 @@ function authPayPal(client_secret, client_id) {
   return makeConfig('POST', 'https://api-m.sandbox.paypal.com/v1/oauth2/token', config);
 }
 
-function createPayment(paymentData) {
+function createPaymentPayPal(paymentData) {
   return new Promise((resolve, reject) => {
     paypal.payment.create(paymentData, function (error, payment) {
       if (error) {
@@ -97,7 +97,44 @@ async function linkPayPal(gateway, itens) {
     ]
   };
 
-  return await createPayment(paymentData);
+  return await createPaymentPayPal(paymentData);
+}
+
+function createPaymentDefault(paymentData) {
+  return new Promise((resolve, reject) => {
+    paypal.payment.create(paymentData, function (error, payment) {
+      if (error) {
+        reject(`Aconteceu o erro: ${error}`);
+      } else {
+        const redirectUrl = payment.links.find((link) => link.method === 'REDIRECT').href;
+        resolve(redirectUrl);
+      }
+      reject(`Aconteceu o erro: Não achamos o link do PayPal!`);
+    });
+  });
+}
+
+function convertTextToJson(text, extrato) {
+  const items = [];
+  for (let i = 0; i < extrato.itens.length; i++) {
+    const replacedText = text.replace(/INDEX/g, i.toString());
+    const item = eval(`(${replacedText})`);
+    items.push(item);
+  }
+  return { items };
+}
+
+function configDefault(pagamento_dados, extrato){
+  config['data'] = convertTextToJson(pagamento_dados, extrato.itens)
+  return config
+}
+
+
+async function linkDefault(gateway, extrato) {
+
+  const config = makeConfig(gateway.pagamento_method, gateway.pagamento_url, configDefault(gateway.pagamento_dados, extrato));
+
+  return await createPaymentDefault(config);
 }
 
 const gatewayRequests = {
@@ -121,7 +158,7 @@ const gatewayRequests = {
       case 'Mercado Pago':
         return linkMercadoPago(data.gateway, data.extrato.itens);
       default:
-        return false;
+        return linkDefault(data.gateway, data.extrato);
     }
   }
 };
