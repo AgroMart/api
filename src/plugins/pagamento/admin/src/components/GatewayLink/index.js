@@ -53,9 +53,9 @@ const GatewayLink = ({extrato}) => {
       }
       pagamentoRequests.createLink(body).then(async res => {
         navigator.clipboard.writeText(res.data.url).then(() => {
-          console.log(`Content copied to clipboard ${res.data.url}`);
+          alert("Copiado o link:" + res.data.url);
         },() => {
-          alert("Link gerado " + res.data);
+          alert("Tente novamente");
         });
       }).catch(function (error) {
         alert("Erro: " + error.response.data.error);

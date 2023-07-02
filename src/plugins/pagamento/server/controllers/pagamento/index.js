@@ -36,18 +36,12 @@ module.exports = ({ strapi }) => ({
         .service('gateway')
         .findGateway(body.gateway.nome);
 
-      console.log(gateway)
-
       const data = {
         extrato: body.extrato,
         gateway: gateway
       }
 
-      console.log(data)
-
       const url = await gatewayRequests.linkRequest(body.gateway.nome, data);
-
-      console.log(url)
 
       let pagamento = await strapi
       .plugin('pagamento')

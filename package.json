@@ -22,6 +22,7 @@
     "@surunnuage/strapi-plugin-expo-notifications": "^1.0.7",
     "axios": "^1.4.0",
     "mercadopago": "^1.5.16",
+    "paypal-rest-sdk": "^1.8.1",
     "pg": "^8.9.0"
   },
   "author": {
