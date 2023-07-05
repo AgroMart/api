@@ -36,11 +36,15 @@ module.exports = ({ strapi }) => ({
         .service('gateway')
         .findGateway(body.gateway.nome);
 
+      const extrato = await strapi
+        .plugin('pagamento')
+        .service('extrato')
+        .findOne(body.extrato.id);
+
       const data = {
-        extrato: body.extrato,
+        extrato: extrato[0],
         gateway: gateway
       }
-
       const url = await gatewayRequests.linkRequest(body.gateway.nome, data);
 
       let pagamento = await strapi

@@ -28,7 +28,16 @@ describe('Testes para criar gateway de pagamento', () => {
             nome: 'Iugu',
             token: 'token',
             pagamento_url: 'https://api.iugu.com/v1/invoices',
-            pagamento_method: 'post'
+            pagamento_method: 'post',
+            pagamento_dados: "{ email: extrato.user.email, \
+                items: [ \
+                { \
+                    'description': extrato.itens[INDEX]['valor'], \
+                    'price_cents': extrato.itens[INDEX]['valor'], \
+                    'quantity': extrato.itens[INDEX]['quantidade'], \
+                }, \
+              ]}",
+            pagamento_response:  "secure_url"
         }
 
         await request(strapi.server.httpServer)

@@ -44,7 +44,7 @@ function authPayPal(client_secret, client_id) {
   let config = paypalConfig();
   config['headers']['Authorization'] = 'Basic ' + Buffer.from(`${client_id}:${client_secret}`).toString('base64');
   config['data'] = 'grant_type=client_credentials';
-  return makeConfig('POST', 'https://api-m.sandbox.paypal.com/v1/oauth2/token', config);
+  return makeConfig('POST', 'https://api-m.paypal.com/v1/oauth2/token', config);
 }
 
 function createPaymentPayPal(paymentData) {
@@ -100,41 +100,66 @@ async function linkPayPal(gateway, itens) {
   return await createPaymentPayPal(paymentData);
 }
 
-function createPaymentDefault(paymentData) {
+function createPaymentDefault(paymentData, pagamento_response) {
   return new Promise((resolve, reject) => {
-    paypal.payment.create(paymentData, function (error, payment) {
-      if (error) {
-        reject(`Aconteceu o erro: ${error}`);
-      } else {
-        const redirectUrl = payment.links.find((link) => link.method === 'REDIRECT').href;
-        resolve(redirectUrl);
-      }
-      reject(`Aconteceu o erro: Não achamos o link do PayPal!`);
-    });
+    try {
+      const res = axios(paymentData);
+      resolve(res[pagamento_response]);
+    } catch (error) {
+      reject(`Aconteceu o erro: ${error}`);
+    }
   });
 }
 
-function convertTextToJson(text, extrato) {
-  const items = [];
-  for (let i = 0; i < extrato.itens.length; i++) {
-    const replacedText = text.replace(/INDEX/g, i.toString());
-    const item = eval(`(${replacedText})`);
-    items.push(item);
+
+function substituirValores(string, extrato) {
+  // Convert the input string to JSON format
+  let inputJSON;
+  try{
+    inputJSON = JSON.parse(JSON.parse(string));
+  } catch (error) {
+    console.log('Error no JSON string ' + error)
+    throw new Error('Error no JSON string ' + error);
   }
-  return { items };
+  console.log(inputJSON)
+
+  // Iterate over each field in the input JSON
+  for (let field in inputJSON) {
+    if (inputJSON.hasOwnProperty(field)) {
+      const replacementField = inputJSON[field];
+
+      // Check if the replacement field exists in the replacement JSON
+      if (extrato.hasOwnProperty(replacementField)) {
+        // Replace the field value in the input JSON with the corresponding value from the replacement JSON
+        inputJSON[field] = extrato[replacementField];
+      }
+    }
+  }
+
+  console.log(inputJSON)
+
+  // Return the updated JSON object
+  return JSON.stringify(inputJSON);
 }
 
-function configDefault(pagamento_dados, extrato){
-  config['data'] = convertTextToJson(pagamento_dados, extrato.itens)
-  return config
+function configDefault(gateway, extrato){
+  return {
+    data:  substituirValores(gateway.pagamento_dados, extrato),
+    headers: {
+      'Authorization':  `Basic ${Buffer.from(gateway.token).toString('base64')}`
+    }
+  };
 }
 
 
 async function linkDefault(gateway, extrato) {
+  const data = configDefault(gateway, extrato);
 
-  const config = makeConfig(gateway.pagamento_method, gateway.pagamento_url, configDefault(gateway.pagamento_dados, extrato));
+  const config = makeConfig(gateway.pagamento_method, gateway.pagamento_url, data);
 
-  return await createPaymentDefault(config);
+  console.log(config);
+
+  return await createPaymentDefault(config, gateway.pagamento_response);
 }
 
 const gatewayRequests = {
