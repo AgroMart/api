@@ -75,6 +75,9 @@ module.exports = {
         min: 1,
         max: 50,
         configurable: false,
-      }
+      },
+      pagamento_params: {
+        type: 'json',
+      },
     }
   };

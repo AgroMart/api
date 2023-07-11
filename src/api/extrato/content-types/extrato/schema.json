@@ -39,6 +39,11 @@
       "default": false,
       "required": true
     },
+    "due_date": {
+      "type": "string",
+      "default": false,
+      "required": false
+    },
     "itens": {
       "type": "relation",
       "relation": "oneToMany",
