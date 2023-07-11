@@ -34,7 +34,7 @@ Foram utilizados, porque permitem um melhor entendimento do projeto e aplicaçã
 
 Para esse projeto, foram criados 2 diagramas de sequência. Na Figura de sequencia de criar gateway é possível observar a sequência de eventos que ocorre para o registro de um gateway na perspectiva de AgroMart. Nesse processo é preciso que o Agricultor através da interface solicite a integração de um gateway ao seu token de acesso. Visando que esse token seja salvo no banco de dados, a interface do Strapi requisita à API que acione o banco de dados. Esse diagrama representa o caso de uso 1.
 
-![seq1](https://github.com/AgroMart/api/assets/31159235/c9a5ee91-e29d-4de5-bb34-c30d23e8c132)
+![seq1](https://github.com/AgroMart/api/assets/31159235/5d52fa63-8325-4dcf-8850-3fbfd0b24638)
 
 Com o intuito de gerar a URL de pagamento, o caso de uso 3, na Figura de sequencia de gerar URL tem-se o processo que começa com a interação do usuário com a tela. O controlador de pagamentos é acionado que atribui o trabalho aos services de gateway e pagamento. Esses services buscam na base de dados as informações para serem enviadas à API de pagamento e após requisitar ao gateway encarregado. Por fim, se tudo ocorrer precisamente, será salvo as informações no banco de dados e retornado a URL gerada para o usuário.
 
