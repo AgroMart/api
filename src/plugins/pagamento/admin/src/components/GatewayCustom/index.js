@@ -25,6 +25,8 @@ const GatewayCustom = ({gateway}) => {
   const [pagamento_url, setPagamentoURL] = useState(gateway.pagamento_url);
   const [pagamento_method, setPagamentoMethod] = useState(gateway.pagamento_method);
   const [pagamento_dados, setPagamentoDados] = useState(gateway.pagamento_dados);
+  const [pagamento_response, setPagamentoResponse] = useState(gateway.pagamento_response);
+  const [pagamento_params, setPagamentoParams] = useState(gateway.pagamento_params);
 
   const history = useHistory();
 
@@ -39,6 +41,8 @@ const GatewayCustom = ({gateway}) => {
     gateway['pagamento_url'] = true;
     gateway['pagamento_method'] = pagamento_method;
     gateway['pagamento_dados'] = pagamento_dados;
+    gateway['pagamento_response'] = pagamento_response;
+    gateway['pagamento_params'] = pagamento_params;
     gateway['ativado'] = true;
     if (gateway.id > 0){
       gatewayRequests.updateGateway(gateway.id, gateway).then(res => {
@@ -83,8 +87,20 @@ const GatewayCustom = ({gateway}) => {
                 <FieldInput type="text" value={pagamento_method} onChange={(event) =>setPagamentoMethod(event.target.value)} required/>
             </Field>
           </GridItem>
+          <GridItem padding={1} col={3} s={6} xs={12}>
+            <Field name="pagamento_response" required>
+                <FieldLabel>Chave da resposta esperada</FieldLabel>
+                <FieldInput type="text" value={pagamento_response} onChange={(event) =>setPagamentoResponse(event.target.value)} required/>
+            </Field>
+          </GridItem>
+          <GridItem padding={1} col={3} s={6} xs={12}>
+          <Field name="pagamento_params" required>
+                <FieldLabel>Parametros da requisição</FieldLabel>
+                <FieldInput type="text" value={pagamento_params} onChange={(event) =>setPagamentoParams(event.target.value)} required/>
+            </Field>
+          </GridItem>
           <GridItem padding={1} col={8} xs={12}>
-            <Field name="pagamento_method" required>
+            <Field name="pagamento_dados" required>
               <FieldLabel>Dados da requisição</FieldLabel>
               <Textarea value={pagamento_dados} onChange={(event) =>setPagamentoDados(event.target.value)} required/>
             </Field>

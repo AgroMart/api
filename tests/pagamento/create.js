@@ -58,18 +58,19 @@ describe('Testes para gerar link de pagamento', () => {
     });
 
     it("Gera link de pagamento com base no gateway Iugu e extrato", async () => {
-
         const bodyCreateGateway = {
-            nome: 'Iugu',
-            token: 'token',
-            pagamento_url: 'https://api.iugu.com/v1/invoices',
-            pagamento_method: 'post',
-            pagamento_dados: '{"email":"extrato.user.email", \
-                "items":[ \
-                {"description": "extrato.itens.produto_avulso.nome\|\|extrato.itens.plano.nome", \
-                 "price_cents": "extrato.itens.valor", \
-                 "quantity": "extrato.itens.quantidade"}]}',
-            pagamento_response:  "secure_url"
+            nome: "Iugu",
+            token: "token",
+            pagamento_url: "https://api.iugu.com/v1/invoices",
+            pagamento_method: "post",
+            pagamento_dados:
+              '{"email":"user.email", \
+                  "items":[ \
+                      {"description": "itens.index.produto_avulso.nome||itens.index.plano.nome", \
+                      "price_cents": "itens.index.valor", \
+                      "quantity": "itens.index.quantidade"}]}',
+            pagamento_response: "secure_url",
+            pagamento_params: '{"api_token": "token"}',
         }
 
         const gatewayResponse = await request(strapi.server.httpServer)
@@ -99,15 +100,16 @@ describe('Testes para gerar link de pagamento', () => {
             secure_url: 'https://exemplo.com/link_de_pagamento',
         }
 
-        nock('https://api.iugu.com', {
+        nock("https://api.iugu.com", {
             reqheaders: {
-              'Authorization': `Basic ${Buffer.from(bodyCreateGateway.token).toString('base64')}`,
-            }
-          })
-        .post('/v1/invoices', bodyMocked)
-        .query({ email: 'emaildeteste@gmail.com', token: '95112EE828D94278BD394E91C4388F20'})
-        .reply(200, response)
-
+              Authorization: `Basic ${Buffer.from(bodyCreateGateway.token).toString(
+                "base64"
+              )}`,
+              'Content-Type': 'application/json',
+            },
+        }).post("/v1/invoices", bodyMocked)
+        .query({ api_token: bodyCreateGateway.token })
+        .reply(200, response);
 
         const mockBody = {
             gateway: {nome: gateway.nome},
@@ -120,10 +122,11 @@ describe('Testes para gerar link de pagamento', () => {
             .set("accept", "application/json")
             .set("Authorization",`Bearer  ${jwt}`)
             .set("Content-Type", "application/json")
-            // .expect(200)
+            .expect(200)
             .then((data) => {
-                // expect(data.body).toBeDefined();
-                // expect(data.body.url).toBeDefined();
+                expect(data.body).toBeDefined();
+                expect(data.body.url).toBeDefined();
+                expect(data.body.url).toBe(response.secure_url);
         });
     });
 

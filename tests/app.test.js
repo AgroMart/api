@@ -19,14 +19,15 @@ it("strapi is defined", () => {
   expect(strapi).toBeDefined();
 });
 
-// require('./assinantes');
-// require('./auth');
-// require('./cestas');
-// require('./devices');
-// require('./enderecos');
-// require('./gateway');
-// require('./lojas');
-// require('./notificacoes');
 require('./pagamento');
-// require('./planos');
-// require('./produtos-avulsos');
+require('./assinantes');
+require('./auth');
+require('./cestas');
+require('./devices');
+require('./enderecos');
+require('./extratoes');
+require('./gateway');
+require('./lojas');
+require('./notificacoes');
+require('./planos');
+require('./produtos-avulsos');

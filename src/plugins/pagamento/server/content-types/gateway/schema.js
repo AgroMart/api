@@ -70,11 +70,14 @@ module.exports = {
       pagamento_dados: {
         type: 'json',
       },
+      pagamento_params: {
+        type: 'json',
+      },
       pagamento_response: {
         type: 'string',
         min: 1,
         max: 50,
         configurable: false,
-      }
+      },
     }
   };

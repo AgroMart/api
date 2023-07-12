@@ -13,6 +13,7 @@ module.exports = createCoreController('api::extrato.extrato', ({ strapi }) =>  (
 
           let extratos;
           if (id){
+            console.log("ENTROUUU")
             extratos  = await strapi.db
                                     .query('api::extrato.extrato')
                                     .findMany({filters: { id },populate: true});
