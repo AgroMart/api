@@ -20,6 +20,9 @@
     "@strapi/plugin-users-permissions": "4.6.2",
     "@strapi/strapi": "4.6.2",
     "@surunnuage/strapi-plugin-expo-notifications": "^1.0.7",
+    "axios": "^1.4.0",
+    "mercadopago": "^1.5.16",
+    "paypal-rest-sdk": "^1.8.1",
     "pg": "^8.9.0"
   },
   "author": {
@@ -31,6 +34,7 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^29.5.0",
+    "nock": "^13.3.1",
     "supertest": "^6.3.3"
   },
   "jest": {

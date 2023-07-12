@@ -25,19 +25,16 @@
       ]
     },
     "unidade_medida": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "descricao": {
       "type": "text"
     },
     "valor": {
-      "type": "float",
-      "required": true
+      "type": "float"
     },
     "quantidade": {
-      "type": "integer",
-      "required": true
+      "type": "integer"
     },
     "loja": {
       "relation": "manyToOne",

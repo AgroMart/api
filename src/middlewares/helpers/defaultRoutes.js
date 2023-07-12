@@ -5,6 +5,7 @@ function isDefaultRoute(url) {
         && !url.startsWith('/upload')
         && !url.startsWith('/expo-notifications')
         && !url.startsWith('/plugins')
+        && !url.startsWith('/pagamento')
         && !url.startsWith('/users-permissions')
         && !url.startsWith('/auth/google')
         && !url.startsWith('/auth/facebook')
