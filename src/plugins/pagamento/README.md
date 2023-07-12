@@ -1,6 +1,6 @@
 # Strapi Plugin Pagamento
 
-O Strapi Plugin Pagament é um módulo da API Agromart desenvolvida no estudo da monografia de Giovanna Bottino. Com o objetivo de implementar um integrador de pagamento digital, desenvolvendo uma funcionalidade que permita a geração de uma URL de pagamento por meio de uma API, facilitando a gestão financeira e possibilitando transações seguras e eficientes. 
+O Strapi Plugin Pagament é um módulo da API Agromart desenvolvida no estudo da monografia de Giovanna Bottino e Felipe Agustini. Com o objetivo de implementar um integrador de pagamento digital, desenvolvendo uma funcionalidade que permita a geração de uma URL de pagamento por meio de uma API, facilitando a gestão financeira e possibilitando transações seguras e eficientes. 
 
 ## Casos de Uso
 
