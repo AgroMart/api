@@ -4,7 +4,8 @@
   "info": {
     "singularName": "extrato",
     "pluralName": "extratoes",
-    "displayName": "Extrato"
+    "displayName": "Extrato",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,14 +21,6 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::loja.loja"
-    },
-    "valor": {
-      "type": "decimal",
-      "required": true
-    },
-    "itens": {
-      "type": "json",
-      "required": true
     },
     "entregue": {
       "type": "boolean",
@@ -45,6 +38,11 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "itens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item.item"
     }
   }
 }

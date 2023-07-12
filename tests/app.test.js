@@ -19,6 +19,7 @@ it("strapi is defined", () => {
   expect(strapi).toBeDefined();
 });
 
+require('./pagamento');
 require('./assinantes');
 require('./auth');
 require('./cestas');
@@ -28,6 +29,5 @@ require('./extratoes');
 require('./gateway');
 require('./lojas');
 require('./notificacoes');
-require('./pagamento');
 require('./planos');
 require('./produtos-avulsos');

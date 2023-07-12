@@ -25,6 +25,7 @@ module.exports = {
         min: 1,
         max: 50,
         configurable: false,
+        unique: true,
       },
       client_id: {
         type: 'string',
@@ -65,6 +66,18 @@ module.exports = {
         min: 1,
         max: 6,
         configurable: false,
-      }
+      },
+      pagamento_dados: {
+        type: 'json',
+      },
+      pagamento_params: {
+        type: 'json',
+      },
+      pagamento_response: {
+        type: 'string',
+        min: 1,
+        max: 50,
+        configurable: false,
+      },
     }
   };

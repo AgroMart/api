@@ -2,7 +2,7 @@ const request = require('supertest');
 
 describe('Testes para registros de extratos e produtos', () => {
     const path = "/extratoes";
-    
+
     beforeAll(async () => {
 
         enderecoResponse = await request(strapi.server.httpServer)
@@ -52,7 +52,7 @@ describe('Testes para registros de extratos e produtos', () => {
             },
             pagamento_realizado: true,
           };
-      
+
         await request(strapi.server.httpServer)
             .post(path)
             .send(extractBody)
@@ -62,7 +62,6 @@ describe('Testes para registros de extratos e produtos', () => {
             .expect(200)
             .then((data) => {
                 expect(data.body).toBeDefined();
-                expect(data.body.valor).toBeDefined();
                 expect(data.body.itens).toBeDefined();
                 expect(data.body.entregue).toBeDefined();
                 expect(data.body.tipo_de_entrega).toBeDefined();
@@ -82,7 +81,6 @@ describe('Testes para registros de extratos e produtos', () => {
                 expect(data.body).toBeDefined();
                 data.body.forEach(item => {
                     expect(item.loja.nome).toBeDefined();
-                    expect(item.valor).toBeDefined();
                     expect(item.pagamento_realizado).toBeDefined();
                     expect(item.created_at).toBeDefined();
                 })

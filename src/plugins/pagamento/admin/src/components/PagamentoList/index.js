@@ -9,8 +9,9 @@ import React from 'react';
 import { Grid, GridItem } from '@strapi/design-system';
 import { Box } from '@strapi/design-system';
 import { Table, Thead, Tbody, Tr, Td, Th } from '@strapi/design-system';
-import { Checkbox } from '@strapi/design-system';
 import { FieldInput } from '@strapi/design-system';
+
+import GatewayLink from '../GatewayLink';
 
 const PagamentoList = ({pagamentoList}) => {
 
@@ -21,7 +22,6 @@ const PagamentoList = ({pagamentoList}) => {
     let filter = event.target.value.toUpperCase();
     let table = document.getElementById("pagamentoTable");
     let tr = table.getElementsByTagName("tr");
-    console.log(filter)
     for (var i = 0; i < tr.length; i++) {
       let td = tr[i].getElementsByTagName("td")[0];
       if (td) {
@@ -62,7 +62,6 @@ const PagamentoList = ({pagamentoList}) => {
     sortedRows.forEach((row) => table.appendChild(row));
   };
 
-
   return (
     <Box padding={8} background="neutral100">
       <Grid gap={{
@@ -80,7 +79,6 @@ const PagamentoList = ({pagamentoList}) => {
                 <Th onClick={(event) =>handleSort(0)}>Usuário {sortColumn === 0 && (sortDirection === "asc" ? "↑" : "↓")} </Th>
                 <Th>Descrição</Th>
                 <Th onClick={(event) =>handleSort(2)}>Valor {sortColumn === 2 && (sortDirection === "asc" ? "↑" : "↓")}</Th>
-                <Th onClick={(event) =>handleSort(3)}>Pago {sortColumn === 3 && (sortDirection === "asc" ? "↑" : "↓")}</Th>
                 <Th>Gerar Link</Th>
               </Tr>
             </Thead>
@@ -88,10 +86,9 @@ const PagamentoList = ({pagamentoList}) => {
             {pagamentoList.map((item, index) => (
                 <Tr key={index}>
                   <Td>{item.user.username}</Td>
-                  <Td>{item.itens}</Td>
-                  <Td>{item.valor}</Td>
-                  <Td><Checkbox checked={item.pagamento_realizado}/> </Td>
-                  <Td>TO DO</Td>
+                  <Td>{item.itens.map(i => <p> Produto: {i.produto_avulso.nome||i.plano.nome}, quantidade: {i.quantidade}, valor: {i.valor}</p> )}</Td>
+                  <Td>{item.itens.reduce((total, item) => total + (item.quantidade * item.valor), 0)}</Td>
+                  <Td><GatewayLink extrato={item}/></Td>
                 </Tr>
                 ))}
             </Tbody>
