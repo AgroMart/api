@@ -1,20 +1,32 @@
-// configuração para ambiente local (desenv)
+module.exports = ({ env }) => {
+  const client = env('DATABASE_CLIENT', 'postgres');
 
-module.exports = ({ env }) => ({
-  defaultConnection: 'default',
-  connections: {
-    default: {
-      connector: 'bookshelf',
-      settings: {
-        client: 'postgres',
-        host: env('DATABASE_HOST', '127.0.0.1'),
+  const connections = {
+    postgres: {
+      connection: {
+        connectionString: env('DATABASE_URL'),
+        host: env('DATABASE_HOST', 'localhost'),
         port: env.int('DATABASE_PORT', 5432),
         database: env('DATABASE_NAME', 'agromart_db'),
-        username: env('DATABASE_USERNAME', 'agromart'),
+        user: env('DATABASE_USERNAME', 'agromart'),
         password: env('DATABASE_PASSWORD', 'agromartpass'),
+        ssl: {
+          rejectUnauthorized: env.bool('DATABASE_SSL_SELF', false),
+        },
+        schema: env('DATABASE_SCHEMA', 'public'),
+      },
+      options: {
         ssl: env.bool('DATABASE_SSL', false),
       },
-      options: {}
+      pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
+    }
+  };
+
+  return {
+    connection: {
+      client,
+      ...connections[client],
+      acquireConnectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
     },
-  },
-});
+  };
+};
