@@ -42,6 +42,8 @@ Com o intuito de gerar a URL de pagamento, o caso de uso 3, na Figura de sequenc
 
 ## Gateway de Pagamento Integrados
 
-Esse módulo de pagamento possui a integração com dois gateways de pagamento, eles são: Mercado Pago e PayPal. Para a integração via código de novos gateways basta seguir os proximos passos: 
+Esse módulo de pagamento possui a integração com dois gateways de pagamento, eles são: Mercado Pago e PayPal. 
+
+O módulo de pagamento foi desenvolvido genérico o suficiente para ser possível adicionar novas integrações. Para isso, basta adicionar no arquivo [gateway](https://github.com/AgroMart/api/blob/devel/src/plugins/pagamento/server/utils/gateway.js) na `const gatewayRequest` a configuração necessária para a integração via código de novos gateways: 
 
 
