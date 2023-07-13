@@ -19,6 +19,7 @@ import './index.css'
 
 
 import gatewayRequests from '../../api/gateway';
+import { Plus, Trash } from '@strapi/icons';
 const GatewayCustom = ({gateway}) => {
   const [nome, setNome] = useState(gateway.nome);
   const [token, setToken] = useState(gateway.token);
@@ -27,6 +28,54 @@ const GatewayCustom = ({gateway}) => {
   const [pagamento_dados, setPagamentoDados] = useState(gateway.pagamento_dados);
   const [pagamento_response, setPagamentoResponse] = useState(gateway.pagamento_response);
   const [pagamento_params, setPagamentoParams] = useState(gateway.pagamento_params);
+  const [requisitionFields, setRequisitionFields] = useState([]);
+  const [paramsFields, setParamsFields] = useState([]);
+
+  const handleAddParamField = () => {
+    setParamsFields([...paramsFields, { variable: '', systemVariable: '' }]);
+  };
+  const handleAddReqField = () => {
+    setRequisitionFields([...requisitionFields, { variable: '', systemVariable: '' }]);
+  };
+
+  const handleParamsFieldChange = (index, fieldKey, value) => {
+    const updatedFields = [...paramsFields];
+    updatedFields[index][fieldKey] = value;
+    setParamsFields(updatedFields);
+  };
+  const handleReqFieldChange = (index, fieldKey, value) => {
+    const updatedFields = [...requisitionFields];
+    updatedFields[index][fieldKey] = value;
+    setRequisitionFields(updatedFields);
+  };
+
+  const handleGenerateParamsJson = () => {
+    const json = {};
+    paramsFields.forEach((field) => {
+      json[field.variable] = field.systemVariable;
+    });
+    //console.log(json); // Replace with your desired logic to use or display the JSON
+    setParamsFields(json);
+  };
+  const handleGenerateReqJson = () => {
+    const json = {};
+    requisitionFields.forEach((field) => {
+      json[field.variable] = field.systemVariable;
+    });
+    //console.log(json); // Replace with your desired logic to use or display the JSON
+    setPagamentoDados(json);
+  };
+
+  const handleRemoveReqField = (index) => {
+    const updatedFields = [...requisitionFields];
+    updatedFields.splice(index, 1);
+    setRequisitionFields(updatedFields);
+  };
+  const handleRemoveParamsField = (index) => {
+    const updatedFields = [...paramsFields];
+    updatedFields.splice(index, 1);
+    setParamsFields(updatedFields);
+  };
 
   const history = useHistory();
 
@@ -35,6 +84,8 @@ const GatewayCustom = ({gateway}) => {
   }
 
   const handleSubmit = (event) => {
+    handleGenerateReqJson();
+    handleGenerateParamsJson();
     event.preventDefault();
     gateway['nome'] = nome;
     gateway['token'] = token;
@@ -75,34 +126,110 @@ const GatewayCustom = ({gateway}) => {
                 <FieldInput type="text" value={token} onChange={(event) =>setToken(event.target.value)} required/>
             </Field>
           </GridItem>
-          <GridItem padding={1} col={3} s={6} xs={12}>
+          <GridItem padding={1} col={4} s={6} xs={12}>
             <Field name="pagamento_url" required>
                 <FieldLabel>Url de criação de pagamento</FieldLabel>
                 <FieldInput type="text" value={pagamento_url} onChange={(event) =>setPagamentoURL(event.target.value)} required/>
             </Field>
           </GridItem>
-          <GridItem padding={1} col={3} s={6} xs={12}>
+          <GridItem padding={1} col={4} s={6} xs={12}>
             <Field name="pagamento_method" required>
                 <FieldLabel>Método da url de criação de pagamento</FieldLabel>
                 <FieldInput type="text" value={pagamento_method} onChange={(event) =>setPagamentoMethod(event.target.value)} required/>
             </Field>
           </GridItem>
-          <GridItem padding={1} col={3} s={6} xs={12}>
+          <GridItem padding={1} col={4} s={6} xs={12}>
             <Field name="pagamento_response" required>
                 <FieldLabel>Chave da resposta esperada</FieldLabel>
                 <FieldInput type="text" value={pagamento_response} onChange={(event) =>setPagamentoResponse(event.target.value)} required/>
             </Field>
           </GridItem>
-          <GridItem padding={1} col={3} s={6} xs={12}>
+          <GridItem padding={1} col={12} xs={12}>
           <Field name="pagamento_params" required>
                 <FieldLabel>Parametros da requisição</FieldLabel>
-                <FieldInput type="text" value={pagamento_params} onChange={(event) =>setPagamentoParams(event.target.value)} required/>
+                <div>
+                  {paramsFields.map((field, index) => (
+                    <Grid col={12} key={index} className="key-value-grid">
+                      <FieldInput
+                        placeholder="Chave"
+                        className="key-field"
+                        value={field.variable}
+                        size="M"
+                        onChange={(e) => handleParamsFieldChange(index, 'variable', e.target.value)}
+                        required
+                      />
+                      <div className='centered spacer'>
+                        =
+                      </div>
+                      <FieldInput
+                        size="M"
+                        placeholder="Valor"
+                        className="value-field"
+                        value={field.systemVariable}
+                        onChange={(e) => handleParamsFieldChange(index, 'systemVariable', e.target.value)}
+                        required
+                      />
+                      <Button 
+                        padding = {5}
+                        className="centered button-padding"
+                        size="G"
+                        onClick={() => handleRemoveParamsField(index)} 
+                        variant='danger'
+                        >
+                          <Trash/>
+                      </Button>
+                    </Grid>
+                  ))}
+                  <Button 
+                      padding={3} 
+                      onClick={handleAddParamField} 
+                      className="centered add-button-width" 
+                      startIcon={<Plus/>} >Adicionar Campo</Button>
+                </div>
             </Field>
           </GridItem>
-          <GridItem padding={1} col={8} xs={12}>
+          <GridItem padding={1} col={12} xs={12}>
             <Field name="pagamento_dados" required>
               <FieldLabel>Dados da requisição</FieldLabel>
-              <Textarea value={pagamento_dados} onChange={(event) =>setPagamentoDados(event.target.value)} required/>
+                <div>
+                  {requisitionFields.map((field, index) => (
+                    <Grid col={12} key={index} className="key-value-grid">
+                      <FieldInput
+                        placeholder="Chave"
+                        className="key-field"
+                        value={field.variable}
+                        size="M"
+                        onChange={(e) => handleReqFieldChange(index, 'variable', e.target.value)}
+                        required
+                      />
+                      <div className='centered spacer'>
+                        =
+                      </div>
+                      <FieldInput
+                        size="M"
+                        placeholder="Valor"
+                        className="value-field"
+                        value={field.systemVariable}
+                        onChange={(e) => handleReqFieldChange(index, 'systemVariable', e.target.value)}
+                        required
+                      />
+                      <Button 
+                        padding = {5}
+                        className="centered button-padding"
+                        size="G"
+                        onClick={() => handleRemoveReqField(index)} 
+                        variant='danger'
+                        >
+                          <Trash/>
+                      </Button>
+                    </Grid>
+                  ))}
+                  <Button 
+                      padding={3} 
+                      onClick={handleAddReqField} 
+                      className="centered add-button-width" 
+                      startIcon={<Plus/>} >Adicionar Campo</Button>
+                </div>
             </Field>
           </GridItem>
           <GridItem padding={1} col={8} xs={12}>
@@ -114,4 +241,5 @@ const GatewayCustom = ({gateway}) => {
   );
 };
 
+//<Textarea value={pagamento_dados} onChange={(event) =>setPagamentoDados(event.target.value)} required/>
 export default GatewayCustom;
