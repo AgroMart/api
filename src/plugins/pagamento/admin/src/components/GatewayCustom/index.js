@@ -4,14 +4,13 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useHistory } from "react-router-dom";
 
 import { Grid, GridItem } from '@strapi/design-system';
 import { Box } from '@strapi/design-system';
 import { Field, FieldLabel, FieldInput } from '@strapi/design-system';
-import { Textarea } from '@strapi/design-system';
 import { Button } from '@strapi/design-system';
 
 import pluginId from '../../pluginId';
@@ -49,21 +48,22 @@ const GatewayCustom = ({gateway}) => {
     setRequisitionFields(updatedFields);
   };
 
-  const handleGenerateParamsJson = () => {
+  function handleGenerateParamsJson() {
     const json = {};
     paramsFields.forEach((field) => {
       json[field.variable] = field.systemVariable;
     });
-    //console.log(json); // Replace with your desired logic to use or display the JSON
-    setParamsFields(json);
+    const str = JSON.stringify(json);
+    return str;
   };
-  const handleGenerateReqJson = () => {
+
+  function handleGenerateReqJson(){
     const json = {};
     requisitionFields.forEach((field) => {
       json[field.variable] = field.systemVariable;
     });
-    //console.log(json); // Replace with your desired logic to use or display the JSON
-    setPagamentoDados(json);
+    const str = JSON.stringify(json);
+    return str;
   };
 
   const handleRemoveReqField = (index) => {
@@ -82,18 +82,55 @@ const GatewayCustom = ({gateway}) => {
   const routeChange = (path) =>{ 
     history.push(path);
   }
+  const loadReqDataFields = () =>{
+    const savedReq = pagamento_dados;
+    return savedReq? JSON.parse(savedReq) : []
+  }
+  const loadParamsFields = () =>{
+    const savedParams = pagamento_params;
+    return savedParams? JSON.parse(savedParams) : []
+  }
+
+  function handleLoadParamField (fields) {
+    setParamsFields([...paramsFields, ...fields ]);
+  };
+  function handleLoadReqField (fields){
+    setRequisitionFields([...requisitionFields, ...fields ]);
+  };
+
+
+  useEffect(() => {
+    const saveReqData = loadReqDataFields();
+    const savedParams = loadParamsFields();
+    if (savedParams) {
+      const paramsArray = Object.entries(savedParams).map(([key, value]) => ({
+        variable: key,
+        systemVariable: value,
+      }));
+      handleLoadParamField(paramsArray);
+    }
+    if(saveReqData){
+      const reqArray = Object.entries(saveReqData).map(([key, value]) => ({
+        variable: key,
+        systemVariable: value,
+      }));
+      handleLoadReqField(reqArray);
+    }
+    
+  }, []);
+
 
   const handleSubmit = (event) => {
-    handleGenerateReqJson();
-    handleGenerateParamsJson();
+    console.log(nome);
+    console.log(pagamento_params);
     event.preventDefault();
     gateway['nome'] = nome;
     gateway['token'] = token;
     gateway['pagamento_url'] = true;
     gateway['pagamento_method'] = pagamento_method;
-    gateway['pagamento_dados'] = pagamento_dados;
+    gateway['pagamento_dados'] = handleGenerateReqJson();
     gateway['pagamento_response'] = pagamento_response;
-    gateway['pagamento_params'] = pagamento_params;
+    gateway['pagamento_params'] = handleGenerateParamsJson();
     gateway['ativado'] = true;
     if (gateway.id > 0){
       gatewayRequests.updateGateway(gateway.id, gateway).then(res => {
@@ -241,5 +278,4 @@ const GatewayCustom = ({gateway}) => {
   );
 };
 
-//<Textarea value={pagamento_dados} onChange={(event) =>setPagamentoDados(event.target.value)} required/>
 export default GatewayCustom;
