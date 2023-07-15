@@ -83,13 +83,26 @@ docker-compose up
 Inicie CMS (Strapi) do projeto:
 
 ```
-npm run develop -- --watch-admin
 npm run develop
 # ou
 yarn develop
 ```
+
+Se necessário rode observando o front-end, recomenda-se usar quando estiver alterando plugin
+
+```
+npm run develop -- --watch-admin
+```
+
+Error: The server does not support SSL connections
+
+Para consertar esse erro localmente, no arquivo `api/config/database.js` altere a conexão para: 
+
+```
+13. ssl: false,
+```
 ---
-### Como executar os testes unitários
+### Como executar os testes de integração
 
 Crie e inicie o container de serviço do banco de dados:
 
