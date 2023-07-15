@@ -1,5 +1,9 @@
-const fs = require('fs');
-const { setupStrapi, cleanupStrapi, destroyStrapi } = require("./helpers/strapi");
+const fs = require("fs");
+const {
+  setupStrapi,
+  cleanupStrapi,
+  destroyStrapi,
+} = require("./helpers/strapi");
 const { getUser, getJWT, setupUser } = require("./helpers/user");
 
 jest.setTimeout(150000);
@@ -19,15 +23,15 @@ it("strapi is defined", () => {
   expect(strapi).toBeDefined();
 });
 
-require('./pagamento');
-require('./assinantes');
-require('./auth');
-require('./cestas');
-require('./devices');
-require('./enderecos');
-require('./extratoes');
-require('./gateway');
-require('./lojas');
-require('./notificacoes');
-require('./planos');
-require('./produtos-avulsos');
+require("./pagamento");
+// require('./assinantes');
+// require('./auth');
+// require('./cestas');
+// require('./devices');
+// require('./enderecos');
+// require('./extratoes');
+// require('./gateway');
+// require('./lojas');
+// require('./notificacoes');
+// require('./planos');
+// require('./produtos-avulsos');

@@ -1,133 +1,162 @@
-const config = require('../helpers/config');
+const config = require("../helpers/config");
 const axios = require("axios");
+
+function getValueFromObjectByPath(path, obj) {
+  const paths = path.split('||');
+  let value = obj;
+  let find = false;
+  for (const p of paths) {
+    const keys = p.split('.');
+    let value = obj;
+
+    if (find == false){ 
+      for (const key of keys) {
+        // Verifica se a chave contém um índice
+        if (/\d+/.test(key)) {
+          const index = parseInt(key, 10);
+          value = Array.isArray(value) ? value[index] : undefined;
+        } else {
+          value = value[key];
+        }
+
+        if (value === undefined) {
+          break;
+        }
+      } 
+    }
+
+    if (value === undefined) {
+      find = false;
+    } else {
+      return value
+    }
+  }
+}
 
 async function createPaymentDefault(paymentData, pagamento_response) {
   try {
-    const res = await axios(paymentData);
-    return res.data[pagamento_response];
+    const res = await axios({
+      method: paymentData.method,
+      url: paymentData.url,
+      headers: paymentData.headers,
+      data: paymentData.body,
+      params:  paymentData.params
+    });
+    return getValueFromObjectByPath(pagamento_response, res.data);
   } catch (error) {
     throw new Error(`Aconteceu o erro: ${error}`);
   }
 }
 
-function getProperties(input) {
-  if (typeof input === "string") {
-    if (input.includes("||")) {
-      var parts = input.split("||");
-      var result = parts.map(function (part) {
-        return part.split(".");
-      });
-      return result;
-    } else {
-      return input.split(".");
-    }
+function extractValue(string) {
+  const regex = /\${(.*?)}/;
+  const match = string.match(regex);
+
+  if (match) {
+    return match[1];
   }
-  return input;
+
+  return null;
 }
 
-function isNestedList(list) {
-  for (var i = 0; i < list.length; i++) {
-    if (Array.isArray(list[i])) {
-      return true;
-    }
-  }
-  return false;
-}
+function parseJSONRecursively(jsonString) {
+  const jsonObject = JSON.parse(jsonString);
 
-function getObject(input, target, index) {
-  let returnObject = input;
-  let replacementTarget = target;
-  let replacementField;
-  if (typeof returnObject === "string") {
-    replacementField = getProperties(returnObject);
-    if (!isNestedList(replacementField)) {
-      for (let part in replacementField) {
-        if (replacementField[part] == "index") {
-          replacementTarget = replacementTarget[index];
-        } else {
-          replacementTarget = replacementTarget[replacementField[part]];
+  const parseNestedJSON = (obj) => {
+    for (const key in obj) {
+      if (typeof obj[key] === 'string') {
+        try {
+          obj[key] = parseJSONRecursively(obj[key]);
+        } catch (error) {
+          // Ignorar a string que não é um JSON válido
         }
+      } else if (typeof obj[key] === 'object') {
+        parseNestedJSON(obj[key]);
       }
-    } else {
-      let aux;
-      for (let element in replacementField) {
-        replacementTarget = target;
-        let replacementElement = replacementField[element];
-        for (let part in replacementElement) {
-          if (replacementElement[part] == "index") {
-            if (replacementTarget[replacementElement[part]] !== null) {
-              replacementTarget = replacementTarget[index];
-            } else if (replacementTarget[replacementElement[part]] === null) {
-              replacementTarget = null;
-              break;
-            }
-          } else {
-            if (replacementTarget[replacementElement[part]] !== null) {
-              replacementTarget = replacementTarget[replacementElement[part]];
-            } else if (replacementTarget[replacementElement[part]] === null) {
-              replacementTarget = null;
-              break;
+    }
+  };
+
+  parseNestedJSON(jsonObject);
+  return jsonObject;
+}
+
+function run(string, dado) {
+  if (string === '') {
+    return {}
+  } else {
+    let inputJSON;
+    
+    // verifica se é um json valido
+    inputJSON = parseJSONRecursively(string);
+    
+    return substituirValores(inputJSON, dado);
+  }
+}
+
+function getTotal(extrato){
+  if(extrato.hasOwnProperty('itens')){
+    return extrato.itens.reduce((total, item) => total + (item.quantidade * item.valor), 0);
+  }
+  return 0;
+}
+
+function substituirValores(inputJSON, dado) {
+  let outputJSON = {};
+  // entra em um loop para cada chave do json 
+  for (const key in inputJSON) {
+    if (inputJSON.hasOwnProperty(key)) {
+      const value = inputJSON[key];
+      if (typeof value === 'string') {
+        if (extractValue(value)){
+          // valor dentro de um extract value
+          if (value === "${valorTotal}"){
+            outputJSON[key] = getTotal(dado.extrato);
+          }else{
+            outputJSON[key] = getValueFromObjectByPath(extractValue(value), dado);
+          }
+          
+        } else{
+          // valor fixo
+          outputJSON[key] = value;
+        }
+      } else if (typeof value === 'number' && Number.isFinite(value) || typeof value === 'boolean')  {
+        outputJSON[key] = value;
+      } else if (Array.isArray(value)){
+        outputJSON[key] = [];
+        // se for um array vai ser um array de items
+        dado.extrato.itens.forEach((item, index) => {
+          let newItem = {}
+          for (const kv in value[0]) {
+            const valueWithIndex = value[0][kv].replace(/index/g, index);
+            newItem[kv] = getValueFromObjectByPath(extractValue(valueWithIndex), dado);
+            if (newItem[kv] == null){
+              newItem[kv] = index;
             }
           }
-        }
-        if (typeof replacementTarget === "string") {
-          aux = replacementTarget;
-        }
+          outputJSON[key].push(newItem);
+        });
+      } else{
+        // se não for nem string nem array vai chamar de novo
+        outputJSON[key] = substituirValores(value, dado);
       }
-      replacementTarget = aux;
-    }
-    return replacementTarget;
-  } else {
-    for (let field in returnObject) {
-      returnObject[field] = getObject(
-        returnObject[field],
-        { ...target },
-        index
-      );
-    }
-    return returnObject;
-  }
-}
-
-function substituirValores(string, extrato) {
-  // Convert the input string to JSON format
-  let inputJSON;
-  let arr = [];
-
-  try {
-    inputJSON = JSON.parse(string);
-  } catch (error) {
-    console.log("Error no JSON string " + error);
-    throw new Error("Error no JSON string " + error);
-  }
-  var currentDate = new Date();
-  var formattedDate = currentDate.toISOString().split("T")[0];
-
-  for (let field in inputJSON) {
-    if (field === "items") {
-      const aux = { ...inputJSON["items"] };
-      for (let index in extrato.itens) {
-        let newObject = getObject({ ...aux[0] }, { ...extrato }, index);
-        arr.push(newObject);
-      }
-      inputJSON[field] = arr;
-    } else {
-      inputJSON[field] = getObject(inputJSON[field], { ...extrato }, null);
     }
   }
-
-  return inputJSON;
+  return outputJSON;
 }
 
 function configDefault(gateway, extrato) {
+  const data = {
+    gateway: gateway,
+    extrato: extrato
+  }
   return {
     // data: JSON.stringify(substituirValores(gateway.pagamento_dados, extrato)),
-    data: substituirValores(gateway.pagamento_dados, extrato),
+    body: run(gateway.pagamento_dados, data),
     headers: {
-      Authorization: `Basic ${Buffer.from(gateway.token).toString("base64")}`,
-      'Content-Type': 'application/json',
+      Authorization: `Bearer ${gateway.token}`,
+      "Content-Type": "application/json",
     },
-    params: substituirValores(gateway.pagamento_params, gateway),
+    params: run(gateway.pagamento_params, data),
   };
 }
 
@@ -138,9 +167,10 @@ async function linkRequest(gateway, extrato) {
     gateway.pagamento_url,
     data
   );
+
   return await createPaymentDefault(conf, gateway.pagamento_response);
 }
 
 module.exports = {
-    linkRequest
+  linkRequest,
 };
