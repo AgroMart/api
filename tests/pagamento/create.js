@@ -60,26 +60,20 @@ describe("Testes para gerar link de pagamento", () => {
     const bodyCreateGateway = {
       nome: "Mercado pago generico",
       token: "token",
-      pagamento_url: "https://api.mercadopago.com/v1/payments",
+      pagamento_url: "https://api.mercadopago.com/checkout/preferences",
       pagamento_method: "post",
       pagamento_dados:
-        '{"additional_info": {\
-              "items": [\
-                {\
-                  "description": "itens.index.produto_avulso.nome||itens.index.plano.nome",\
-                  "quantity": "itens.index.quantidade",\
-                  "unit_price": "itens.index.valor"\
-                }\
-              ],\
-              "payer": {}\
-            },\
-            "description": "fixed.payment",\
-            "installments": "fixed.1",\
-            "payer": { "email": "user.email" },\
-            "payment_method_id": "fixed.pix",\
-            "transaction_amount": "fixed.3"\
+        '{\
+          "items" : [\
+              {\
+                "id": "${extrato.itens.index.id}",\
+                "title": "${extrato.itens.index.produto_avulso.nome||extrato.itens.index.plano.nome}",\
+                "quantity": "${extrato.itens.index.quantidade}",\
+                "unit_price": "${extrato.itens.index.valor}"\
+              }\
+            ]\
           }',
-      pagamento_response: "point_of_interaction.transaction_data.ticket_url",
+      pagamento_response: "init_point",
       pagamento_params: "",
     };
 
@@ -91,55 +85,33 @@ describe("Testes para gerar link de pagamento", () => {
     const gateway = gatewayResponse.body;
 
     const bodyMocked = {
-      additional_info: {
+      
         items: [
           {
-            description: "produto 1",
+            id:1,
+            title: "produto 1",
             quantity: 1,
             unit_price: 4,
           },
           {
-            description: "produto 1",
+            id:2,
+            title: "produto 1",
             quantity: 2,
             unit_price: 3,
-          },
-        ],
-        payer: {},
-      },
-      description: "payment",
-      installments: 1,
-      payer: { email: "userteste@strapi.com" },
-      payment_method_id: "pix",
-      transaction_amount: 3,
+          }]
     };
 
     const response = {
-      point_of_interaction: {
-        type: "PIX",
-        application_data: {
-          name: "NAME_SDK",
-          version: "VERSION_NUMBER",
-        },
-        transaction_data: {
-          qr_code_base64:
-            "iVBORw0KGgoAAAANSUhEUgAABRQAAAUUCAYAAACu5p7oAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAIABJREFUeJzs2luO3LiWQNFmI+Y/Zd6vRt36KGNXi7ZOBtcagHD4kNLeiLX33v8DAAAAABD879sDAAAAAAA/h6AIAAAAAGSCIgAAAACQCYoAAAAAQCYoAgAAAACZoAgAAAAAZIIiAAAAAJAJigAAAABAJigCAAAAAJmgCAAAAABkgiIAAAAAkAmKAAAAAEAmKAIAAAAAmaAIAAAAAGSCIgAAAACQCYoAAAAAQCYoAgAAAACZoAgAAAAAZIIiAAAAAJAJigAAAABAJigCA...",
-          qr_code:
-            "00020126600014br.gov.bcb.pix0117test@testuser.com0217dados adicionais520400005303986540510.005802BR5913Maria Silva6008Brasilia62070503***6304E2CA",
-          ticket_url:
-            "https://www.mercadopago.com.br/payments/123456789/ticket?caller_id=123456&hash=123e4567-e89b-12d3-a456-426655440000",
-        },
-      },
+      "init_point": "https://www.mercadopago.com/mla/checkout/start?pref_id=202809963-920c288b-4ebb-40be-966f-700250fa5370"
     };
 
     nock("https://api.mercadopago.com", {
       reqheaders: {
-        Authorization: `Basic ${Buffer.from(bodyCreateGateway.token).toString(
-          "base64"
-        )}`,
+        Authorization: `Bearer ${gateway.token}`,
         "Content-Type": "application/json",
       },
     })
-      .post("/v1/payments", bodyMocked)
+      .post("/checkout/preferences", bodyMocked)
       .reply(200, response);
 
     const mockBody = {
@@ -153,12 +125,11 @@ describe("Testes para gerar link de pagamento", () => {
       .set("accept", "application/json")
       .set("Authorization", `Bearer  ${jwt}`)
       .set("Content-Type", "application/json")
-      //.expect(200)
+      .expect(200)
       .then((data) => {
-        console.log(data.body);
         expect(data.body).toBeDefined();
         expect(data.body.url).toBeDefined();
-        expect(data.body.url).toBe(response.secure_url);
+        expect(data.body.url).toBe(response.init_point);
       });
   });
   it("Gera link de pagamento com base no gateway Iugu e extrato", async () => {
@@ -168,13 +139,13 @@ describe("Testes para gerar link de pagamento", () => {
       pagamento_url: "https://api.iugu.com/v1/invoices",
       pagamento_method: "post",
       pagamento_dados:
-        '{"email":"user.email", \
-                  "items":[ \
-                      {"description": "itens.index.produto_avulso.nome||itens.index.plano.nome", \
-                      "price_cents": "itens.index.valor", \
-                      "quantity": "itens.index.quantidade"}]}',
+        '{"email":"${extrato.user.email}", \
+          "items": [\
+            {"description": "${extrato.itens.index.produto_avulso.nome||extrato.itens.index.plano.nome}", \
+            "price_cents": "${extrato.itens.index.valor}", \
+            "quantity": "${extrato.itens.index.quantidade}"}]}',
       pagamento_response: "secure_url",
-      pagamento_params: '{"api_token": "token"}',
+      pagamento_params: '{"api_token": "${gateway.token}"}',
     };
 
     const gatewayResponse = await request(strapi.server.httpServer)
@@ -206,9 +177,7 @@ describe("Testes para gerar link de pagamento", () => {
 
     nock("https://api.iugu.com", {
       reqheaders: {
-        Authorization: `Basic ${Buffer.from(bodyCreateGateway.token).toString(
-          "base64"
-        )}`,
+        Authorization: `Bearer ${gateway.token}`,
         "Content-Type": "application/json",
       },
     })
