@@ -2,14 +2,14 @@ const config = require("../helpers/config");
 const axios = require("axios");
 
 function getValueFromObjectByPath(path, obj) {
-  const paths = path.split('||');
+  const paths = path.split("||");
   let value = obj;
   let find = false;
   for (const p of paths) {
-    const keys = p.split('.');
+    const keys = p.split(".");
     let value = obj;
 
-    if (find == false){ 
+    if (find == false) {
       for (const key of keys) {
         // Verifica se a chave contém um índice
         if (/\d+/.test(key)) {
@@ -22,26 +22,28 @@ function getValueFromObjectByPath(path, obj) {
         if (value === undefined) {
           break;
         }
-      } 
+      }
     }
 
     if (value === undefined) {
       find = false;
     } else {
-      return value
+      return value;
     }
   }
 }
 
 async function createPaymentDefault(paymentData, pagamento_response) {
   try {
+    console.log(paymentData);
     const res = await axios({
       method: paymentData.method,
       url: paymentData.url,
       headers: paymentData.headers,
       data: paymentData.body,
-      params:  paymentData.params
+      params: paymentData.params,
     });
+    console.log(res.data);
     return getValueFromObjectByPath(pagamento_response, res.data);
   } catch (error) {
     throw new Error(`Aconteceu o erro: ${error}`);
@@ -64,13 +66,13 @@ function parseJSONRecursively(jsonString) {
 
   const parseNestedJSON = (obj) => {
     for (const key in obj) {
-      if (typeof obj[key] === 'string') {
+      if (typeof obj[key] === "string") {
         try {
           obj[key] = parseJSONRecursively(obj[key]);
         } catch (error) {
           // Ignorar a string que não é um JSON válido
         }
-      } else if (typeof obj[key] === 'object') {
+      } else if (typeof obj[key] === "object") {
         parseNestedJSON(obj[key]);
       }
     }
@@ -81,61 +83,72 @@ function parseJSONRecursively(jsonString) {
 }
 
 function run(string, dado) {
-  if (string === '') {
-    return {}
+  if (string === "") {
+    return {};
   } else {
     let inputJSON;
-    
+
     // verifica se é um json valido
     inputJSON = parseJSONRecursively(string);
-    
+
     return substituirValores(inputJSON, dado);
   }
 }
 
-function getTotal(extrato){
-  if(extrato.hasOwnProperty('itens')){
-    return extrato.itens.reduce((total, item) => total + (item.quantidade * item.valor), 0);
+function getTotal(extrato) {
+  if (extrato.hasOwnProperty("itens")) {
+    return extrato.itens.reduce(
+      (total, item) => total + item.quantidade * item.valor,
+      0
+    );
   }
   return 0;
 }
 
 function substituirValores(inputJSON, dado) {
   let outputJSON = {};
-  // entra em um loop para cada chave do json 
+  // entra em um loop para cada chave do json
   for (const key in inputJSON) {
     if (inputJSON.hasOwnProperty(key)) {
       const value = inputJSON[key];
-      if (typeof value === 'string') {
-        if (extractValue(value)){
+      if (typeof value === "string") {
+        if (extractValue(value)) {
           // valor dentro de um extract value
-          if (value === "${valorTotal}"){
+          if (value === "${valorTotal}") {
             outputJSON[key] = getTotal(dado.extrato);
-          }else{
-            outputJSON[key] = getValueFromObjectByPath(extractValue(value), dado);
+          } else {
+            outputJSON[key] = getValueFromObjectByPath(
+              extractValue(value),
+              dado
+            );
           }
-          
-        } else{
+        } else {
           // valor fixo
           outputJSON[key] = value;
         }
-      } else if (typeof value === 'number' && Number.isFinite(value) || typeof value === 'boolean')  {
+      } else if (
+        (typeof value === "number" && Number.isFinite(value)) ||
+        typeof value === "boolean"
+      ) {
         outputJSON[key] = value;
-      } else if (Array.isArray(value)){
+      } else if (Array.isArray(value)) {
         outputJSON[key] = [];
         // se for um array vai ser um array de items
         dado.extrato.itens.forEach((item, index) => {
-          let newItem = {}
+          let newItem = {};
           for (const kv in value[0]) {
             const valueWithIndex = value[0][kv].replace(/index/g, index);
-            newItem[kv] = getValueFromObjectByPath(extractValue(valueWithIndex), dado);
-            if (newItem[kv] == null){
+            newItem[kv] = getValueFromObjectByPath(
+              extractValue(valueWithIndex),
+              dado
+            );
+            if (newItem[kv] == null) {
               newItem[kv] = index;
             }
           }
           outputJSON[key].push(newItem);
         });
-      } else{
+      } else {
         // se não for nem string nem array vai chamar de novo
         outputJSON[key] = substituirValores(value, dado);
       }
@@ -147,8 +160,8 @@ function substituirValores(inputJSON, dado) {
 function configDefault(gateway, extrato) {
   const data = {
     gateway: gateway,
-    extrato: extrato
-  }
+    extrato: extrato,
+  };
   return {
     // data: JSON.stringify(substituirValores(gateway.pagamento_dados, extrato)),
     body: run(gateway.pagamento_dados, data),

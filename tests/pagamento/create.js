@@ -85,24 +85,25 @@ describe("Testes para gerar link de pagamento", () => {
     const gateway = gatewayResponse.body;
 
     const bodyMocked = {
-      
-        items: [
-          {
-            id:1,
-            title: "produto 1",
-            quantity: 1,
-            unit_price: 4,
-          },
-          {
-            id:2,
-            title: "produto 1",
-            quantity: 2,
-            unit_price: 3,
-          }]
+      items: [
+        {
+          id: 1,
+          title: "produto 1",
+          quantity: 1,
+          unit_price: 4,
+        },
+        {
+          id: 2,
+          title: "produto 1",
+          quantity: 2,
+          unit_price: 3,
+        },
+      ],
     };
 
     const response = {
-      "init_point": "https://www.mercadopago.com/mla/checkout/start?pref_id=202809963-920c288b-4ebb-40be-966f-700250fa5370"
+      init_point:
+        "https://www.mercadopago.com/mla/checkout/start?pref_id=202809963-920c288b-4ebb-40be-966f-700250fa5370",
     };
 
     nock("https://api.mercadopago.com", {
