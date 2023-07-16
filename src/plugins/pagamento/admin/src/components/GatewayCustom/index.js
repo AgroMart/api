@@ -72,7 +72,7 @@ const GatewayCustom = ({ gateway }) => {
       json[field.variable] = data;
     });
     const str = JSON.stringify(json);
-    return str;
+    return json;
   }
 
   function handleGenerateReqJson() {
@@ -89,8 +89,7 @@ const GatewayCustom = ({ gateway }) => {
       console.log("data generate", data);
       json[field.variable] = data;
     });
-    const str = JSON.stringify(json);
-    return str;
+    return json;
   }
 
   const handleRemoveReqField = (index) => {
