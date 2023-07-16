@@ -126,26 +126,18 @@ const GatewayCustom = ({ gateway }) => {
     const saveReqData = loadReqDataFields();
     const savedParams = loadParamsFields();
     if (savedParams) {
-      try {
-        const paramsArray = Object.entries(savedParams).map(([key, value]) => ({
-          variable: key,
-          systemVariable: value,
-        }));
-        handleLoadParamField(paramsArray);
-      } catch (error) {
-        handleLoadParamField(savedParams);
-      }
+      const paramsArray = Object.entries(savedParams).map(([key, value]) => ({
+        variable: key,
+        systemVariable: value,
+      }));
+      handleLoadParamField(paramsArray);
     }
     if (saveReqData) {
-      try {
-        const reqArray = Object.entries(saveReqData).map(([key, value]) => ({
-          variable: key,
-          systemVariable: value,
-        }));
-        handleLoadReqField(reqArray);
-      } catch (error) {
-        handleLoadReqField(saveReqData);
-      }
+      const reqArray = Object.entries(saveReqData).map(([key, value]) => ({
+        variable: key,
+        systemVariable: value,
+      }));
+      handleLoadReqField(reqArray);
     }
   }, []);
 
