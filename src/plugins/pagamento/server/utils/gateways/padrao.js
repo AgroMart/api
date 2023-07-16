@@ -90,7 +90,7 @@ function run(string, dado) {
 
     // verifica se é um json valido
     inputJSON = parseJSONRecursively(string);
-
+    console.log("INPUTJASON", inputJSON);
     return substituirValores(inputJSON, dado);
   }
 }
