@@ -35,7 +35,7 @@ function getValueFromObjectByPath(path, obj) {
 
 async function createPaymentDefault(paymentData, pagamento_response) {
   try {
-    console.log(paymentData);
+    console.log("paymanetData", paymentData);
     const res = await axios({
       method: paymentData.method,
       url: paymentData.url,
