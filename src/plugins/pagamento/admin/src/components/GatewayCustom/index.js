@@ -107,11 +107,11 @@ const GatewayCustom = ({ gateway }) => {
     history.push(path);
   };
   const loadReqDataFields = () => {
-    const savedReq = JSON.stringify([...pagamento_dados]);
+    const savedReq = JSON.stringify(pagamento_dados);
     return savedReq ? JSON.parse(savedReq) : [];
   };
   const loadParamsFields = () => {
-    const savedParams = JSON.stringify([...pagamento_params]);
+    const savedParams = JSON.stringify(pagamento_params);
     return savedParams ? JSON.parse(savedParams) : [];
   };
 
@@ -128,14 +128,14 @@ const GatewayCustom = ({ gateway }) => {
     if (savedParams) {
       const paramsArray = Object.entries(savedParams).map(([key, value]) => ({
         variable: key,
-        systemVariable: value,
+        systemVariable: JSON.stringify(value),
       }));
       handleLoadParamField(paramsArray);
     }
     if (saveReqData) {
       const reqArray = Object.entries(saveReqData).map(([key, value]) => ({
         variable: key,
-        systemVariable: value,
+        systemVariable: JSON.stringify(value),
       }));
       handleLoadReqField(reqArray);
     }
