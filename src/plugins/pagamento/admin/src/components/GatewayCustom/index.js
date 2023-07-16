@@ -61,7 +61,15 @@ const GatewayCustom = ({ gateway }) => {
   function handleGenerateParamsJson() {
     const json = {};
     paramsFields.forEach((field) => {
-      json[field.variable] = field.systemVariable;
+      let temp = field.systemVariable;
+      let data;
+      try {
+        data = JSON.parse(temp);
+      } catch (error) {
+        data = temp;
+      }
+
+      json[field.variable] = data;
     });
     const str = JSON.stringify(json);
     return str;
@@ -70,7 +78,15 @@ const GatewayCustom = ({ gateway }) => {
   function handleGenerateReqJson() {
     const json = {};
     requisitionFields.forEach((field) => {
-      json[field.variable] = field.systemVariable;
+      let temp = field.systemVariable;
+      let data;
+      try {
+        data = JSON.parse(temp);
+      } catch (error) {
+        data = temp;
+      }
+
+      json[field.variable] = data;
     });
     const str = JSON.stringify(json);
     return str;
