@@ -63,7 +63,7 @@ function extractValue(string) {
 
 function parseJSONRecursively(jsonString) {
   const jsonObject = JSON.parse(jsonString);
-
+  console.log("JSON OBJECT>>> ", jsonObject);
   const parseNestedJSON = (obj) => {
     for (const key in obj) {
       if (typeof obj[key] === "string") {
