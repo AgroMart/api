@@ -35,7 +35,7 @@ function getValueFromObjectByPath(path, obj) {
 
 async function createPaymentDefault(paymentData, pagamento_response) {
   try {
-    console.log(paymentData);
+    console.log("paymanetData", paymentData);
     const res = await axios({
       method: paymentData.method,
       url: paymentData.url,
@@ -63,7 +63,7 @@ function extractValue(string) {
 
 function parseJSONRecursively(jsonString) {
   const jsonObject = JSON.parse(jsonString);
-
+  console.log("JSON OBJECT>>> ", jsonObject);
   const parseNestedJSON = (obj) => {
     for (const key in obj) {
       if (typeof obj[key] === "string") {
@@ -90,7 +90,7 @@ function run(string, dado) {
 
     // verifica se é um json valido
     inputJSON = parseJSONRecursively(string);
-
+    console.log("INPUTJASON", inputJSON);
     return substituirValores(inputJSON, dado);
   }
 }
@@ -174,6 +174,7 @@ function configDefault(gateway, extrato) {
 }
 
 async function linkRequest(gateway, extrato) {
+  console.log("Chegou no link request");
   const data = configDefault(gateway, extrato);
   const conf = config.makeConfig(
     gateway.pagamento_method,

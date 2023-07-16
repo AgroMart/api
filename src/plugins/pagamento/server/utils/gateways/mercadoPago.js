@@ -4,7 +4,6 @@ async function linkRequest(gateway, itens) {
   mercadopago.configure({
     access_token: gateway.token,
   });
-  console.log("PAssou aqui");
   const preference_data = {
     items: itens.map((objeto) => ({
       title: objeto.produto_avulso.nome
