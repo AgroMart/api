@@ -83,8 +83,10 @@ const GatewayCustom = ({ gateway }) => {
       try {
         data = JSON.parse(temp);
       } catch (error) {
+        console.log("error", error);
         data = temp;
       }
+      console.log("data", data);
       json[field.variable] = data;
     });
     const str = JSON.stringify(json);
