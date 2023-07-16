@@ -108,11 +108,11 @@ const GatewayCustom = ({ gateway }) => {
   };
   const loadReqDataFields = () => {
     const savedReq = JSON.stringify([...pagamento_dados]);
-    return savedReq ? JSON.parse(savedReq) : [];
+    return savedReq ? savedReq : [];
   };
   const loadParamsFields = () => {
     const savedParams = JSON.stringify([...pagamento_params]);
-    return savedParams ? JSON.parse(savedParams) : [];
+    return savedParams ? savedParams : [];
   };
 
   function handleLoadParamField(fields) {
