@@ -131,14 +131,14 @@ const GatewayCustom = ({ gateway }) => {
     if (savedParams) {
       const paramsArray = Object.entries(savedParams).map(([key, value]) => ({
         variable: key,
-        systemVariable: value,
+        systemVariable: JSON.stringify(value),
       }));
       handleLoadParamField(paramsArray);
     }
     if (saveReqData) {
       const reqArray = Object.entries(saveReqData).map(([key, value]) => ({
         variable: key,
-        systemVariable: value,
+        systemVariable: JSON.stringify(value),
       }));
       handleLoadReqField(reqArray);
     }
