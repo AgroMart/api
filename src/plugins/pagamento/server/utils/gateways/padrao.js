@@ -174,6 +174,7 @@ function configDefault(gateway, extrato) {
 }
 
 async function linkRequest(gateway, extrato) {
+  console.log("Chegou no link request");
   const data = configDefault(gateway, extrato);
   const conf = config.makeConfig(
     gateway.pagamento_method,
