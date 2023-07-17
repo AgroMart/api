@@ -142,8 +142,6 @@ const GatewayCustom = ({ gateway }) => {
   }, []);
 
   const handleSubmit = (event) => {
-    console.log(nome);
-    console.log(pagamento_params);
     event.preventDefault();
     gateway["nome"] = nome;
     gateway["token"] = token;

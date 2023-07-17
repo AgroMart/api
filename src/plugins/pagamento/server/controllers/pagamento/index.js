@@ -34,12 +34,10 @@ module.exports = ({ strapi }) => ({
         .plugin("pagamento")
         .service("gateway")
         .findGateway(body.gateway.nome);
-      console.log("gateway", gateway);
       const extrato = await strapi
         .plugin("pagamento")
         .service("extrato")
         .findOne(body.extrato.id);
-      console.log("extrato", extrato);
       const data = {
         extrato: extrato[0],
         gateway: gateway,

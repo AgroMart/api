@@ -35,7 +35,6 @@ function getValueFromObjectByPath(path, obj) {
 
 async function createPaymentDefault(paymentData, pagamento_response) {
   try {
-    console.log("paymanetData", paymentData);
     const res = await axios({
       method: paymentData.method,
       url: paymentData.url,
@@ -43,7 +42,6 @@ async function createPaymentDefault(paymentData, pagamento_response) {
       data: paymentData.body,
       params: paymentData.params,
     });
-    console.log(res.data);
     return getValueFromObjectByPath(pagamento_response, res.data);
   } catch (error) {
     throw new Error(`Aconteceu o erro: ${error}`);
@@ -63,7 +61,6 @@ function extractValue(string) {
 
 function parseJSONRecursively(jsonString) {
   const jsonObject = JSON.parse(jsonString);
-  console.log("JSON OBJECT>>> ", jsonObject);
   const parseNestedJSON = (obj) => {
     for (const key in obj) {
       if (typeof obj[key] === "string") {
@@ -90,7 +87,6 @@ function run(string, dado) {
 
     // verifica se é um json valido
     inputJSON = parseJSONRecursively(string);
-    console.log("INPUTJASON", inputJSON);
     return substituirValores(inputJSON, dado);
   }
 }
@@ -105,6 +101,12 @@ function getTotal(extrato) {
   return 0;
 }
 
+function getDueDate() {
+  var currentDate = new Date();
+  var formattedDate = currentDate.toISOString().split("T")[0];
+  return formattedDate;
+}
+
 function substituirValores(inputJSON, dado) {
   let outputJSON = {};
   // entra em um loop para cada chave do json
@@ -116,6 +118,8 @@ function substituirValores(inputJSON, dado) {
           // valor dentro de um extract value
           if (value === "${valorTotal}") {
             outputJSON[key] = getTotal(dado.extrato);
+          } else if (value === "${dataHoje}") {
+            outputJSON[key] = getDueDate();
           } else {
             outputJSON[key] = getValueFromObjectByPath(
               extractValue(value),
@@ -163,7 +167,6 @@ function configDefault(gateway, extrato) {
     extrato: extrato,
   };
   return {
-    // data: JSON.stringify(substituirValores(gateway.pagamento_dados, extrato)),
     body: run(gateway.pagamento_dados, data),
     headers: {
       Authorization: `Bearer ${gateway.token}`,
@@ -174,7 +177,6 @@ function configDefault(gateway, extrato) {
 }
 
 async function linkRequest(gateway, extrato) {
-  console.log("Chegou no link request");
   const data = configDefault(gateway, extrato);
   const conf = config.makeConfig(
     gateway.pagamento_method,
