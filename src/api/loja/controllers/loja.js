@@ -13,6 +13,13 @@ module.exports = createCoreController("api::loja.loja", ({ strapi }) => ({
         populate: {
           banner: true,
           endereco: true,
+          planos: {
+            populate: {
+              imagem: {
+                populate: true,
+              },
+            },
+          },
           cestas: {
             populate: {
               imagem: {
