@@ -10,13 +10,7 @@ module.exports = ({ env }) => {
         database: env("DATABASE_NAME", "agromart_db"),
         user: env("DATABASE_USERNAME", "agromart"),
         password: env("DATABASE_PASSWORD", "agromartpass"),
-        ssl: {
-          rejectUnauthorized: env.bool("DATABASE_SSL_SELF", false),
-        },
         schema: env("DATABASE_SCHEMA", "public"),
-      },
-      options: {
-        ssl: env.bool("DATABASE_SSL", false),
       },
       pool: {
         min: env.int("DATABASE_POOL_MIN", 2),
