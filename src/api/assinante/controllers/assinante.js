@@ -21,6 +21,7 @@ module.exports = createCoreController("api::assinante.assinante", ({ strapi }) =
                                       .findMany({populate: true});
           }
           return assinantes.map((assinante) => ({
+            nome: assinante?.nome,
             id: assinante.id,
             cestas_disponiveis: assinante.cestas_disponiveis,
             pular_cesta: assinante.pular_cesta,
