@@ -8,7 +8,7 @@ module.exports = {
   
   async update(ctx, next) {
     try {
-      const { body } = ctx.request.body;
+      const body = ctx.request.body;
       if(body === undefined || 
         body.user_id === undefined || 
         body.expo_push_token === undefined){
