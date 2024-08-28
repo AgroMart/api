@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "extratoes",
+  "info": {
+    "singularName": "extrato",
+    "pluralName": "extratoes",
+    "displayName": "Extrato",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "loja": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::loja.loja"
+    },
+    "entregue": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "tipo_de_entrega": {
+      "type": "enumeration",
+      "enum": [
+        "Receber",
+        "Buscar"
+      ]
+    },
+    "pagamento_realizado": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "itens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item.item"
+    }
+  }
+}

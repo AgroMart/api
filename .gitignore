@@ -110,5 +110,14 @@ coverage
 license.txt
 exports
 *.cache
+dist
 build
 .strapi-updater.json
+
+############################
+# Node
+############################
+
+package-lock.json
+yarn-lock.json
+config.ini

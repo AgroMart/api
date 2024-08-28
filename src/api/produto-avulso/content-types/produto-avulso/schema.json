@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "produto_avulsos",
+  "info": {
+    "singularName": "produto-avulso",
+    "pluralName": "produtos-avulsos",
+    "displayName": "Produto Avulso",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "imagem": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "unidade_medida": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "text"
+    },
+    "valor": {
+      "type": "float"
+    },
+    "quantidade": {
+      "type": "integer"
+    },
+    "loja": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::loja.loja",
+      "inversedBy": "produto_avulsos"
+    }
+  }
+}

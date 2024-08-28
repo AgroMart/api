@@ -1,0 +1,50 @@
+form {
+    padding: 24px;
+    background-color: white;
+    box-shadow: rgba(33, 33, 52, 0.1) 0px 1px 4px;
+    border-radius: 5px;
+}
+.centered{
+    align-content: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-items: center !important;
+    text-align: center !important;
+}
+.button-padding{
+    margin-left: 1vw;
+    width: 4vw;
+}
+.key-value-grid{
+    margin-bottom: 5px;
+    padding-right: 300px;
+    margin-top: 3px;
+}
+.spacer{
+    margin-left: 8px;
+    margin-right: 8px;
+    padding-top: 40%;
+    color: #919191;
+    opacity: 0.7;
+    font-weight: bolder;
+}
+.key-field{
+    width: 22vw !important;
+    box-sizing:border-box;
+}
+.value-field{
+    width: 41.5vw !important;
+    box-sizing:border-box;
+}
+.add-button-width{
+    width: var(--sum-width) !important;
+}
+
+@media only screen and (max-width: 1295px){
+    .button-padding{
+        margin-left: 1em;
+        width: 4vw;
+    }
+    
+    
+}
