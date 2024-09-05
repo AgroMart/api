@@ -4,6 +4,11 @@
 
 # 🌱 API
 
+## Como acessar o painel de adminstração do Strapi
+Acesse a rota '''/admim''' no seu navegador.
+Por exemplo, se estiver rodando o strapi no localhost na porta 1337, acesse: 
+'''http//localhost:1337/admin/'''
+
 ## Funcionalidades
 - Criação de conta de usuário e Autenticação;
 - Gerenciar lojas;
