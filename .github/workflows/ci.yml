@@ -42,7 +42,7 @@ jobs:
         node-version: 18.x
 
     - name: Instalar Dependências
-      run: npm ci
+      run: npm install
 
     - name: Rodar a Build
       run: npm run build --if-present
