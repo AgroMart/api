@@ -47,5 +47,13 @@ jobs:
     - name: Rodar a Build
       run: npm run build --if-present
 
+    - name: Aguardar Postgres
+      run: |
+        until pg_isready -h $DATABASE_HOST -p $DATABASE_PORT -U $DATABASE_USERNAME; do
+          echo " Aguardando Postgres..."
+          sleep 2
+        done
+        echo "Postgres pronto!"
+
     - name: Rodar os Testes
       run: npm test
