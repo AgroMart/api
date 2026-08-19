@@ -4,140 +4,104 @@
 
 # 🌱 API
 
-## Como acessar o painel de adminstração do Strapi
-Acesse a rota ``/admim`` no seu navegador.<br>
-Por exemplo, se estiver rodando o strapi no localhost na porta 1337, acesse: <br>
-``http//localhost:1337/admin``
+Esta é a API Backend do projeto AgroMart, construída sobre o [Strapi](https://github.com/strapi/strapi).
 
-## Funcionalidades
-- Criação de conta de usuário e Autenticação;
-- Gerenciar lojas;
-- Gerenciar assinantes;
-- Gerenciar cestas;
-- Gerenciar endereços;
-- Gerenciar extratos;
-- Gerenciar planos;
-- Gerenciar produtos avulsos;
-- Notificar usuários;
+A arquitetura do projeto foi reformulada para seguir estritamente o padrão **12-Factor App**, sendo distribuída como uma **Imagem Docker (Container as a Service - CaaS)**. Todo o processo de build e publicação de imagens está automatizado via CI/CD.
 
----
-## Como implantar o projeto no Heroku
-### Pré requesitos 
-- Repositório clonado em um computador local
-- Conta com cartão de credito no [Heroku](https://dashboard.heroku.com/)
+## 🚀 Como funciona a Implantação (CaaS)
 
-## Passo a passo
+A implantação não depende mais de scripts locais ou passos manuais. Toda vez que um commit for aprovado e inserido na branch `master` ou `main`, o GitHub Actions irá:
+1. Montar a imagem Docker da aplicação (utilizando a estratégia *Multi-stage Build* para gerar um contêiner leve e seguro).
+2. Fazer o *push* automático da versão compilada para o **GitHub Container Registry (GHCR)**.
 
-1. Preencha o arquivo `config.ini` com suas informações. Exemplo:
+### Variáveis de Ambiente Obrigatórias (Produção)
+Para rodar a imagem gerada no seu provedor de nuvem (Google Cloud Run, AWS Fargate, Render, etc), você deve injetar obrigatoriamente as seguintes variáveis de ambiente no serviço:
 
-```
-[heroku]
-api_key = api-key-do-heroku
-
-[csa]
-nome_csa = laranja-secreta
-responsavel_csa = laranja
-email = laranja.secreta@gmail.com
-```
-
-2. Execute o arquivo `deploy.exe` ao clicar no arquivo com o botão direito e `Abrir`:
-
-![image](https://user-images.githubusercontent.com/31159235/234134157-8782839a-4595-4619-9565-477aef97c232.png)
+- `DATABASE_URL`: String de conexão completa com o banco (ex: `postgres://user:password@host:5432/agromart_db`)
+- `APP_KEYS`: Chaves separadas por vírgula para cookies/sessão
+- `API_TOKEN_SALT`: Salt de segurança da API
+- `ADMIN_JWT_SECRET`: Secret do JWT do painel administrativo
+- `JWT_SECRET`: Secret do JWT de usuários
 
 ---
-## Como executar o projeto localmente
 
-### :rocket: Principais Tecnologias Utilizadas
+## 💻 Como executar o projeto localmente (DevEx)
 
-- [Node.js](https://nodejs.org/en/)
-- [Strapi](https://github.com/strapi/strapi)
-
-### Pré requesitos do sistema
-Para executar que o projeto seja executado localmente, são necessárias algumas configurações:
-- [node.js](https://nodejs.org/en/) entre as versões ">=10.16.0 <=14.x.x"
-- [yarn](https://yarnpkg.com/getting-started/install)
--  [Docker](https://docs.docker.com/engine/installation/) e [Docker Compose](https://docs.docker.com/compose/install/) para execuçaão banco de dados **Postgres**
+### Pré-requisitos
+- [Node.js](https://nodejs.org/en/) (Versão recomendada: >=18.x)
+- [NPM](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
+- [Docker](https://docs.docker.com/engine/installation/) e [Docker Compose](https://docs.docker.com/compose/install/)
 
 ### Passo a passo
-Clone o repositorio:
 
-```
-git clone https://github.com/AgroMart/api.git
-```
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/AgroMart/api.git
+   cd api
+   ```
 
-Acesse a pasta do projeto:
+2. **Inicie o Banco de Dados Local (PostgreSQL):**
+   Suba o banco localmente usando o Docker Compose. Não é necessário configurar o `.env` para esta etapa.
+   ```bash
+   docker-compose up -d
+   ```
 
-```
-cd api
-```
+3. **Configure as Variáveis de Ambiente Locais:**
+   Copie o arquivo de exemplo e edite se necessário (por padrão, a `DATABASE_URL` no `.env.example` já aponta para o container do Docker Compose recém-criado).
+   ```bash
+   cp .env.example .env
+   ```
 
-Instale as dependências:
+4. **Instale as dependências:**
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
 
-```
-npm run build
-# ou
-yarn build
-```
+5. **Inicie o servidor de desenvolvimento (Strapi):**
+   ```bash
+   npm run develop
+   # ou
+   yarn develop
+   ```
 
-Crie e inicie o container de serviço do banco de dados:
-
-```
-docker-compose up
-```
-
-Inicie CMS (Strapi) do projeto:
-
-```
-npm run develop
-# ou
-yarn develop
-```
-
-Se necessário rode observando o front-end, recomenda-se usar quando estiver alterando plugin
-
-```
+Se necessário rodar observando o front-end administrativo (útil ao desenvolver plugins):
+```bash
 npm run develop -- --watch-admin
 ```
 
-Error: The server does not support SSL connections
+### Acessando o Painel
+Após o servidor iniciar, acesse o painel administrativo em: `http://localhost:1337/admin`
 
-Para consertar esse erro localmente, no arquivo `api/config/database.js` altere a conexão para: 
-
-```
-13. ssl: false,
-```
 ---
-### Como executar os testes de integração
 
-Crie e inicie o container de serviço do banco de dados:
+## 🧪 Como executar os testes de integração
 
-```
-docker-compose -f docker-compose.dev.yml up
-```
+O banco de dados de testes agora compartilha o mesmo fluxo do ambiente de desenvolvimento. Certifique-se de que o container do Postgres esteja rodando (`docker-compose up -d`) e execute:
 
-Execute os testes:
-
-```
+```bash
 npm test
 # ou
 yarn test
 ```
 
 ---
-## Cliente Mobile
 
-Os dados são providos para o nosso próprio aplicativo disponível em https://github.com/AgroMart/mobile-client
+## 📱 Cliente Mobile
+
+Os dados são providos para o nosso próprio aplicativo disponível em: [AgroMart/mobile-client](https://github.com/AgroMart/mobile-client)
 
 ---
 
-## Como Contribuir
+## 🤝 Como Contribuir
 
 - Se você for um colaborador externo, dê um fork no projeto.
 - Crie sua branch e envie seu código nela.
-- Faça um pull request da sua branch para a devel.
+- Faça um pull request da sua branch para a `master`.
 
 ---
 
-## Licença:
+## 📄 Licença
 
-Esse projeto utiliza a licença GNU GENERAL PUBLIC LICENSE. Para mais informações [clique aqui](https://github.com/AgroMart/api/blob/master/LICENSE)
+Esse projeto utiliza a licença GNU GENERAL PUBLIC LICENSE. Para mais informações [clique aqui](LICENSE).

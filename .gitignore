@@ -118,6 +118,4 @@ build
 # Node
 ############################
 
-package-lock.json
-yarn-lock.json
 config.ini

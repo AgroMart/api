@@ -4,16 +4,16 @@
   "description": "A Strapi application",
   "version": "0.1.0",
   "engines": {
-    "node": "18.x.x",
-    "npm": "8.x",
-    "yarn": "1.22.x"
+    "node": "18.x",
+    "npm": "9.x"
   },
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "test": "jest --forceExit --detectOpenHandles"
+    "test": "jest --forceExit --detectOpenHandles",
+    "heroku-postbuild": "npm install --platform=linux --arch=x64 sharp && strapi build"
   },
   "dependencies": {
     "@strapi/plugin-i18n": "4.6.2",
@@ -23,7 +23,8 @@
     "axios": "^1.4.0",
     "mercadopago": "^1.5.16",
     "paypal-rest-sdk": "^1.8.1",
-    "pg": "^8.9.0"
+    "pg": "^8.9.0",
+    "pg-connection-string": "^2.14.0"
   },
   "author": {
     "name": "A Strapi developer"
@@ -44,5 +45,8 @@
       ".cache"
     ],
     "testEnvironment": "node"
+  },
+  "overrides": {
+    "webpack": "5.75.0"
   }
 }
